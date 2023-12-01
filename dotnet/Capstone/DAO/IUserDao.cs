@@ -7,7 +7,7 @@ namespace Capstone.DAO
     {
         IList<User> GetUsers();
         User GetUserById(int id);
-        User GetUserByUsername(string username);
-        User CreateUser(string username, string password, string role);
+        User GetUserByEmail(string email);
+        User CreateUser(string email, string password, string role);
     }
 }
