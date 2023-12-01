@@ -28,9 +28,9 @@ namespace Capstone.DAO
             string sql = 
                 "SELECT name, age, breed, species, medical_needs, color, is_adopted, owner_name, sex, weight, about_me, is_good FROM animal";
 
-            string pictureSql = 
+           /* string pictureSql = 
                 "SELECT photo_path FROM animal_photo " +
-                "WHERE animal_id = @animal_id";
+                "WHERE animal_id = @animal_id";*/
 
             try
             {
@@ -49,17 +49,17 @@ namespace Capstone.DAO
 
                     reader.Close();
 
-                    foreach(Animal animal in animals)
+                    /*foreach(Animal animal in animals)
                     {
                         SqlCommand pathCmd = new SqlCommand(pictureSql, conn);
-                        SqlDataReader pathReader = cmd.ExecuteReader();
+                        SqlDataReader pathReader = pathCmd.ExecuteReader();
 
-                        while (reader.Read())
+                        while (pathReader.Read())
                         {
                             string path = MapRowToPath(reader);
                             animal.PhotoPaths.Add(path);
                         }
-                    }
+                    }*/
                 }
             }
             catch (SqlException ex)
@@ -78,8 +78,20 @@ namespace Capstone.DAO
         private Animal MapRowToAnimal(SqlDataReader reader)
         {
             Animal animal = new Animal();
-            animal.Name = Convert.ToString(reader["animal_name"]);
-            animal.PhotoPaths = (List<string>)reader["photo_paths"];
+            animal.Name = Convert.ToString(reader["name"]);
+            animal.MedicalNeeds = Convert.ToBoolean(reader["medical_needs"]);
+            animal.IsAdopted = Convert.ToBoolean(reader["is_adopted"]);
+            animal.IsGood = Convert.ToBoolean(reader["is_good"]);
+            animal.OwnerName = Convert.ToString(reader["owner_name"]);
+            animal.Sex = Convert.ToString(reader["sex"]);
+            animal.Weight = Convert.ToInt32(reader["weight"]);
+            animal.Age = Convert.ToInt32(reader["age"]);
+            animal.Breed = Convert.ToString(reader["breed"]);
+            animal.Species = Convert.ToString(reader["species"]);
+            animal.AboutMe = Convert.ToString(reader["about_me"]);
+            animal.Color = Convert.ToString(reader["color"]);   
+
+            
             return animal;
         }
 
