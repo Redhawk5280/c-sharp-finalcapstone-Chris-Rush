@@ -22,7 +22,7 @@ namespace Capstone.DAO
         {
             IList<User> users = new List<User>();
 
-            string sql = "SELECT user_id, username, password_hash, salt, user_role FROM users";
+            string sql = "SELECT user_id, email, password_hash, salt, user_role FROM users";
 
             try
             {
@@ -52,7 +52,7 @@ namespace Capstone.DAO
         {
             User user = null;
 
-            string sql = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE user_id = @user_id";
+            string sql = "SELECT user_id, email, password_hash, salt, user_role FROM users WHERE user_id = @user_id";
 
             try
             {
@@ -78,11 +78,12 @@ namespace Capstone.DAO
             return user;
         }
 
-        public User GetUserByUsername(string username)
+
+        public User GetUserByEmail(string email)
         {
             User user = null;
 
-            string sql = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
+            string sql = "SELECT user_id, email, password_hash, salt, user_role FROM users WHERE email = @email";
 
             try
             {
@@ -91,7 +92,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@email", email);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
@@ -108,16 +109,16 @@ namespace Capstone.DAO
             return user;
         }
 
-        public User CreateUser(string username, string password, string role)
+        public User CreateUser(string email, string password, string role)
         {
             User newUser = null;
 
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
 
-            string sql = "INSERT INTO users (username, password_hash, salt, user_role) " +
+            string sql = "INSERT INTO users (email, password_hash, salt, user_role) " +
                          "OUTPUT INSERTED.user_id " +
-                         "VALUES (@username, @password_hash, @salt, @user_role)";
+                         "VALUES (@email, @password_hash, @salt, @user_role)";
 
             int newUserId = 0;
             try
@@ -127,7 +128,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@password_hash", hash.Password);
                     cmd.Parameters.AddWithValue("@salt", hash.Salt);
                     cmd.Parameters.AddWithValue("@user_role", role);
@@ -149,7 +150,7 @@ namespace Capstone.DAO
         {
             User user = new User();
             user.UserId = Convert.ToInt32(reader["user_id"]);
-            user.Username = Convert.ToString(reader["username"]);
+            user.Email = Convert.ToString(reader["email"]);
             user.PasswordHash = Convert.ToString(reader["password_hash"]);
             user.Salt = Convert.ToString(reader["salt"]);
             user.Role = Convert.ToString(reader["user_role"]);

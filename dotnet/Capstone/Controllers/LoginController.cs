@@ -24,14 +24,14 @@ namespace Capstone.Controllers
         [HttpPost]
         public IActionResult Authenticate(LoginUser userParam)
         {
-            // Default to bad username/password message
-            IActionResult result = Unauthorized(new { message = "Username or password is incorrect." });
+            // Default to bad email/password message
+            IActionResult result = Unauthorized(new { message = "Email or password is incorrect." });
 
             User user;
-            // Get the user by username
+            // Get the user by email
             try
             { 
-                user = userDao.GetUserByUsername(userParam.Username);
+                user = userDao.GetUserByEmail(userParam.Email);
             }
             catch (DaoException)
             {
@@ -43,10 +43,10 @@ namespace Capstone.Controllers
             if (user != null && passwordHasher.VerifyHashMatch(user.PasswordHash, userParam.Password, user.Salt))
             {
                 // Create an authentication token
-                string token = tokenGenerator.GenerateToken(user.UserId, user.Username, user.Role);
+                string token = tokenGenerator.GenerateToken(user.UserId, user.Email, user.Role);
 
                 // Create a ReturnUser object to return to the client
-                LoginResponse retUser = new LoginResponse() { User = new ReturnUser() { UserId = user.UserId, Username = user.Username, Role = user.Role }, Token = token };
+                LoginResponse retUser = new LoginResponse() { User = new ReturnUser() { UserId = user.UserId, Email = user.Email, Role = user.Role }, Token = token };
 
                 // Switch to 200 OK
                 result = Ok(retUser);
@@ -63,13 +63,13 @@ namespace Capstone.Controllers
 
             IActionResult result = BadRequest(new { message = ErrorMessage });
 
-            // is username already taken?
+            // is email already taken?
             try
             {
-                User existingUser = userDao.GetUserByUsername(userParam.Username);
+                User existingUser = userDao.GetUserByEmail(userParam.Email);
                 if (existingUser != null)
                 {
-                    return Conflict(new { message = "Username already taken. Please choose a different username." });
+                    return Conflict(new { message = "Email already taken. Please choose a different email." });
                 }
             }
             catch (DaoException)
@@ -81,7 +81,7 @@ namespace Capstone.Controllers
             User newUser;
             try
             {
-                newUser = userDao.CreateUser(userParam.Username, userParam.Password, userParam.Role);
+                newUser = userDao.CreateUser(userParam.Email, userParam.Password, userParam.Role);
             }
             catch (DaoException)
             {
@@ -91,7 +91,7 @@ namespace Capstone.Controllers
             if (newUser != null)
             {
                 // Create a ReturnUser object to return to the client
-                ReturnUser returnUser = new ReturnUser() { UserId = newUser.UserId, Username = newUser.Username, Role = newUser.Role };
+                ReturnUser returnUser = new ReturnUser() { UserId = newUser.UserId, Email = newUser.Email, Role = newUser.Role };
 
                 result = Created("/login", returnUser);
             }
