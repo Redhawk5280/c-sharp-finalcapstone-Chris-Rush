@@ -18,7 +18,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IList<User>> GetUsers()
+        public ActionResult<IList<Animal>> GetAnimals()
         {
             const string ErrorMessage = "There was an error";
             ActionResult result = BadRequest(new { message = ErrorMessage });
