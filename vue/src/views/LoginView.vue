@@ -19,12 +19,17 @@
       <button type="submit">Sign in</button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+
     </form>
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
+
+
+
+
 
 export default {
   components: {},
