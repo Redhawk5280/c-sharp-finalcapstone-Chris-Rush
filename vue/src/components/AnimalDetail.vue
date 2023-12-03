@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h2>Animal Details</h2>
+  <div class="details">
+    <h1>Animal Details</h1>
+    <img :src="animal.photoSrc" alt="">
     <p>ID: {{ animal.id }}</p>
     <p>Name: {{ animal.name }}</p>
   </div>
@@ -12,3 +13,10 @@ export default {
 
 }
 </script>
+
+<style scoped>
+  .details{
+    text-align: center;
+  }
+
+</style>

@@ -13,38 +13,37 @@
 <script>
 
   import AnimalCard from "../components/AnimalCard.vue"
-import animalService from "../services/AnimalService";
+  import animalService from "../services/AnimalService";
 export default {
-    components: {
-      AnimalCard,
+      props: {
+        animals: Array,
+      },    
+      components: {
+        AnimalCard,
+      },
+      data() { 
+        return {
+          isLoading: false,
+        }
     },
-    data() { 
-      return {
-        animals: [
-          {id: 1, name: "animal 1"},
-          {id: 2, name: "animal 2"}
-        ],
-        isLoading: false,
+    methods: {
+      goToDetails(id) { 
+        this.$router.push({ name: 'animalDetails', params: {id: id} })
       }
-  },
-  methods: {
-    goToDetails(id) { 
-      this.$router.push({ name: 'animalDetails', params: {id: id} })
-    }
-  },
-    created() { 
-      // TODO: uncomment this eventually
-        // this.isLoading = true;
-        // animalService.getAnimals()
-        //   .then(response => { 
-        //     this.animals = response.data;
-        //     this.isLoading = false;
-        //   })
-        //   .catch(error => {
-        //     console.error("Error fetching animals:", error);
-        //     this.isLoading = false;
-        //   });
-    }
+    },
+      created() { 
+        // TODO: uncomment this eventually
+          // this.isLoading = true;
+          // animalService.getAnimals()
+          //   .then(response => { 
+          //     this.animals = response.data;
+          //     this.isLoading = false;
+          //   })
+          //   .catch(error => {
+          //     console.error("Error fetching animals:", error);
+          //     this.isLoading = false;
+          //   });
+      }
   }
 </script>
 
@@ -63,6 +62,7 @@ export default {
   @media only screen and (max-width: 639px) {
     .animalList {
       grid-template-columns: 1fr;
+      margin: 0 5rem;
     }
   }
 

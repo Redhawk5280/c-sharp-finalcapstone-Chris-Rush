@@ -6,8 +6,11 @@
       </div>
       <div>
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link v-bind:to="{ name: 'volunteerForm' }">Volunteer</router-link>&nbsp;|&nbsp;
 
+        <router-link v-bind:to="{ name: 'login' }" >Login</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{name: 'register'}" >Register</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </div>
     <router-view />
@@ -21,7 +24,6 @@
 <style scoped>
   #nav{
     width: 100%;
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;

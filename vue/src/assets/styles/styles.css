@@ -9,6 +9,8 @@
   --body-background: #eae2b7;
   --font-one: "Poppins", sans-serif;
 
+  --generic-shadow: 0 0 16px rgba(0,0,0,0.1);
+
 }
 
 body {

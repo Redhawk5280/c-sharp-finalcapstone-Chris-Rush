@@ -8,7 +8,8 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import AnimalFormView from '../views/AnimalFormView.vue';
 
-import AnimalDetailsView from '../views/AnimalDetailsView.vue'
+import AnimalDetailsView from '../views/AnimalDetailsView.vue';
+import VolunteerFormView from '../views/VolunteerFormView.vue';
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -62,16 +63,17 @@ const routes = [
       requiresAuth: false
     }
   },
-  // {
-  //   path: "/animals/:id",
-  //   name: "animalDetails",
-  //   component: AnimalDetailsView,
-  // }
   {
     path: "/animal/:id",
     name: "animalDetails",
     component: AnimalDetailsView,
-  }
+  },
+  {
+    path: "/volunteer",
+    name: "volunteerForm",
+    component: VolunteerFormView,
+  },
+
 ];
 
 // Create the router

@@ -2,23 +2,38 @@
   <div class="home">
     <h1>Welcome to Paw Prints Pet Rescue</h1>
     <animal-list 
-      v-bind:animals="animals"
+      :animals="animalPhotos" 
     />
   </div>
 </template>
 
 <script>
 import AnimalList from "../components/AnimalList.vue";
-import animalServices from "../services/AnimalService"
+import animalServices from "../services/AnimalService";
+
+// import photo1 from "../assets/PetPics - Copy/20231122_193301.jpg";
+// import photo2 from "../assets/PetPics - Copy/1000003659.jpg";
+// import photo3 from "../assets/PetPics - Copy/1000008441 - Copy.jpg";
+// import photo4 from "../assets/PetPics - Copy/1000008441.jpg";
+
+
+
+
 
 export default {
   components: {
     AnimalList,
   },
-  data() { 
+  data() {
+
     return {
-      animals: {},
-      isLoading: true,
+      animals: [],
+      isLoading: false,
+    };
+  },
+  computed: {
+    animalPhotos() {
+      return this.$store.getters.animalPhotos;
     }
   },
   methods: {
@@ -32,7 +47,7 @@ export default {
     // }
   },
   // created() { 
-  //   this.retrieveBoards();
+  //   this.getAnimals();
   // }
 };
 </script>
@@ -43,5 +58,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
   }
 </style>
