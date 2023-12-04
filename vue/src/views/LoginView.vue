@@ -19,12 +19,17 @@
       <button type="submit">Sign in</button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+
     </form>
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
+
+
+
+
 
 export default {
   components: {},
@@ -61,10 +66,50 @@ export default {
 </script>
 
 <style scoped>
+
+#login {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: var(--generic-shadow);
+  border-radius: 1rem;
+}
+
+h1 {
+  text-align: center;
+}
 .form-input-group {
   margin-bottom: 1rem;
 }
 label {
   margin-right: 0.5rem;
 }
+
+input {
+  border: none;
+  border-radius: .25rem;
+  width: 96%;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+input {
+  width: 96%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 </style>
