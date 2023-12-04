@@ -6,8 +6,6 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import AnimalFormView from '../views/AnimalFormView.vue';
-
 import AnimalDetailsView from '../views/AnimalDetailsView.vue';
 import VolunteerFormView from '../views/VolunteerFormView.vue';
 /**
@@ -51,14 +49,6 @@ const routes = [
     path: "/register",
     name: "register",
     component: RegisterView,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: "/upload",
-    name: "upload",
-    component: AnimalFormView,
     meta: {
       requiresAuth: false
     }
