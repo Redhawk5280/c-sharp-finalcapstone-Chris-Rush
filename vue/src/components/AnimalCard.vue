@@ -6,7 +6,6 @@
     <img :src="animal.photoSrc"/>
     <h1>Name: {{animal.name}}</h1>
     <h2>Age:  {{animal.age}}</h2>
-    <p>Special Needs: {{animal.specialNeeds ? "yes" : "no"}}</p>
   </section>
 </template>
 
@@ -31,13 +30,15 @@ export default {
     border-radius: 1rem;
     cursor: pointer;
     box-shadow: var(--generic-shadow);
+    
   }
   .animalCard img{
     width: 100%; 
-    height: auto; 
+    height: 200px; 
     object-fit: cover; 
     max-height: 200px; 
     object-position: center;
+    object-fit: contain;
     border-radius: 1rem;
   }
 
