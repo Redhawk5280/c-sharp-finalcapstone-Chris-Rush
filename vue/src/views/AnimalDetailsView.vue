@@ -1,7 +1,7 @@
 <template>
   <section id="detailsView">
     <h1>Details</h1>
-    <animal-details v-bind:animal="animal"/>
+    <animal-details v-bind:animal="animal" v-if="isLoading == false"/>
   </section>
 </template>
 
@@ -15,30 +15,20 @@ export default {
   },
   data() {
     return {
+      isLoading: true,
       animal: null,
     };
   },
   created() {
-    this.fetchAnimalDetails();
+    animalService.getAnimal(this.$route.params.id).then(response => {
+      this.animal = response.data;
+      this.isLoading = false;
+      console.log(this.$route.params.id);
+    }).catch(error => {
+      console.log("There was an error");
+    });
   },
   methods: {
-    fetchAnimalDetails() {
-      const id = parseInt(this.$route.params.id);
-      // First, try to get the animal from the Vuex store
-      const animalFromStore = this.$store.state.animals.find(a => a.id === id);
-      if (animalFromStore) {
-        this.animal = animalFromStore;
-      } else {
-        // If not in store, fetch from the API
-        animalService.getAnimal(id)
-          .then(response => {
-            this.animal = response.data;
-          })
-          .catch(error => {
-            console.error('Error fetching animal details:', error);
-          });
-      }
-    },
     goToHome() {
       this.$router.push({ name: 'home' });
     }
