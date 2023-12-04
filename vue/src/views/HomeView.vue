@@ -4,17 +4,12 @@
     <animal-list 
       :animals="this.$store.state.animals" 
     />
-
-    <image-grid-display v-bind:images="images"></image-grid-display>
   </div>
 </template>
 
 <script>
 import AnimalList from "../components/AnimalList.vue";
 import animalService from "../services/AnimalService";
-
-import ImageGridDisplay from '../components/ImageGridDisplay.vue';
-import imageService from '../services/ImageService.js';
 
 // import photo1 from "../assets/PetPics - Copy/20231122_193301.jpg";
 // import photo2 from "../assets/PetPics - Copy/1000003659.jpg";
@@ -28,14 +23,13 @@ import imageService from '../services/ImageService.js';
 export default {
   components: {
     AnimalList,
-    ImageGridDisplay
   },
   data() {
 
     return {
-      //animals: [],
+      animals: [],
       isLoading: false,
-      //photos: []
+      photos: []
     };
   },
   computed: {
@@ -46,8 +40,9 @@ export default {
     */
   },
   created() {
-    animalService.getAnimals().then(result => {
-      this.$store.state.animals = result.data;
+    animalService.getAnimals().then(response => {
+      this.animals = response.data;
+      this.$store.state.animals = response.data;
       //this.animals = result.data;
     }).catch(error => {
       console.log("There was an error");

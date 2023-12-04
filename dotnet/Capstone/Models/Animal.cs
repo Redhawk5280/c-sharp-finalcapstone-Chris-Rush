@@ -5,6 +5,7 @@ namespace Capstone.Models
 {
     public class Animal
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public string Breed { get; set; }
@@ -16,7 +17,7 @@ namespace Capstone.Models
         public string Sex { get; set; }
         public int Weight { get; set; }
         public string AboutMe { get; set; }
-        public List<string> PhotoPaths { get; set; }
+        public List<Image> Photos { get; set; } = new List<Image>();
         public bool IsGood { get; set; }
     }
 }

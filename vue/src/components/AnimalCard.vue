@@ -3,7 +3,7 @@
     class="animalCard" 
     v-bind:class="{specialMedicalNeeds: animal.specialNeeds}"
   >
-    <img :src="animal.photoSrc"/>
+    <img :src="profilePhoto"/>
     <h1>{{animal.name}}</h1>
     <h2>
       {{ageText}}
@@ -27,6 +27,14 @@ export default {
         return `${this.animal.age} year old`;
       } else {
         return `${this.animal.age} years old`;
+      }
+    },
+    profilePhoto: function() {
+      if (this.animal.photos && this.animal.photos.length > 0){
+        return this.animal.photos[0].imageString;
+      }
+      else{
+        return "";
       }
     }
   }
