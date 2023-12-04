@@ -3,11 +3,13 @@
     class="animalCard" 
     v-bind:class="{specialMedicalNeeds: animal.specialNeeds}"
   >
-    <img :src="profilePhoto"/>
-    <h1>{{animal.name}}</h1>
-    <h2>
-      {{ageText}}
-    </h2>
+    <img :src="profilePhoto" id="animalPic"/>
+    <div id="curve">
+      <h1 id="animalName">{{animal.name}}</h1>
+      <h2>
+        {{ageText}}
+      </h2>
+    </div>
   </section>
 </template>
 
@@ -51,23 +53,52 @@ export default {
     cursor: pointer;
     box-shadow: var(--generic-shadow);
     background-color: var(--company-color-1);
-    
-  }
-  .animalCard img{
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
-    max-height: 200px; 
-    object-position: center;
-    object-fit: contain;
+    overflow: none;
+    position: relative;
+
+    padding-bottom: 1rem; /* Adds padding at the bottom inside the card */
     border-radius: 1rem;
   }
+
+  .animalCard img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  #curve {
+    position: absolute;
+    bottom: -1px; 
+    width: 100%;
+    height: 3rem; 
+    background-color: var(--company-color-1);
+    border-radius:  0 0 1rem 1rem; 
+    padding: 1rem 0;
+  }
+
+  #curve::before {
+    content: ''; /* Necessary for a pseudo-element */
+    position: absolute; /* Position it absolutely within #curve */
+    bottom: 100%; /* Position it at the bottom of the #curve */
+    left: 0;
+    width: 100%;
+    height: 25%; /* Same height as the #curve to cover the image's bottom part */
+    border-radius: 60% 60% 0 0; /* This creates an elliptical curve */
+    background-color: var(--company-color-1); /* The background color of the curve */
+    z-index: 10; /* Ensure it sits above the image */
+    overflow: hidden;
+  }
+
+
 
   .animalCard h1,h2,p{
     margin: 0;
     padding: 0;
     font-family: var(--card-body-font);
     color: var(--company-color-2);
+    max-width: 100%;
   }
 
   .specialMedicalNeeds {

@@ -15,7 +15,7 @@
     }
   </script>
   
-  <style>
+  <style scoped>
   
   img {
     max-width: 250px;

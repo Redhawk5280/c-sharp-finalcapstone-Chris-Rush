@@ -1,0 +1,117 @@
+<template>
+  <div id="imgContainer">
+    <img
+      src="/paw-prints-pet-rescue-logo-zip-file\png\logo-color.png"
+      alt=""
+      id="logoImg"
+      width="350"
+      height="350"
+      style="width 350px; height: 350px"
+    />
+  </div>
+  <div id="navContainer">
+    <div id="nav">
+      <div>
+        <router-link class="nav-link" v-bind:to="{ name: 'home' }">Home</router-link>
+      </div>
+
+      <div>
+        <router-link class="nav-link" v-bind:to="{ name: 'volunteerForm' }"
+          >Volunteer</router-link
+        >
+      </div>
+      <div>
+        <router-link
+          class="nav-link"
+          v-bind:to="{ name: 'login' }"
+          v-if="$store.state.token == ''"
+          >Login</router-link
+        >
+        <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-else
+          >Logout</router-link
+        >
+      </div>
+      <div>
+        <router-link class="nav-link" v-bind:to="{ name: 'register' }"
+          >Register</router-link
+        >
+      </div>
+    </div>
+  </div>
+</template>
+
+<script></script>
+
+<style scoped>
+
+:root {
+
+  /* colors */
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --accent-color: #9b59b6;
+  --brand-orange: #f8961e;
+  --brand-blue: #577590;
+  --body-background: #bada55;
+
+  --company-color-1: #395469;
+  --company-color-2: #e79648;
+
+
+
+  /* typography */
+  --font-one: "Poppins", Montserrat;
+  --font-h1: "Barrio";
+
+  --card-body-font: "Cutive Mono";
+
+  /* shadows */
+  --generic-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+#navContainer {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.1);
+  border-radius: 1rem;
+}
+#nav {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#imgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+  position: relative;
+}
+
+#logoImg {
+  width: 600px;
+  height: 600px;
+  margin-top: -80px;
+  margin-bottom: -80px;
+}
+.nav-link {
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-h1);
+}
+
+.nav-link:hover, .nav-link:visited,.nav-link:active  {
+  background: rgba(0,0,0,0.2);
+  border-radius: 1rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  color: inherit;
+}
+</style>
