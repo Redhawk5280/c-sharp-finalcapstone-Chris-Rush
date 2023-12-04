@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Capstone.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/animals")]
     public class AnimalController : ControllerBase
     {
         IAnimalDao animalDao;
