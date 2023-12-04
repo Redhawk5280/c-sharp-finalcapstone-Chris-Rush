@@ -109,6 +109,36 @@ namespace Capstone.DAO
 
             return images;
         }
+        public List<Animal> AddPicturesToListings(List<Animal> listings)
+        {
+
+            string sql = "SELECT image_id, image_string, animal_id FROM images WHERE animal_id = @animal_id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    for (int i = 0; i < listings.Count; i++)
+                    {
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@animal_id", listings[i].Id);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            listings[i].Photos.Add(MapRowToImage(reader));
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+            return listings;
+        }
 
         private Image MapRowToImage(SqlDataReader reader)
         {
