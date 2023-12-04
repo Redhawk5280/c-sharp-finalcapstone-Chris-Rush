@@ -11,21 +11,25 @@ namespace Capstone.Controllers
     public class AnimalController : ControllerBase
     {
         IAnimalDao animalDao;
+        IImageDao imageDao;
 
-        public AnimalController(IAnimalDao animalDao)
+        public AnimalController(IAnimalDao animalDao, IImageDao imageDao)
         {
             this.animalDao = animalDao;
+            this.imageDao = imageDao;
         }
 
         [HttpGet]
-        public ActionResult<IList<Animal>> GetAnimals()
+        public ActionResult<List<Animal>> GetAnimals()
         {
             const string ErrorMessage = "There was an error";
             ActionResult result = BadRequest(new { message = ErrorMessage });
 
             try
             {
-                result = Ok(animalDao.GetAnimals());
+                List<Animal> animalList = animalDao.GetAnimals();
+
+                result = Ok(imageDao.AddPicturesToListings(animalList));
 
             }
             catch (DaoException)

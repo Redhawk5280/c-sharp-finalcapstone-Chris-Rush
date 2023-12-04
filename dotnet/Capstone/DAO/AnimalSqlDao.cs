@@ -21,12 +21,12 @@ namespace Capstone.DAO
             throw new System.NotImplementedException();
         }
 
-        public IList<Animal> GetAnimals()
+        public List<Animal> GetAnimals()
         {
-            IList<Animal> animals = new List<Animal>();
+            List<Animal> animals = new List<Animal>();
 
             string sql = 
-                "SELECT name, age, breed, species, medical_needs, color, is_adopted, owner_name, sex, weight, about_me, is_good FROM animal";
+                "SELECT animal_id, name, age, breed, species, medical_needs, color, is_adopted, owner_name, sex, weight, about_me, is_good FROM animal";
 
            /* string pictureSql = 
                 "SELECT photo_path FROM animal_photo " +
@@ -47,7 +47,7 @@ namespace Capstone.DAO
                         animals.Add(animal);
                     }
 
-                    reader.Close();
+                    //reader.Close();
 
                     /*foreach(Animal animal in animals)
                     {
@@ -78,6 +78,7 @@ namespace Capstone.DAO
         private Animal MapRowToAnimal(SqlDataReader reader)
         {
             Animal animal = new Animal();
+            animal.Id = Convert.ToInt32(reader["animal_id"]);
             animal.Name = Convert.ToString(reader["name"]);
             animal.MedicalNeeds = Convert.ToBoolean(reader["medical_needs"]);
             animal.IsAdopted = Convert.ToBoolean(reader["is_adopted"]);
