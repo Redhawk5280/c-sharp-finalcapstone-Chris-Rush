@@ -8,5 +8,6 @@ namespace Capstone.DAO
         Image UploadImage(Image image);
         List<Image> GetImagesByAnimalId(int id);
         List<Animal> AddPicturesToListings(List<Animal> listings);
+        Animal AddPicturesToAnimal(Animal animal);
     }
 }

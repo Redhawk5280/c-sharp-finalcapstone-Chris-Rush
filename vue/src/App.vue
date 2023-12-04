@@ -2,7 +2,7 @@
   <div id="capstone-app">
     <div id="nav">
       <div>
-        <img src="paw-prints-pet-rescue-logo-zip-file\png\logo-color.png" alt="" id="logoImg">
+        <img src="\paw-prints-pet-rescue-logo-zip-file\png\logo-color.png" alt="" id="logoImg">
       </div>
       <div class="nav-links">
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
@@ -20,7 +20,18 @@
 </template>
 
 <script>
-
+import animalService from "./services/AnimalService";
+export default {
+  mounted() {
+    animalService.getAnimals().then(response => {
+      this.animals = response.data;
+      this.$store.state.animals = response.data;
+      //this.animals = result.data;
+    }).catch(error => {
+      console.log("There was an error");
+    });
+  },
+};
 </script>
 
 <style scoped>

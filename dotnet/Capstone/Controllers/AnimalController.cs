@@ -28,9 +28,26 @@ namespace Capstone.Controllers
             try
             {
                 List<Animal> animalList = animalDao.GetAnimals();
-
                 result = Ok(imageDao.AddPicturesToListings(animalList));
+            }
+            catch (DaoException)
+            {
+                result = StatusCode(500, ErrorMessage);
+            }
 
+            return result;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Animal> GetAnimalById(int id)
+        {
+            const string ErrorMessage = "There was an error";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+
+            try
+            {
+                Animal animal = animalDao.GetAnimalById(id);
+                result = Ok(imageDao.AddPicturesToAnimal(animal));
             }
             catch (DaoException)
             {

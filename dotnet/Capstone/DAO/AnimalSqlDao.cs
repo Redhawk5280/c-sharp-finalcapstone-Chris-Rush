@@ -28,10 +28,6 @@ namespace Capstone.DAO
             string sql = 
                 "SELECT animal_id, name, age, breed, species, medical_needs, color, is_adopted, owner_name, sex, weight, about_me, is_good FROM animal";
 
-           /* string pictureSql = 
-                "SELECT photo_path FROM animal_photo " +
-                "WHERE animal_id = @animal_id";*/
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -46,20 +42,6 @@ namespace Capstone.DAO
                         Animal animal = MapRowToAnimal(reader);
                         animals.Add(animal);
                     }
-
-                    //reader.Close();
-
-                    /*foreach(Animal animal in animals)
-                    {
-                        SqlCommand pathCmd = new SqlCommand(pictureSql, conn);
-                        SqlDataReader pathReader = pathCmd.ExecuteReader();
-
-                        while (pathReader.Read())
-                        {
-                            string path = MapRowToPath(reader);
-                            animal.PhotoPaths.Add(path);
-                        }
-                    }*/
                 }
             }
             catch (SqlException ex)
@@ -70,9 +52,37 @@ namespace Capstone.DAO
             return animals;
         }
 
-        public Animal GetAnimalsById(int id)
+        public Animal GetAnimalById(int id)
         {
-            throw new System.NotImplementedException();
+            Animal animal = null;
+
+            string sql =
+                "SELECT animal_id, name, age, breed, species, medical_needs, color, is_adopted, owner_name, sex, weight, about_me, is_good " +
+                "FROM animal " +
+                "WHERE animal_id = @animal_id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@animal_id", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        animal = MapRowToAnimal(reader);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return animal;
         }
 
         private Animal MapRowToAnimal(SqlDataReader reader)
@@ -94,11 +104,6 @@ namespace Capstone.DAO
 
             
             return animal;
-        }
-
-        private string MapRowToPath(SqlDataReader reader)
-        {
-            return Convert.ToString(reader["photo_path"]);
         }
     }
 }
