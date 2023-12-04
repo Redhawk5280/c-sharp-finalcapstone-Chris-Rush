@@ -43,7 +43,6 @@ export default {
     cursor: pointer;
     box-shadow: var(--generic-shadow);
     background-color: var(--company-color-1);
-    
   }
   .animalCard img{
     width: 100%; 
