@@ -1,11 +1,13 @@
 <template>
   <section 
     class="animalCard" 
-    v-bind:class="{specialNeeds: animal.specialNeeds}"
+    v-bind:class="{specialMedicalNeeds: animal.specialNeeds}"
   >
     <img :src="animal.photoSrc"/>
-    <h1>Name: {{animal.name}}</h1>
-    <h2>Age:  {{animal.age}}</h2>
+    <h1>{{animal.name}}</h1>
+    <h2>
+      {{ageText}}
+    </h2>
   </section>
 </template>
 
@@ -17,6 +19,16 @@ export default {
     'animal'
   ],
   methods: {
+    
+  },
+  computed: { 
+    ageText: function() {
+      if (this.animal.age === 1) {
+        return `${this.animal.age} year old`;
+      } else {
+        return `${this.animal.age} years old`;
+      }
+    }
   }
 }
 </script>
@@ -30,6 +42,7 @@ export default {
     border-radius: 1rem;
     cursor: pointer;
     box-shadow: var(--generic-shadow);
+    background-color: var(--company-color-1);
     
   }
   .animalCard img{
@@ -45,9 +58,11 @@ export default {
   .animalCard h1,h2,p{
     margin: 0;
     padding: 0;
+    font-family: var(--card-body-font);
+    color: var(--company-color-2);
   }
 
-  .specialNeeds {
+  .specialMedicalNeeds {
     background-color: orange;
   }
 </style>

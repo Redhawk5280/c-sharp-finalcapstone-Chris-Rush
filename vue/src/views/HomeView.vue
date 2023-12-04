@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome to Paw Prints Pet Rescue</h1>
+    <h1 id="homeH1">Welcome to Paw Prints Pet Rescue</h1>
     <animal-list 
       :animals="this.$store.state.animals" 
     />
@@ -82,5 +82,11 @@ export default {
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+
+  #homeH1 {
+    font-family: var(--font-h1);
+    font-size: 3rem;
+    color: var(--company-color-1);
   }
 </style>

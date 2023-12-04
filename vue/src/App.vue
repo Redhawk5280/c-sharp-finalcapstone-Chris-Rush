@@ -2,7 +2,7 @@
   <div id="capstone-app">
     <div id="nav">
       <div>
-        <p>LOGO</p>
+        <img src="paw-prints-pet-rescue-logo-zip-file\png\logo-color.png" alt="" id="logoImg">
       </div>
       <div class="nav-links">
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
@@ -29,6 +29,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  #logoImg {
+    height: auto;
+    width: 240px;
   }
 </style>
 
