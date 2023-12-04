@@ -1,7 +1,7 @@
 <template>
   <div id="imgContainer">
     <img
-      src="paw-prints-pet-rescue-logo-zip-file\png\logo-color.png"
+      src="/paw-prints-pet-rescue-logo-zip-file\png\logo-color.png"
       alt=""
       id="logoImg"
       width="350"
@@ -107,10 +107,11 @@
   font-family: var(--font-h1);
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link:visited,.nav-link:active  {
   background: rgba(0,0,0,0.2);
   border-radius: 1rem;
   padding: 0 1rem;
   cursor: pointer;
+  color: inherit;
 }
 </style>

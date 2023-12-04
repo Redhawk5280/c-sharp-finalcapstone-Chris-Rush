@@ -62,7 +62,6 @@ export default {
   @media only screen and (max-width: 639px) {
     .animalList {
       grid-template-columns: 1fr;
-      margin: 0 5rem;
     }
   }
 

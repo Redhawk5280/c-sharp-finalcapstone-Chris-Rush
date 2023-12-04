@@ -1,8 +1,11 @@
 <template>
-  <div class="home">
+  <div id="loadingDiv" v-if="isLoading">
+    <img src="../assets/loading-gif/loading-dog.gif"/>
+  </div>
+  <div class="home" v-else>
     <h1 id="homeH1">Welcome to Paw Prints Pet Rescue</h1>
     <animal-list 
-      :animals="this.$store.state.animals" 
+    :animals="this.$store.state.animals" 
     />
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
 
     return {
       animals: [],
-      isLoading: false,
+      isLoading: true,
       photos: []
     };
   },
@@ -43,6 +46,7 @@ export default {
     animalService.getAnimals().then(response => {
       this.animals = response.data;
       this.$store.state.animals = response.data;
+      this.isLoading = false;
       //this.animals = result.data;
     }).catch(error => {
       console.log("There was an error");
@@ -77,6 +81,7 @@ export default {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 0 10%;
   }
 
   #homeH1 {
@@ -84,4 +89,19 @@ export default {
     font-size: 3rem;
     color: var(--company-color-1);
   }
+
+  #loadingDiv img {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+
 </style>
