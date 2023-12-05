@@ -1,7 +1,9 @@
 <template>
   <div class="details">
-    <h1>A little about me...</h1>
+    <div id="imageContainer">
     <img :src="animal.photos[0].imageString" alt="">
+  </div>
+    <h1>A little about me...</h1>
     <p>Name: {{ this.animal.name }}</p>
     <p>{{ this.animal.aboutMe }}</p>
     <p>Age: {{ this.ageText }}</p>
@@ -55,15 +57,31 @@ export default {
 
 <style scoped>
   .details{
-    text-align: center;
+    text-align: left;
     font-family: var(--card-body-font);
     font-weight: bold;
+    background-color: rgb(211, 195, 144);
+    padding:1rem;
+    border-radius: 1rem;
+    box-shadow:var(--generic-shadow)
+    
   }
 
   img {
-    width: 500px;
-    height:  500px;
+    width: 300px;
+    height:  300px;
+    object-fit: cover; 
+    border-radius: 1rem;
 
+
+  }
+  #imageContainer{
+    justify-content: center;
+    display:flex;
+  }
+  h1{
+    display:flex;
+    justify-content: center;
   }
 
 </style>

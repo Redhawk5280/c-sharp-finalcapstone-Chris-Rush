@@ -44,4 +44,5 @@ export default {
     justify-content: center;
     font-family: var(--card-body-font);
   }
+  
 </style>

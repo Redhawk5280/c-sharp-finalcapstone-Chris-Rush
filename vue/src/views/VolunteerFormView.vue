@@ -4,13 +4,14 @@
       class="volunteer-signup"
       title="Volunteer Signup"
       :fields="formFields"
-      @submit="handleFormSubmit"
+      
     />
   </div>
 </template>
 
 <script>
 import GenericForm from '../components/Form.vue'; // Adjust the path as necessary
+import VolunteerService from '../services/VolunteerService';
 
 export default {
   components: {
@@ -19,22 +20,20 @@ export default {
   data() {
     return {
       formFields: [
-        { name: 'name', label: 'Name', type: 'text', required: true },
-        { name: 'email', label: 'Email', type: 'email', required: true },
-        { name: 'weekday_available', label: 'Available Weekdays?', type: 'checkbox', required: true },
-        { name: 'weekend_available', label: 'Available Weekends?', type: 'checkbox', required: true },
-        { name: 'interest', label: 'Why are you interested in helping?', type: 'textarea', required: false }
+        { name: 'AppName', label: 'Name', type: 'text', required: true },
+        { name: 'AppEmail', label: 'Email', type: 'email', required: true },
+        { name: 'WeekdayAvailable', label: 'Available Weekdays?', type: 'checkbox', required: false },
+        { name: 'WeekendAvailable', label: 'Available Weekends?', type: 'checkbox', required: false },
+        { name: 'Interest', label: 'Why are you interested in helping?', type: 'textarea', required: false }
       ]
     };
   },
   created() { 
+
     console.log(this.formFields);
   },
   methods: {
-    handleFormSubmit(formData) {
-      console.log('Form Submitted:', formData);
-      // Handle form submission, e.g., send data to an API
-    },
+  
   }
 };
 </script>
