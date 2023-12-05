@@ -14,6 +14,9 @@
       <div>
         <router-link class="nav-link" v-bind:to="{ name: 'home' }">Home</router-link>
       </div>
+      <div>
+        <router-link class="nav-link" v-bind:to="{name:'animals' }">Adopt Me!</router-link>
+      </div>
 
       <div>
         <router-link class="nav-link" v-bind:to="{ name: 'volunteerForm' }"

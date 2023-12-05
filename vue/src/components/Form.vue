@@ -8,7 +8,7 @@
     >
       {{alertMessage}}
     </div>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="handleFormSubmit">
       <div class="form-group" v-for="field in fields" :key="field.name">
         <label :for="field.name">{{ field.label }}:</label>
         <textarea v-if="field.type==='textarea'"
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import VolunteerService from '../services/VolunteerService';
 export default {
   props: {
     title: String,
@@ -40,7 +41,7 @@ export default {
   data() {
     const formFieldsData = {};
     this.fields.forEach(field => {
-      formFieldsData[field.name] = field.value || '';
+      formFieldsData[field.name] = field.value ;
     });
     return {
       formFieldsData
@@ -63,13 +64,29 @@ export default {
     createForm(){
       const formData={}
       this.fields.forEach(field =>{
-        formData[field.name]=field.value || ""
+        formData[field.name]=field.value 
         
          })
         return formData
-    }
+    },
+    handleFormSubmit() {
+      console.log('Form Submitted:', this.formFieldsData);
+      VolunteerService.addApplication(this.formFieldsData).then(response=>
+      {
+        this.$router.push({'name': 'home'})
+        alert("Thank you for applying!")
+
+      })
+        .catch(error=>{
+          alert("We're sorry, your form did not submit, please confirm you're using a unique email")
+          this.formFieldsData={}
+        })
+
+      // Handle form submission, e.g., send data to an API
+    },
   }
 };
+
 </script>
 
 <style scoped>

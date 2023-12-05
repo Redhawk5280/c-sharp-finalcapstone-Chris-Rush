@@ -69,7 +69,8 @@ export function createStore(currentToken, currentUser) {
           specialNeeds: false
         },
         
-      ]
+      ],
+      applications:null 
     },
     getters: {
       animalPhotos: state => {
@@ -95,6 +96,17 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      ADD_APPLICATION(state,application){
+        application = {
+          name: state.name,
+          email:state.email,
+          weekend_available: state.weekend,
+          weekday_available: state.weekdays,
+          interest: state.interest
+
+        }
+        state.applications.push(application)
       }
     },
   });

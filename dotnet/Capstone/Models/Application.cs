@@ -10,9 +10,9 @@ namespace Capstone.Models
 
         public string AppEmail { get; set; }
 
-        public bool WeekdayAvailable { get; set; }
+        public bool WeekdayAvailable { get; set; } = false;
 
-        public bool WeekendAvailable { get; set; }
+        public bool WeekendAvailable { get; set; } = false;
 
         public string Interest { get; set; }
     }
