@@ -8,6 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import AnimalDetailsView from '../views/AnimalDetailsView.vue';
 import VolunteerFormView from '../views/VolunteerFormView.vue';
+import LandingPageView from '../views/LandingPageView.vue';
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -20,7 +21,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: LandingPageView,
     meta: {
       /*
         TODO: make this true when the authentication is figured out
@@ -28,6 +29,14 @@ const routes = [
       // requiresAuth: true
       requiresAuth: false
     }
+  },
+  {path: "/animals",
+  name: "animals",
+  component: HomeView,
+  meta: {
+    requiresAuth: false
+  }
+    
   },
   {
     path: "/login",

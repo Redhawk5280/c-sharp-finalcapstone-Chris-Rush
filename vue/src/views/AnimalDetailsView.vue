@@ -1,6 +1,6 @@
 <template>
   <section id="detailsView">
-    <h1>Details</h1>
+    <h1>Hello new friend!</h1>
     <animal-details v-bind:animal="animal" v-if="isLoading == false"/>
   </section>
 </template>
@@ -42,5 +42,6 @@ export default {
     flex-direction: column;
     align-items:center;
     justify-content: center;
+    font-family: var(--card-body-font);
   }
 </style>
