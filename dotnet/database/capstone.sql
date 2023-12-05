@@ -52,6 +52,19 @@ CREATE TABLE images (
 
 )
 
+CREATE TABLE volunteer_apps (
+
+	app_id INT IDENTITY(1,1) NOT NULL,
+	applicant_name VARCHAR(256) NOT NULL,
+	applicant_email VARCHAR(256) NOT NULL,
+	weekday_available BIT NOT NULL,
+	weekend_available BIT NOT NULL,
+	interest VARCHAR(MAX),
+
+	CONSTRAINT PK_applicant PRIMARY KEY(app_id),
+	UNIQUE (applicant_email)
+	)
+
 --populate default data
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('llabuda32@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('christopherrush5280@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
