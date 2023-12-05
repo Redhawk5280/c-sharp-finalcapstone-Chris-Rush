@@ -11,11 +11,17 @@
     <form @submit.prevent="submitForm">
       <div class="form-group" v-for="field in fields" :key="field.name">
         <label :for="field.name">{{ field.label }}:</label>
-        <input
+        <textarea v-if="field.type==='textarea'"
+          :id="field.name"
+          :placeholder="field.placeholder"
+          v-model="formFieldsData[field.name]"
+          :required="field.required">
+        </textarea>
+        <input v-else
           :type="field.type"
           :id="field.name"
           :placeholder="field.placeholder"
-          v-model="formData[field.name]"
+          v-model="formFieldsData[field.name]"
           :required="field.required"
         />
       </div>
@@ -32,22 +38,35 @@ export default {
     alertMessage: String
   },
   data() {
+    const formFieldsData = {};
+    this.fields.forEach(field => {
+      formFieldsData[field.name] = field.value || '';
+    });
     return {
-
+      formFieldsData
     };
   },
   computed: {
-  formData() {
-    return this.fields.reduce((obj, field) => {
-      obj[field.name] = field.value || '';
-      return obj;
-    }, {});
-  }
+ // formData() {
+// return this.fields.reduce((obj, field) => {
+  //    obj[field.name] = field.value || '';
+    //  return obj;
+   // }, {});
+ // }
 },
 
   methods: {
     submitForm() {
-      this.$emit('submit', this.formData);
+      this.$emit('submit', this.formFieldsData);
+      console.log("submitting from child component", this.formFieldsData)
+    },
+    createForm(){
+      const formData={}
+      this.fields.forEach(field =>{
+        formData[field.name]=field.value || ""
+        
+         })
+        return formData
     }
   }
 };
@@ -59,6 +78,7 @@ export default {
 }
 
 .form-group {
+ 
   margin-bottom: 15px;
 }
 
@@ -69,6 +89,14 @@ label {
 
 input {
   width: 96%;
+
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+textarea {
+  width: 96%;
+  height: 50px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;

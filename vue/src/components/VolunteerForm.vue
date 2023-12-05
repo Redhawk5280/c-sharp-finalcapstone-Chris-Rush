@@ -22,6 +22,7 @@ export default {
         { name: 'name', label: 'Name', type: 'text', required: true },
         { name: 'email', label: 'Email', type: 'email', required: true },
         { name: 'phone', label: 'Phone Number', type: 'tel', required: true }
+        
       ],
       alertMessage: '',
     };
