@@ -55,8 +55,8 @@ export default {
     background-color: var(--company-color-1);
     overflow: none;
     position: relative;
-
-    padding-bottom: 1rem; /* Adds padding at the bottom inside the card */
+    height: 400px;
+    padding-bottom: 1rem;
     border-radius: 1rem;
   }
 

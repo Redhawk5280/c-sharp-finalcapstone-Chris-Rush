@@ -70,16 +70,16 @@
 
 }
 #navContainer {
-  width: 50%;
   display: flex;
-  margin: 0 auto;
+  margin: 0 10%;
   align-items: center;
   justify-content: center;
   background: rgba(0,0,0,0.1);
   border-radius: 1rem;
 }
 #nav {
-  width: 50%;
+  width: 100%;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -102,15 +102,16 @@
 }
 .nav-link {
   font-size: 2rem;
+  padding: 0;
   text-align: center;
   text-decoration: none;
   font-family: var(--font-h1);
+  color: inherit;
 }
 
 .nav-link:hover, .nav-link:visited,.nav-link:active  {
   background: rgba(0,0,0,0.2);
   border-radius: 1rem;
-  padding: 0 1rem;
   cursor: pointer;
   color: inherit;
 }
