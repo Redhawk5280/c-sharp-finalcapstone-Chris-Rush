@@ -21,7 +21,9 @@ export default {
       formFields: [
         { name: 'name', label: 'Name', type: 'text', required: true },
         { name: 'email', label: 'Email', type: 'email', required: true },
-        { name: 'phone', label: 'Phone Number', type: 'tel', required: true }
+        { name: 'weekday_available', label: 'Available Weekdays?', type: 'checkbox', required: true },
+        { name: 'weekend_available', label: 'Available Weekends?', type: 'checkbox', required: true },
+        { name: 'interest', label: 'Why are you interested in helping?', type: 'textarea', required: false }
       ]
     };
   },
@@ -40,7 +42,7 @@ export default {
 <style scoped>
 .volunteer-signup {
   max-width: 400px;
-  margin: auto;
+  margin: 3rem auto;
   padding: 20px;
   box-shadow: var(--generic-shadow);
   border-radius: 1rem;
