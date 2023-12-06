@@ -82,121 +82,123 @@ INSERT INTO users (email, password_hash, salt, user_role) VALUES ('admin@gmail.c
 
 -- Animal 1
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Fluffy', 3, 'Maine Coon', 'Cat', 0, 'Gray', 'Male', 15, 0, NULL, 'Fluffy is a playful and affectionate cat with a luxurious coat!', 1);
+VALUES ('Fluffy', 3, 'Long Hair', 'Cat', 0, 'White', 'Male', 15, 0, NULL, 'Fluffy is a playful and affectionate cat with a luxurious coat!', 1);
 
 -- Animal 2
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Max', 2, 'Golden Retriever', 'Dog', 1, 'Golden', 'Male', 30, 1, 'John', 'Max is a friendly and loyal dog, great with kids!', 1);
+VALUES ('Max', 2, 'Medium Hair', 'Cat', 1, 'Gray', 'Male', 30, 1, 'John', 'Max is a friendly and loyal dog, great with kids!', 1);
 
 -- Animal 3
 INSERT INTO Animal ([name],age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Whiskers', 4, 'Siamese', 'Cat', 0, 'Cream', 'Female', 12, 0, NULL, 'Whiskers loves to nap in sunny spots and enjoys chin scratches!', 1);
+VALUES ('Whiskers', 4, 'Medium Hair', 'Cat', 0, 'White', 'Female', 12, 0, NULL, 'Whiskers loves to nap in sunny spots and enjoys chin scratches!', 1);
 
 -- Animal 4
 INSERT INTO Animal ([name],age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Rocky', 5, 'Bulldog', 'Dog', 1, 'Brindle', 'Male', 25, 0, NULL, 'Rocky is a strong and energetic dog who loves outdoor activities!', 1);
+VALUES ('Rocky', 5, 'Medium Hair', 'Cat', 1, 'White', 'Male', 25, 0, NULL, 'Rocky is a strong and energetic dog who loves outdoor activities!', 1);
 
--- Animal 5
+-- Animal 5 - copy
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Sasha', 2, 'Persian', 'Cat', 0, 'White', 'Female', 10, 1, 'Emily', 'Sasha enjoys lounging around and has a calm demeanor.', 1);
+VALUES ('Sasha', 2, 'Medium Hair', 'Cat', 0, 'Black', 'Female', 10, 1, 'Emily', 'Sasha enjoys lounging around and has a calm demeanor.', 1);
 
 -- Animal 6
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Buddy', 3, 'Dachshund', 'Dog', 0, 'Red', 'Male', 18, 0, NULL, 'Buddy is a small dog with a big heart, always ready to play!', 1);
+VALUES ('Buddy', 3, 'Medium Hair', 'Cat', 0, 'Gray', 'Male', 18, 0, NULL, 'Buddy is a small dog with a big heart, always ready to play!', 1);
 
 -- Animal 7
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Luna', 1, 'Ragdoll', 'Cat', 1, 'Blue Bicolor', 'Female', 14, 1, 'David', 'Luna is a sweet and gentle cat who loves cuddles.', 1);
+VALUES ('Luna', 1, 'Medium Hair', 'Cat', 1, 'Gray/White', 'Female', 14, 1, 'David', 'Luna is a sweet and gentle cat who loves cuddles.', 1);
 
 -- Animal 8
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Charlie', 4, 'Labrador Retriever', 'Dog', 0, 'Chocolate', 'Male', 32, 0, NULL, 'Charlie is a water-loving dog who enjoys fetching balls.', 1);
+VALUES ('Charlie', 4, 'Medium Hair', 'Cat', 0, 'Gray/White', 'Male', 32, 0, NULL, 'Charlie is a water-loving cat who enjoys fetching balls.', 1);
 
 -- Animal 9
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Misty', 2, 'Scottish Fold', 'Cat', 0, 'Silver Tabby', 'Female', 8, 1, 'Sophie', 'Misty has a playful personality and loves chasing toys.', 1);
+VALUES ('Misty', 2, 'Medium Hair', 'Cat', 0, 'Gray/White', 'Female', 8, 1, 'Sophie', 'Misty has a playful personality and loves chasing toys.', 1);
 
 -- Animal 10
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Cooper', 3, 'Beagle', 'Dog', 1, 'Tricolor', 'Male', 20, 0, NULL, 'Cooper is a friendly and curious dog with a keen sense of smell.', 1);
+VALUES ('Cooper', 3, 'Medium Hair', 'Cat', 1, 'Gray/White', 'Male', 20, 0, NULL, 'Cooper is a friendly and curious cat with a keen sense of smell.', 1);
 
 -- Animal 11
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Simba', 2, 'Siberian Husky', 'Dog', 0, 'Gray and White', 'Male', 28, 1, 'Sarah', 'Simba is a playful and adventurous husky who loves the snow.', 1);
+VALUES ('Simba', 2, 'Medium Hair', 'Cat', 0, 'Black/White', 'Male', 28, 1, 'Sarah', 'Simba is a playful and adventurous kitty who loves the snow.', 1);
 
 -- Animal 12
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Mittens', 5, 'Calico', 'Cat', 1, 'Calico', 'Female', 11, 1, 'Alex', 'Mittens is a sweet and affectionate cat with a unique coat pattern.', 1);
+VALUES ('Mittens', 5, 'Medium Hair', 'Cat', 1, 'White', 'Female', 11, 1, 'Alex', 'Mittens is a sweet and affectionate cat with a unique coat pattern.', 1);
 
 -- Animal 13
-INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)VALUES ('Maximus', 3, 'Boxer', 'Dog', 0, 'Fawn', 'Male', 26, 0, NULL, 'Maximus is a high-energy dog who loves to play fetch.', 1);
+INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
+VALUES ('Maximus', 3, 'Medium Hair', 'Cat', 0, 'Black/White', 'Male', 26, 0, NULL, 'Maximus is a high-energy cat who loves to play fetch.', 1);
 
 -- Animal 14
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Lily', 4, 'Persian', 'Cat', 1, 'Cream', 'Female', 9, 1, 'Mike', 'Lily enjoys lounging in sunny spots and being pampered.', 1);
+VALUES ('Lily', 4, 'N/A', 'Guinea Pig', 1, 'White/Brown/Black', 'Female', 9, 1, 'Mike', 'Lily enjoys lounging in sunny spots and being pampered.', 1);
 
 -- Animal 15
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Bailey', 2, 'Shih Tzu', 'Dog', 0, 'White and Brown', 'Female', 16, 1, 'Rachel', 'Bailey is a friendly and sociable dog who loves attention.', 1);
+VALUES ('Bailey', 2, 'N/A', 'Guinea Pig', 0, 'White/Brown', 'Female', 16, 1, 'Rachel', 'Bailey is a friendly and sociable guinea pig who loves attention.', 1);
 
 -- Animal 16
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Oreo', 1, 'Domestic Shorthair', 'Cat', 0, 'Black and White', 'Male', 13, 0, NULL, 'Oreo is a playful kitten with a love for toys.', 1);
+VALUES ('Oreo', 1, 'Medium Hair', 'Cat', 0, 'Brown/Gray', 'Male', 13, 0, NULL, 'Oreo is a playful kitten with a love for toys.', 1);
 
 -- Animal 17
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Bella', 3, 'Chihuahua', 'Dog', 1, 'Tan', 'Female', 6, 1, 'Chris', 'Bella may be small, but she has a big heart and loves to cuddle.', 1);
+VALUES ('Bella', 3, 'Medium Hair', 'Cat', 1, 'Brown/Gray', 'Female', 6, 1, 'Chris', 'Bella may be small, but she has a big heart and loves to cuddle.', 1);
 
 -- Animal 18
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Leo', 4, 'Rottweiler', 'Dog', 0, 'Black and Tan', 'Male', 35, 0, NULL, 'Leo is a loyal and protective dog with a calm demeanor.', 1);
+VALUES ('Leo', 4, 'Medium Hair', 'Cat', 0, 'Brown/Gray', 'Male', 35, 0, NULL, 'Leo is a loyal and protective cat with a calm demeanor.', 1);
 
 -- Animal 19
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Cleo', 2, 'Bengal', 'Cat', 1, 'Spotted Rosetted', 'Female', 12, 1, 'Taylor', 'Cleo is a playful and energetic cat who loves climbing.', 1);
+VALUES ('Cleo', 2, 'Shepherd', 'Dog', 1, 'Black/Brown', 'Female', 12, 1, 'Taylor', 'Cleo is a playful and energetic dog who loves chasing squirrels.', 1);
 
 -- Animal 20
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Daisy', 3, 'Poodle', 'Dog', 0, 'Apricot', 'Female', 18, 0, NULL, 'Daisy is a friendly and intelligent dog with a curly coat.', 1);
+VALUES ('Daisy', 3, 'Medium Hair', 'Cat', 0, 'White/Gray', 'Female', 18, 0, NULL, 'Daisy is a friendly and intelligent cat with a soft coat.', 1);
 
 -- Animal 21
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Shadow', 2, 'Russian Blue', 'Cat', 0, 'Blue', 'Male', 11, 1, 'Eva', 'Shadow is a calm and gentle cat who enjoys quiet moments.', 1);
+VALUES ('Shadow', 2, 'N/A', 'Guinea Pig', 0, 'Brown/White', 'Male', 11, 1, 'Eva', 'Shadow is a calm and gentle guinea pig who enjoys quiet moments.', 1);
 
 -- Animal 22
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Zeus', 5, 'Great Dane', 'Dog', 1, 'Brindle', 'Male', 40, 0, NULL, 'Zeus is a giant dog with a heart as big as his size!', 1);
+VALUES ('Zeus', 5, 'Long Hair', 'Cat', 1, 'Brown/Gray', 'Male', 40, 0, NULL, 'Zeus is a giant cat with a heart as big as his size!', 1);
 
 -- Animal 23
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Mocha', 1, 'Sphynx', 'Cat', 0, 'Chocolate', 'Female', 7, 0, NULL, 'Mocha is a hairless cat who loves warm laps and cozy blankets.', 1);
+VALUES ('Mocha', 1, 'Medium Hair', 'Cat', 0, 'White/Black', 'Female', 7, 0, NULL, 'Mocha is a hairy cat who loves warm laps and cozy blankets.', 1);
 
 -- Animal 24
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Teddy', 4, 'Cavalier King Charles Spaniel', 'Dog', 0, 'Blenheim', 'Male', 14, 1, 'Linda', 'Teddy is a sweet and gentle dog who loves to be pampered.', 1);
+VALUES ('Teddy', 4, 'Terrier', 'Dog', 0, 'Black', 'Male', 14, 1, 'Linda', 'Teddy is a sweet and gentle dog who loves to be pampered.', 1);
 
 -- Animal 25
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Cupcake', 2, 'Himalayan', 'Cat', 1, 'Seal Point', 'Female', 10, 1, 'Mark', 'Cupcake is a beautiful cat with a calm and serene personality.', 1);
+VALUES ('Cupcake', 2, 'Beagle', 'Dog', 1, 'Brown/Black', 'Female', 10, 1, 'Mark', 'Cupcake is a beautiful dog with a calm and serene personality.', 1);
 
 -- Animal 26
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Harley', 3, 'Dalmatian', 'Dog', 0, 'Black and White', 'Male', 28, 0, NULL, 'Harley is a spotty dog who loves to run and play.', 1);
+VALUES ('Harley', 3, 'Shepherd/Collie', 'Dog', 0, 'Black/Brown', 'Male', 28, 0, NULL, 'Harley is a dog who loves to run and play.', 1);
 
 -- Animal 27
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Lulu', 1, 'Exotic Shorthair', 'Cat', 1, 'Blue Tabby', 'Female', 9, 1, 'Michael', 'Lulu is a playful and curious cat with a cute round face.', 1);
+VALUES ('Lulu', 1, 'Shepherd Mix', 'Dog', 1, 'Brown/White', 'Female', 9, 1, 'Michael', 'Lulu is a playful and curious dog with a cute round face.', 1);
 
 -- Animal 28
-INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)VALUES ('Oliver', 2, 'Border Collie', 'Dog', 0, 'Black and White', 'Male', 22, 0, NULL, 'Oliver is a highly intelligent dog who loves to learn new tricks.', 1);
+INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
+VALUES ('Oliver', 2, 'Medium Hair', 'Cat', 0, 'Brown/Black', 'Male', 22, 0, NULL, 'Oliver is a highly intelligent cat who loves to learn new tricks.', 1);
 
 -- Animal 29
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Mimi', 4, 'Persian', 'Cat', 1, 'Silver', 'Female', 11, 1, 'Jessica', 'Mimi has a regal appearance and enjoys lounging in style.', 1);
+VALUES ('Mimi', 4, 'Long Hair', 'Cat', 1, 'White/Black', 'Female', 11, 1, 'Jessica', 'Mimi has a regal appearance and enjoys lounging in style.', 1);
 
 -- Animal 30
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Rusty', 3, 'Australian Shepherd', 'Dog', 0, 'Red Merle', 'Male', 32, 0, NULL, 'Rusty is a smart and energetic dog who loves outdoor adventures.', 1);
+VALUES ('Rusty', 3, 'Medium Hair', 'Cat', 0, 'Black/White', 'Male', 32, 0, NULL, 'Rusty is a smart and energetic cat who loves outdoor adventures.', 1);
 
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo1.jpg', 1)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo2.jpg', 2)
@@ -212,21 +214,21 @@ INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo1
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo12.jpg', 12)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo13.jpg', 13)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo14.jpg', 14)
-INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo15.jpg', 15)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo15.webp', 15)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo16.jpg', 16)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo17.jpg', 17)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo18.jpg', 18)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo19.jpg', 19)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo20.jpg', 20)
-INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo21.jpg', 21)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo21.webp', 21)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo22.jpg', 22)
-INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo23.jpg', 23)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo23.webp', 23)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo24.jpg', 24)
-INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo25.jpg', 25)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo25.webp', 25)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo26.jpg', 26)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo27.jpg', 27)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo28.jpg', 28)
-INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo29.jpg', 29)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo29.webp', 29)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo30.jpg', 30)
 
 
