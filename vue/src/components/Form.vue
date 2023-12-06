@@ -75,7 +75,7 @@ export default {
       {
         this.$router.push({'name': 'home'})
         alert("Thank you for applying!")
-
+        this.$store.commit('ADD_APPLICATION',this.formFieldsData)
       })
         .catch(error=>{
           alert("We're sorry, your form did not submit, please confirm you're using a unique email")

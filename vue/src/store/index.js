@@ -70,7 +70,7 @@ export function createStore(currentToken, currentUser) {
         },
         
       ],
-      applications:null 
+      applications: []
     },
     getters: {
       animalPhotos: state => {
@@ -104,10 +104,9 @@ export function createStore(currentToken, currentUser) {
           weekend_available: state.weekend,
           weekday_available: state.weekdays,
           interest: state.interest
-
         }
         state.applications.push(application)
-      }
+      },
     },
   });
   return store;

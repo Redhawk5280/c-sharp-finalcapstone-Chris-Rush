@@ -9,6 +9,8 @@ import RegisterView from '../views/RegisterView.vue';
 import AnimalDetailsView from '../views/AnimalDetailsView.vue';
 import VolunteerFormView from '../views/VolunteerFormView.vue';
 import LandingPageView from '../views/LandingPageView.vue';
+
+import DirectoryView from '../views/DirectoryPageView.vue';
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -71,6 +73,11 @@ const routes = [
     path: "/volunteer",
     name: "volunteerForm",
     component: VolunteerFormView,
+  },
+  {
+    path: "/directory",
+    name: "directory",
+    component: DirectoryView,
   },
 
 ];

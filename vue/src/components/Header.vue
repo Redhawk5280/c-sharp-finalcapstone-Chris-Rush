@@ -24,6 +24,14 @@
         >
       </div>
       <div>
+        <router-link 
+          class="nav-link"
+          v-bind:to="{name: 'directory'}"
+        >
+          Volunteers
+        </router-link>
+      </div>
+      <div>
         <router-link
           class="nav-link"
           v-bind:to="{ name: 'login' }"
@@ -32,11 +40,6 @@
         >
         <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-else
           >Logout</router-link
-        >
-      </div>
-      <div>
-        <router-link class="nav-link" v-bind:to="{ name: 'register' }"
-          >Register</router-link
         >
       </div>
     </div>
