@@ -20,7 +20,7 @@ namespace Capstone.DAO
         {
             Application newApplication = null;
 
-            string sql = "INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest) " +
+            string sql = "INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved) " +
                          "OUTPUT INSERTED.app_id " +
                          "VALUES (@name, @email, @weekday_available, @weekend_available, @interest)";
 
@@ -54,7 +54,7 @@ namespace Capstone.DAO
         public List<Application> GetAllApplications()
         {
             List<Application> appList = new List<Application>();
-            string sqlcmd = "SELECT app_id, applicant_name, applicant_email, weekday_available, weekend_available, interest FROM volunteer_apps";
+            string sqlcmd = "SELECT app_id, applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved FROM volunteer_apps";
 
             try
             {
@@ -86,7 +86,7 @@ namespace Capstone.DAO
             Application application = null;
 
             string sql =
-                "SELECT app_id, applicant_name, applicant_email, weekday_available, weekend_available, interest " + 
+                "SELECT app_id, applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved " + 
                 "FROM volunteer_apps " + 
                 "WHERE app_id = @app_id";
 
@@ -123,6 +123,7 @@ namespace Capstone.DAO
             application.WeekdayAvailable = Convert.ToBoolean(reader["weekday_available"]);
             application.WeekendAvailable = Convert.ToBoolean(reader["weekend_available"]);
             application.Interest = Convert.ToString(reader["interest"]);
+            application.IsApproved = Convert.ToBoolean(reader["isApproved"]);
 
             return application;
         }

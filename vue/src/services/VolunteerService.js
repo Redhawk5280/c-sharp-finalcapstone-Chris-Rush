@@ -3,6 +3,10 @@ const http = axios.create({
     baseURL:"https://localhost:44315"})
 export default {
 
+  getVolunteers() { 
+    return http.get('/volunteers')
+  },
+
   getApplications() {
     return http.get('/volunteers/applications');
   },

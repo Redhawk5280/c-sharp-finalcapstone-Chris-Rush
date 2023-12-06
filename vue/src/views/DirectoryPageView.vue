@@ -3,9 +3,9 @@
     <img src="../assets/loading-gif/loading-dog.gif"/>
   </div>
   <div class="home" v-else>
-    <h1 id="homeH1">Volunteers</h1>
+    <h1 id="homeH1">Volunteer Applications</h1>
     <application-list 
-    :applications="this.$store.state.applications" 
+      :applications="this.$store.state.applications" 
     />
   </div>
 </template>

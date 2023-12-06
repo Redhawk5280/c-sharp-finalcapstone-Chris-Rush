@@ -15,5 +15,7 @@ namespace Capstone.Models
         public bool WeekendAvailable { get; set; } = false;
 
         public string Interest { get; set; }
+
+        public bool IsApproved { get; set; } = false;
     }
 }

@@ -37,7 +37,7 @@ export default {
     return {
       user: {
         email: "",
-        password: ""
+        password: "",
       },
       invalidCredentials: false
     };
