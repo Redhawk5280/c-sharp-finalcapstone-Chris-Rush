@@ -1,12 +1,12 @@
 <template>
   <div class="animalList">
-    <animal-card 
-      v-for="animal in animals" 
-      v-bind:key="animal.id"
-      v-bind:animal="animal" 
-      v-on:click="goToDetails(animal.id)"
-      class="animalCard"
-    />
+      <animal-card 
+        v-for="animal in animals" 
+        v-bind:key="animal.id"
+        v-bind:animal="animal" 
+        v-on:click="goToDetails(animal.id)"
+        class="animalCard"
+      />
   </div>
 </template>
 
@@ -52,8 +52,16 @@ export default {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    grid-gap: 3rem;
+    place-items: center;
+    margin: auto;
+  }
+
+  #animalCardContainer{
+    display: flex;
+    justify-content: center;
   }
 
   .animalList .animalCard{
@@ -65,24 +73,24 @@ export default {
     }
   }
 
-  @media only screen and (min-width: 640px) and (max-width: 1023px) {
+  @media only screen and (min-width: 640px) and (max-width: 1024px) {
     /* Styles for landscape smartphones and tablets in portrait mode */
     .animalList {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media only screen and (min-width: 1024px) and (max-width: 1439px) {
     /* Styles for larger devices like tablets in landscape and smaller desktops */
     .animalList {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media only screen and (min-width: 1440px) {
     /* Styles for extra large devices like large desktops and TVs */
     .animalList {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 

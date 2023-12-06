@@ -118,4 +118,10 @@
   cursor: pointer;
   color: inherit;
 }
+
+@media only screen and (max-width: 849px) {
+    #nav {
+      flex-direction: column;
+    }
+  }
 </style>

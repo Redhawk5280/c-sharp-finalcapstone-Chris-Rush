@@ -55,8 +55,9 @@ export default {
     background-color: var(--company-color-1);
     overflow: none;
     position: relative;
-    height: 400px;
-    padding-bottom: 1rem;
+    height: 90%;
+    width: 100%;
+    padding-bottom:1rem;
     border-radius: 1rem;
   }
 
@@ -104,4 +105,6 @@ export default {
   .specialMedicalNeeds {
     background-color: orange;
   }
+
+  
 </style>

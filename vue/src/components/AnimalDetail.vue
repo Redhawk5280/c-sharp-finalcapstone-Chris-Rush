@@ -5,7 +5,7 @@
   </div>
     <h1>A little about me...</h1>
     <p>Name: {{ this.animal.name }}</p>
-    <p>{{ this.animal.aboutMe }}</p>
+    <p>Description: {{ this.animal.aboutMe }}</p>
     <p>Age: {{ this.ageText }}</p>
     <p>Breed: {{ this.animal.breed }}</p>
     <p>Do I have medical needs?
@@ -48,7 +48,7 @@ export default {
       if(this.animal.medicalNeeds=== true){
         return "I have some additional medical baggage"
       }else{
-        return "no :("
+        return "Nope"
       }
     }
   }
