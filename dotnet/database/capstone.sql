@@ -60,6 +60,7 @@ CREATE TABLE volunteer_apps (
 	weekday_available BIT NOT NULL,
 	weekend_available BIT NOT NULL,
 	interest VARCHAR(MAX),
+	isApproved BIT NOT NULL,
 
 	CONSTRAINT PK_applicant PRIMARY KEY(app_id),
 	UNIQUE (applicant_email)
@@ -231,6 +232,15 @@ INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo2
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo29.webp', 29)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo30.jpg', 30)
 
+
+INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
+VALUES ('Chris McFakename', 'McFakename@gmail.com', 0, 1, 'I am interested in everything!!!!!', 0)
+
+INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
+VALUES ('Luke LaBudacris', 'LaBudasris@gmail.com', 1, 0, 'I love animals!', 0)
+
+INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
+VALUES ('Terry', 'Terry@gmail.com', 1, 0, 'Let me help!', 1)
 
 
 

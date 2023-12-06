@@ -9,10 +9,12 @@
     <p v-if="application.weekendAvailability">Weekend Availability: Yes</p>
     <p v-else>Weekend Availability: No</p>
     <p>Interest: {{application.interest}}</p>
-    <div>
-      <button id="acceptBtn">Accept</button>
-      <button id="denyBtn">Deny</button>
-      <button id="deactivateBtn">Deactivate</button>
+    <div v-if="$store.state.user.role === 'admin'">
+      <div v-if="application.isApproved == false">
+          <button id="acceptBtn">Accept</button>
+          <button id="denyBtn">Deny</button>
+      </div>
+      <button v-else id="deactivateBtn">Deactivate</button>
     </div>
   </section>
 </template>
@@ -39,7 +41,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     border-radius: 1rem;
-    cursor: pointer;
     box-shadow: var(--generic-shadow);
     background-color: var(--company-color-1);
     overflow: none;

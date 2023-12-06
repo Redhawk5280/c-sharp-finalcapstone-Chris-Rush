@@ -103,7 +103,8 @@ export function createStore(currentToken, currentUser) {
           email:state.email,
           weekend_available: state.weekend,
           weekday_available: state.weekdays,
-          interest: state.interest
+          interest: state.interest,
+          isApproved: state.isApproved
         }
         state.applications.push(application)
       },

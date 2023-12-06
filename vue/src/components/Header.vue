@@ -23,12 +23,12 @@
           >Volunteer</router-link
         >
       </div>
-      <div>
+      <div v-if="$store.state.token != ''">
         <router-link 
           class="nav-link"
           v-bind:to="{name: 'directory'}"
         >
-          Volunteers
+          Directory
         </router-link>
       </div>
       <div>
