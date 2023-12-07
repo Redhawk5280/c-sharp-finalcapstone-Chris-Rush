@@ -108,6 +108,9 @@ export function createStore(currentToken, currentUser) {
         }
         state.applications.push(application)
       },
+      UPDATE_APPLICATION(state, application){
+        this.application = application
+      }
     },
   });
   return store;

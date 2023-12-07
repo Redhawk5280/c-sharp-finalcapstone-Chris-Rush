@@ -16,5 +16,8 @@ export default {
   },
   addApplication(application){
     return http.post('/volunteers/applications', application)
-  }
+  },
+  updateApplication(application){
+    return http.put(`/volunteers/applications`)
+  },
 }
