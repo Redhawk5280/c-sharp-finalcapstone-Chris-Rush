@@ -21,12 +21,12 @@ namespace Capstone.Controllers
             this.imageDao = imageDao;
         }
 
-        [HttpPost]
-        public ActionResult UploadImage([FromBody] Image image)
+        [HttpPost("{id}")]
+        public ActionResult UploadImage([FromBody] Image image, int id)
         {
             try
             {
-                image.AnimalId = int.Parse(HttpContext.User.FindFirst("sub").Value);
+                image.AnimalId = id;
                 Image createdImage = imageDao.UploadImage(image);
                 if (createdImage != null)
                 {
@@ -41,7 +41,7 @@ namespace Capstone.Controllers
             return StatusCode(500, "There was an error");
         }
 
-        [HttpGet("{username}")]
+        [HttpGet("{id}")]
         public ActionResult<List<Image>> GetImagesByAnimalId(int id)
         {
             List<Image> images = null;
