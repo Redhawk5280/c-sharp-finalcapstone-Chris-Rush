@@ -6,6 +6,7 @@ using Capstone.Exceptions;
 using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Capstone.DAO
 {
@@ -78,7 +79,6 @@ namespace Capstone.DAO
             return user;
         }
 
-
         public User GetUserByEmail(string email)
         {
             User user = null;
@@ -145,6 +145,36 @@ namespace Capstone.DAO
 
             return newUser;
         }
+        
+        public User DeactivateUser(string email)
+        {
+            User user = null;
+
+            string sql =
+                "UPDATE users " +
+                "SET user_role = 'deactivated' " +
+                "WHERE email = @email";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    user = GetUserByEmail(email);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return user;
+        }
 
         private User MapRowToUser(SqlDataReader reader)
         {
@@ -156,5 +186,6 @@ namespace Capstone.DAO
             user.Role = Convert.ToString(reader["user_role"]);
             return user;
         }
+
     }
 }
