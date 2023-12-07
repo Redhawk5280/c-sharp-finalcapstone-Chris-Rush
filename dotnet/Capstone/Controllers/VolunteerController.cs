@@ -69,5 +69,23 @@ namespace Capstone.Controllers
 
             return result;
         }
+        [HttpPut("applications")]
+        public ActionResult<Application> UpdateApplication(Application application)
+        {
+            const string ErrorMessage = "There was an error";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+
+            try
+            {
+                Application updatedApp = volunteerDao.UpdateApplication(application);
+                result = Ok(volunteerDao.GetApplicationById(updatedApp.AppId));
+            }
+            catch (DaoException)
+            {
+                result = StatusCode(500, ErrorMessage);
+            }
+
+            return result;
+        }
     }
 }
