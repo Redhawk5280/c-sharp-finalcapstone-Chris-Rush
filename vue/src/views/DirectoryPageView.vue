@@ -33,7 +33,6 @@ export default {
       .then((response) => {
         this.applications = response.data;
         this.$store.state.applications = response.data;
-        this.isLoading = false;
         //this.animals = result.data;
       })
       .catch((error) => {
@@ -46,7 +45,7 @@ export default {
         this.isLoading = false;
       })
       .catch((error) => {
-        console.log("There was an error");
+        console.log("There was an error #2");
       });
   },
   /*

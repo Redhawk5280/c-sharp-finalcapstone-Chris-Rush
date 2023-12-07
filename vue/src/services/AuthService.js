@@ -10,15 +10,14 @@ export default {
     return axios.post('/register', user)
   },
 
-  getUser() {
+  getUser() { 
     return axios.get('/login')
   },
-
-  getUsers() { 
-    return axios.get('/users');
+  updateUser(user){
+    return axios.put(`/user`)
   },
-
-  deactivateUser(id){ 
-    return axios.put(`/users/deactivate/${id}`)
+  getUsers(){
+    return axios.get(`/user`)
   }
+
 }

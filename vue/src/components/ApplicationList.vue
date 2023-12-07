@@ -1,7 +1,9 @@
 <template>
-  <div class="applicationList">
+  <label for="filter">Would you like to view all applications?</label>
+  <input id="filter" type="checkbox" v-model="allApplications">
+  <div class="applicationList" >
       <application-card 
-        v-for="application in applications" 
+        v-for="application in filteredApplications" 
         v-bind:key="application.appId"
         v-bind:application="application" 
         class="applicationCard"
@@ -13,20 +15,39 @@
 
   import ApplicationCard from "../components/ApplicationCard.vue"
   import volunteerService from "../services/VolunteerService";
+  import AuthService from "../services/AuthService";
+
 export default {
       props: {
         applications: Array,
+        users: Array
       },    
       components: {
         ApplicationCard,
+       
       },
       data() { 
         return {
           isLoading: false,
+          allApplications: true,
+          
+        
         }
     },
     methods: {
     },
+    computed:{
+      filteredApplications(){
+        if(this.allApplications){
+        return this.applications
+        }
+      else{
+        return this.applications.filter(application=>{
+          return application.isApproved == null;
+        })
+      }
+    }
+    }
   }
 </script>
 
@@ -40,6 +61,10 @@ export default {
     grid-gap: 3rem;
     place-items: center;
     margin: 10% auto;
+  }
+  label{
+    font-family: var(--card-body-font);
+    font-weight: bold;
   }
 
   .applicationList > {

@@ -14,7 +14,7 @@
         
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin'">
-      <div v-if="application.isApproved == false">
+      <div v-if="application.isApproved == null">
         <button id="acceptBtn" v-on:click="ApproveApplication(application)">Accept</button>
             <button id="denyBtn" v-on:click="DenyApplication(application)">Deny</button>
         </div>
@@ -34,7 +34,7 @@ export default {
     ApproveApplication(application) {
 
       application.isApproved = true;
-      VolunteerService.updateApplication(this.application).then(response => {
+      VolunteerService.updateApplication(application).then(response => {
         this.$store.commit("UPDATE_APPLICATION", application)
 
       }
@@ -45,7 +45,7 @@ export default {
     },
     DenyApplication(application) {
       application.isApproved = false;
-      VolunteerService.updateApplication(this.application).then(response => {
+      VolunteerService.updateApplication(application).then(response => {
         this.$store.commit("UPDATE_APPLICATION", application)
 
       }
@@ -54,16 +54,6 @@ export default {
           console.log("there's been an issue")
         })
     },
-    DeactivateUser(email) {
-      AuthService.deactivateUser(email).then(response => {
-        this.$store.commit("UPDATE_USER", email)
-
-      }
-      )
-        .catch(response => {
-          console.log("there's been an issue")
-        })
-    }
   }
 
 
