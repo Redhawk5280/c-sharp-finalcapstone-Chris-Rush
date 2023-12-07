@@ -1,10 +1,11 @@
 <template>
   <section 
-    class="applicationCard" 
+    class="userCard" 
     >
       <div id="contactContainer">
         <h1>Email: {{user.email}}</h1>
         <p>Role: {{user.role}}</p>
+        
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin'">
         <button>Deactivate</button>
@@ -18,7 +19,8 @@ import AuthService from '../services/AuthService'
 
 export default {
   props: [
-    'application'
+    'user',
+    
   ],
   methods: {
 
@@ -41,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-  .applicationCard {
+  .userCard {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -65,7 +67,7 @@ margin: 10% auto
     margin-bottom: 3%;
   }
 
-  .applicationCard h1,h2,p{
+  .userCard h1,h2,p{
     margin: 0;
     padding: 0;
     font-family: var(--card-body-font);

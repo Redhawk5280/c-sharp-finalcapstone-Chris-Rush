@@ -161,8 +161,10 @@ namespace Capstone.DAO
             application.WeekdayAvailable = Convert.ToBoolean(reader["weekday_available"]);
             application.WeekendAvailable = Convert.ToBoolean(reader["weekend_available"]);
             application.Interest = Convert.ToString(reader["interest"]);
-            application.IsApproved = Convert.ToBoolean(reader["isApproved"]);
-
+            if (!DBNull.Value.Equals(reader["isApproved"]))
+            {
+                application.IsApproved = Convert.ToBoolean(reader["isApproved"]);
+            }
             return application;
         }
     }

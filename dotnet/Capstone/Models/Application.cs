@@ -16,6 +16,6 @@ namespace Capstone.Models
 
         public string Interest { get; set; }
 
-        public bool IsApproved { get; set; } = false;
+        public bool? IsApproved { get; set; } = null;
     }
 }

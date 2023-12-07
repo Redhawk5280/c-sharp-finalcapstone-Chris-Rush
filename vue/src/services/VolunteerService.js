@@ -15,9 +15,10 @@ export default {
     return http.get(`/volunteers/applications/${id}`);
   },
   addApplication(application){
+    
     return http.post('/volunteers/applications', application)
   },
   updateApplication(application){
-    return http.put(`/volunteers/applications`)
+    return http.put(`/volunteers/applications`, application)
   },
 }
