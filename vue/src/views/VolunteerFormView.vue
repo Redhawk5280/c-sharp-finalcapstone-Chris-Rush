@@ -4,7 +4,6 @@
       class="volunteer-signup"
       title="Volunteer Signup"
       :fields="formFields"
-      
     />
   </div>
 </template>

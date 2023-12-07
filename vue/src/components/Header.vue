@@ -18,7 +18,12 @@
         <router-link class="nav-link" v-bind:to="{name:'animals' }">Adopt Me!</router-link>
       </div>
 
-      <div>
+      <div v-if="$store.state.token != ''">
+        <router-link class="nav-link" v-bind:to="{ name: 'addAnimal' }"
+          >Add Animal</router-link
+        >
+      </div>
+      <div v-else> 
         <router-link class="nav-link" v-bind:to="{ name: 'volunteerForm' }"
           >Volunteer</router-link
         >
