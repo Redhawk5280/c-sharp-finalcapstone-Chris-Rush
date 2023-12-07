@@ -1,10 +1,13 @@
 ﻿using Capstone.Exceptions;
 using Capstone.Models;
 using Capstone.Security.Models;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Metrics;
+using System.Xml.Linq;
 
 namespace Capstone.DAO
 {
@@ -112,6 +115,41 @@ namespace Capstone.DAO
             }
 
             return application;
+        }
+        public Application UpdateApplication(Application application)
+        {
+            Application updatedApplication = null;
+            string sql = "UPDATE volunteer_apps SET isApproved = @isApproved " +
+                         "WHERE app_id = @app_id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@app_id", application.AppId);
+                    cmd.Parameters.AddWithValue("@isApproved", application.IsApproved);
+                    cmd.ExecuteNonQuery();
+
+                    updatedApplication = GetApplicationById(application.AppId);
+                    if (updatedApplication.IsApproved == GetApplicationById(application.AppId).IsApproved)
+                    {
+                        return updatedApplication;
+                    }
+                    else
+                    {
+                        throw new DaoException("SQL exception occurred: did not update correct table item");
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            
         }
 
         private Application MapRowToApplication(SqlDataReader reader)

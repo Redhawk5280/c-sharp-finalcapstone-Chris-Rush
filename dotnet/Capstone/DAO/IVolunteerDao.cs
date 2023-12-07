@@ -10,5 +10,7 @@ namespace Capstone.DAO
         public List<Application> GetAllApplications();
 
         public Application GetApplicationById(int id);
+
+        public Application UpdateApplication(Application application);
     }
 }
