@@ -11,10 +11,12 @@ namespace Capstone.Controllers
     public class VolunteerController : ControllerBase
     {
         IVolunteerDao volunteerDao;
+        IUserDao userDao;
 
-        public VolunteerController(IVolunteerDao volunteerDao)
+        public VolunteerController(IVolunteerDao volunteerDao, IUserDao iUserDao)
         {
             this.volunteerDao = volunteerDao;
+            userDao = iUserDao;
         }
 
         [HttpGet("applications")]
@@ -78,6 +80,10 @@ namespace Capstone.Controllers
             try
             {
                 Application updatedApp = volunteerDao.UpdateApplication(application);
+                if (updatedApp.IsApproved == true)
+                {
+                    userDao.CreateUser(updatedApp.AppEmail, "password", "user");
+                }
                 result = Ok(volunteerDao.GetApplicationById(updatedApp.AppId));
             }
             catch (DaoException)

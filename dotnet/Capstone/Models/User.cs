@@ -47,4 +47,17 @@
         public string ConfirmPassword { get; set; }
         public string Role { get; set; }
     }
+
+    public class UserInfo
+    {
+        public string Email { get; set; }
+
+        public string Role { get; set; }
+
+        public bool WeekdayAvailable { get; set; } = false;
+
+        public bool WeekendAvailable { get; set; } = false;
+
+    }
+
 }

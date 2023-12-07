@@ -5,6 +5,8 @@
       <div id="contactContainer">
         <h1>Email: {{user.email}}</h1>
         <p>Role: {{user.role}}</p>
+        <p>Weekday Available: {{user.WeekdayAvailable ? "Yes": "No"}}</p>
+        <p>Weekend Available: {{user.WeekendAvailable ? "Yes": "No"}}</p>
         
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin'">

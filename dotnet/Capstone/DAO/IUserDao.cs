@@ -5,7 +5,7 @@ namespace Capstone.DAO
 {
     public interface IUserDao
     {
-        IList<User> GetUsers();
+        IList<UserInfo> GetUsers();
         User GetUserById(int id);
         User GetUserByEmail(string email);
         User CreateUser(string email, string password, string role);
