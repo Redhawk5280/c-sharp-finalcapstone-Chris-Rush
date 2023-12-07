@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="onSubmit">
       <p>Select an image to upload. {{ this.x }}</p>
-      <img class="image-preview" v-bind:src="image"/>
+      <img v-if="image != null" class="image-preview" v-bind:src="image"/>
       <div>
         <input v-on:change="loadImage" type="file" accept="image/*">
       </div>
@@ -43,5 +43,15 @@
     }
   }
   </script>
+
+  <style scoped>
+
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+  </style>
   
   

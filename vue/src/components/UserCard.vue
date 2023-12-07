@@ -2,22 +2,12 @@
   <section 
     class="applicationCard" 
     >
-    <div id="contactContainer">
-        <h1>Name: {{application.appName}}</h1>
-        <p>Email: {{application.appEmail}}</p>
-        <p v-if="application.weekdayAvailability">Weekday Availability: Yes</p>
-        <p v-else>Weekday Availability: No</p>
-        <p v-if="application.weekendAvailability">Weekend Availability: Yes</p>
-        <p v-else>Weekend Availability: No</p>
-        <p>Interest: {{application.interest}}</p>
-        
-        
+      <div id="contactContainer">
+        <h1>Email: {{user.email}}</h1>
+        <p>Role: {{user.role}}</p>
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin'">
-      <div v-if="application.isApproved == false">
-        <button id="acceptBtn" v-on:click="ApproveApplication(application)">Accept</button>
-            <button id="denyBtn" v-on:click="DenyApplication(application)">Deny</button>
-        </div>
+        <button>Deactivate</button>
       </div>
   </section>
 </template>
@@ -31,29 +21,7 @@ export default {
     'application'
   ],
   methods: {
-    ApproveApplication(application) {
 
-      application.isApproved = true;
-      VolunteerService.updateApplication(this.application).then(response => {
-        this.$store.commit("UPDATE_APPLICATION", application)
-
-      }
-      )
-        .catch(response => {
-          console.log("there's been an issue")
-        })
-    },
-    DenyApplication(application) {
-      application.isApproved = false;
-      VolunteerService.updateApplication(this.application).then(response => {
-        this.$store.commit("UPDATE_APPLICATION", application)
-
-      }
-      )
-        .catch(response => {
-          console.log("there's been an issue")
-        })
-    },
     DeactivateUser(email) {
       AuthService.deactivateUser(email).then(response => {
         this.$store.commit("UPDATE_USER", email)

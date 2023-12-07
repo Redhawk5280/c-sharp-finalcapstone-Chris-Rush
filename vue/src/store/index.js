@@ -6,6 +6,7 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
+      users: [],
       animals: [
         {
           id: 1,
@@ -108,9 +109,23 @@ export function createStore(currentToken, currentUser) {
         }
         state.applications.push(application)
       },
-      UPDATE_APPLICATION(state, application){
-        this.application = application
-      }
+      UPDATE_APPLICATION(state, application) {
+        state.applications.forEach((applicant) => { 
+          if (applicant.id === application.id) { 
+            applicant = application;
+          }
+        });
+      },
+      ADD_ANIMAL(state, animal) { 
+        state.animals.push(animal);
+      },
+      UPDATE_USER(state, email) { 
+        state.applications.forEach((applicant) => { 
+          if (applicant.email === email) { 
+            applicant.isApproved = false;
+          }
+        })
+      },
     },
   });
   return store;
