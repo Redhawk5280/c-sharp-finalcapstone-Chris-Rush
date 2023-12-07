@@ -37,7 +37,7 @@
 
 #homeImg{
     height: auto;
-    width: 100%;
+    width: 70%;
     margin: auto;
 }
 img{
