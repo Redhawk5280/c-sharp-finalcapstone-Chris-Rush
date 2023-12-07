@@ -17,6 +17,7 @@ namespace Capstone.DAO
         public VolunteerSqlDao(string dbConnectionString) 
         {
             connectionString = dbConnectionString;
+
         }
 
         public Application AddApplication(Application application)
@@ -25,7 +26,7 @@ namespace Capstone.DAO
 
             string sql = "INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved) " +
                          "OUTPUT INSERTED.app_id " +
-                         "VALUES (@name, @email, @weekday_available, @weekend_available, @interest)";
+                         "VALUES (@name, @email, @weekday_available, @weekend_available, @interest, null)";
 
             int newAppId = 0;
             try

@@ -19,11 +19,12 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public IList<User> GetUsers()
+        public IList<UserInfo> GetUsers()
         {
-            IList<User> users = new List<User>();
+            IList<UserInfo> users = new List<UserInfo>();
 
-            string sql = "SELECT user_id, email, password_hash, salt, user_role FROM users";
+            string sql = "SELECT email, user_role, weekday_available, weekend_available  FROM users " +
+                "JOIN volunteer_apps ON applicant_email = email";
 
             try
             {
@@ -36,7 +37,7 @@ namespace Capstone.DAO
 
                     while (reader.Read())
                     {
-                        User user = MapRowToUser(reader);
+                        UserInfo user = MapRowToUserInfo(reader);
                         users.Add(user);
                     }
                 }
@@ -184,6 +185,15 @@ namespace Capstone.DAO
             user.PasswordHash = Convert.ToString(reader["password_hash"]);
             user.Salt = Convert.ToString(reader["salt"]);
             user.Role = Convert.ToString(reader["user_role"]);
+            return user;
+        }
+        private UserInfo MapRowToUserInfo(SqlDataReader reader)
+        {
+            UserInfo user = new UserInfo();
+            user.Role = Convert.ToString(reader["user_role"]);
+            user.Email = Convert.ToString(reader["email"]);
+            user.WeekdayAvailable = Convert.ToBoolean(reader["weekday_available"]);
+            user.WeekendAvailable = Convert.ToBoolean(reader["weekend_available"]);
             return user;
         }
 

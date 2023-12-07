@@ -67,17 +67,17 @@ CREATE TABLE volunteer_apps (
 	)
 
 --populate default data
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('llabuda32@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (email, password_hash, salt, user_role) VALUES ('McFakename@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('christopherrush5280@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('ikirenohs@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('macadamchris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('lorisomerville@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('tori@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (email, password_hash, salt, user_role) VALUES ('LaBudasris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('ben@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('chelsea@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('preston@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('beaver@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('wayne@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (email, password_hash, salt, user_role) VALUES ('Terry@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (email, password_hash, salt, user_role) VALUES ('admin@gmail.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
 
@@ -234,10 +234,10 @@ INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo3
 
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
-VALUES ('Chris McFakename', 'McFakename@gmail.com', 0, 1, 'I am interested in everything!!!!!', null)
+VALUES ('Chris McFakename', 'McFakename@gmail.com', 0, 1, 'I am interested in everything!!!!!', 0)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
-VALUES ('Luke LaBudacris', 'LaBudasris@gmail.com', 1, 0, 'I love animals!', null)
+VALUES ('Luke LaBudacris', 'LaBudasris@gmail.com', 1, 0, 'I love animals!', 0)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
 VALUES ('Terry', 'Terry@gmail.com', 1, 0, 'Let me help!', 1)

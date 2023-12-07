@@ -21,7 +21,7 @@ namespace Capstone.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult<IList<User>> GetUsers()
+        public ActionResult<IList<UserInfo>> GetUsers()
         {
             const string ErrorMessage = "You are unauthorized";
             ActionResult result = BadRequest(new { message = ErrorMessage });
