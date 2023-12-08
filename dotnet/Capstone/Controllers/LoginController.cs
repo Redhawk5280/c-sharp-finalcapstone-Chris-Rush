@@ -32,6 +32,10 @@ namespace Capstone.Controllers
             try
             { 
                 user = userDao.GetUserByEmail(userParam.Email);
+                if (user.Role == "deactivated")
+                {
+                    return Unauthorized(new { message = "Your account has been deactivated :'( "});
+                }
             }
             catch (DaoException)
             {

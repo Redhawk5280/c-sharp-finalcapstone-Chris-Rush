@@ -27,6 +27,10 @@
 
 }
 
+* {
+
+}
+
 body {
   background-color: var(--company-color-2);
   margin: 0;

@@ -105,6 +105,18 @@
   position: relative;
 }
 
+#imgContainer:after{
+    content:'';
+    width:100%;
+    height:8px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    background: var(--company-color-1);;
+    border-radius:5px;
+    margin: 1rem 0;
+    }
+
 #logoImg {
   width: 600px;
   height: 600px;

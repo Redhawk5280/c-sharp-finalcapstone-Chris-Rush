@@ -4,9 +4,9 @@
     >
       <div id="contactContainer">
         <h1>Email: {{user.email}}</h1>
-        <p>Role: {{user.role}}</p>
-        <p>Weekday Available: {{user.WeekdayAvailable ? "Yes": "No"}}</p>
-        <p>Weekend Available: {{user.WeekendAvailable ? "Yes": "No"}}</p>
+        <h1>Role: {{user.role}}</h1>
+        <h1>Weekday Available: {{user.WeekdayAvailable ? "Yes": "No"}}</h1>
+        <h1>Weekend Available: {{user.WeekendAvailable ? "Yes": "No"}}</h1>
         
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin' && user.role != 'deactivated'">
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style scoped>
-  .userCard {
+    .userCard {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,10 +62,13 @@ export default {
     
     border-radius: 1rem;
     font-size: 1rem;
+    padding: 5% 0;
+    box-sizing: border-box;
   }
+  
   #contactContainer{
-margin: 10% auto;
-object-fit: cover;
+
+
 
   }
   #buttons{
@@ -79,16 +82,21 @@ object-fit: cover;
     font-family: var(--card-body-font);
     color: var(--company-color-2);
     max-width: 100%;
+    font-size: 1rem;
   }
 
   button {
     border: none;
     padding: 8px 16px;
     border-radius: 1rem;
-    font-size: 2rem;
+    font-size: 1rem;
+    box-shadow: var(--general-shadow);
+    color: var(--company-color-1);
+    background-color: var(--company-color-2);
+    z-index: 1;
+  }
+  button:hover {
+    cursor: pointer;
   }
 
-
-
-  
 </style>
