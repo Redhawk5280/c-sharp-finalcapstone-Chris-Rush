@@ -63,7 +63,7 @@ export default {
     grid-auto-rows: 1fr;
     grid-gap: 1rem;
     place-items: center;
-    margin: 10% auto;
+    margin: 5% auto;
   }
   #toggleApps{
     font-family: var(--card-body-font);

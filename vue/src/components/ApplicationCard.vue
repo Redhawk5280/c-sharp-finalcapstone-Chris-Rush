@@ -76,10 +76,12 @@ export default {
     height: 100%;
     margin:  auto 0;
     width:100%;
-    
     border-radius: 1rem;
     font-size: 1rem;
+    padding: 5% 0;
+    box-sizing: border-box;
   }
+  
   #contactContainer{
 
 

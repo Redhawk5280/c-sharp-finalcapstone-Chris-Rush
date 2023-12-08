@@ -83,7 +83,7 @@ export default {
   @media only screen and (min-width: 1024px) and (max-width: 1439px) {
     /* Styles for larger devices like tablets in landscape and smaller desktops */
     .animalList {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
