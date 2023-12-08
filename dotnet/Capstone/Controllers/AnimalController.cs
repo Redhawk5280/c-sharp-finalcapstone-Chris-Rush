@@ -74,7 +74,7 @@ namespace Capstone.Controllers
                         image.ImageString = image.ImageString;
 
                     }
-                        imageDao.UploadImages(animal.Photos) ;
+                        newAnimal.Photos = imageDao.UploadImages(animal.Photos) ;
                 }
                 result = Created($"/animals/{newAnimal.Id}", newAnimal);
 
