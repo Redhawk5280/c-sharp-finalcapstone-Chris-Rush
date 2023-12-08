@@ -30,7 +30,7 @@
 body {
   background-color: var(--company-color-2);
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 0;
   cursor: url("https://clipart-library.com/images/gTe5G8KLc.png"), auto;
   color:var(--company-color-1)
 }

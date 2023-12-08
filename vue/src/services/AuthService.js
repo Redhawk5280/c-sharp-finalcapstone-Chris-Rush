@@ -18,6 +18,9 @@ export default {
   },
   getUsers(){
     return axios.get(`/user`)
+  },
+  deactivateUser(email){
+    return axios.put(`user/deactivate/${email}`)
   }
 
 }

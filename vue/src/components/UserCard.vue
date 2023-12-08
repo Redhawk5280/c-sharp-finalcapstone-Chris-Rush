@@ -9,8 +9,8 @@
         <p>Weekend Available: {{user.WeekendAvailable ? "Yes": "No"}}</p>
         
       </div>
-      <div id="buttons" v-if="$store.state.user.role === 'admin'">
-        <button>Deactivate</button>
+      <div id="buttons" v-if="$store.state.user.role === 'admin' && user.role != 'deactivated'">
+        <button v-on:click="DeactivateUser(user.email)">Deactivate</button>
       </div>
   </section>
 </template>
@@ -29,6 +29,7 @@ export default {
     DeactivateUser(email) {
       AuthService.deactivateUser(email).then(response => {
         this.$store.commit("UPDATE_USER", email)
+        console.log("uh ohhhhhhh")
 
       }
       )
@@ -56,13 +57,16 @@ export default {
     overflow: none;
     position: relative;
     height: 100%;
-    width: 100%;
+    margin:  auto 0;
+    width:100%;
     
     border-radius: 1rem;
-    font-size: 2rem;
+    font-size: 1rem;
   }
   #contactContainer{
-margin: 10% auto
+margin: 10% auto;
+object-fit: cover;
+
   }
   #buttons{
     align-items:flex-end;

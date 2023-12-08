@@ -27,7 +27,7 @@ export default {
       isLoading: true,
     };
   },
-  computed: {},
+
   created() {
     VolunteerService.getApplications()
       .then((response) => {
@@ -76,7 +76,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0 10%;
+  margin: 10%;
 }
 
 #homeH1 {

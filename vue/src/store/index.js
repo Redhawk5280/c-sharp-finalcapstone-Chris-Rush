@@ -120,9 +120,10 @@ export function createStore(currentToken, currentUser) {
         state.animals.push(animal);
       },
       UPDATE_USER(state, email) { 
-        state.applications.forEach((applicant) => { 
-          if (applicant.email === email) { 
-            applicant.isApproved = false;
+        state.users.forEach((user) => { 
+          if (user.email === email) { 
+            user.role = 'deactivated';
+            
           }
         })
       },

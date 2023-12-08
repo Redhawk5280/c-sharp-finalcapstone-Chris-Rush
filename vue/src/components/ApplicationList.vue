@@ -1,6 +1,9 @@
 <template>
-  <label for="filter">Would you like to view all applications?</label>
-  <input id="filter" type="checkbox" v-model="allApplications">
+  <div id="toggleApps">
+    <label for="filter">Would you like to view all applications?</label>
+    <input id="filter" type="checkbox" v-model="allApplications">
+
+  </div>
   <div class="applicationList" >
       <application-card 
         v-for="application in filteredApplications" 
@@ -58,14 +61,23 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
-    grid-gap: 3rem;
+    grid-gap: 1rem;
     place-items: center;
     margin: 10% auto;
   }
-  label{
+  #toggleApps{
     font-family: var(--card-body-font);
     font-weight: bold;
+    background-color: var(--company-color-1);
+    border-radius: 1rem;
+    padding:0.5rem;
+    color: var(--company-color-2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--generic-shadow);
+    
   }
+ 
 
   .applicationList > {
     height:80%;
@@ -88,7 +100,7 @@ export default {
   @media only screen and (min-width: 1024px) and (max-width: 1439px) {
     /* Styles for larger devices like tablets in landscape and smaller desktops */
     .applicationList {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 

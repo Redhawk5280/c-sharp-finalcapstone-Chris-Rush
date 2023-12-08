@@ -74,13 +74,16 @@ export default {
     overflow: none;
     position: relative;
     height: 100%;
-    width: 100%;
+    margin:  auto 0;
+    width:100%;
     
     border-radius: 1rem;
-    font-size: 2rem;
+    font-size: 1rem;
   }
   #contactContainer{
-margin: 10% auto
+
+
+
   }
   #buttons{
     align-items:flex-end;

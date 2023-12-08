@@ -2,7 +2,7 @@
   <h1>User List</h1>
   <section>
     <user-card 
-        v-for="user in users" 
+        v-for="user in filteredUsers" 
         v-bind:key="user.email"
         v-bind:user="user" 
         class="userCard"
@@ -22,7 +22,16 @@ export default {
   },
   props: {
     users: Array
+  },
+  computed:{
+    filteredUsers(){
+      
+        return this.users.filter(user=>{
+          return user.role !=='deactivated';
+        })
+      }
   }
+
 }
 
 </script>
