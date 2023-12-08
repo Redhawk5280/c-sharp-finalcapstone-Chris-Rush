@@ -50,15 +50,13 @@ namespace Capstone.DAO
             return createdImage;
         }
 
-        public Image UploadImages(List<Image> images)
+        public List<Image> UploadImages(List<Image> images)
         {
             string sql = "INSERT INTO images (image_string, animal_id) " +
                          "OUTPUT INSERTED.image_id " +
                          "VALUES (@image_string, @animal_id)";
-
-            Image createdImage;
+            List<Image> createdImages = new List<Image>();
             int imageId = 0;
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -66,21 +64,20 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@image_string", image.ImageString);
-                    cmd.Parameters.AddWithValue("@animal_id", image.AnimalId);
-
-                    imageId = Convert.ToInt32(cmd.ExecuteScalar());
-
+                    foreach (Image image in images)
+                    {
+                        cmd.Parameters.AddWithValue("@image_string", image.ImageString);
+                        cmd.Parameters.AddWithValue("@animal_id", image.AnimalId);
+                        imageId = Convert.ToInt32(cmd.ExecuteScalar());
+                        createdImages.Add(GetImageById(imageId));
+                    }
                 }
-
-                createdImage = GetImageById(imageId);
             }
             catch (SqlException ex)
             {
                 throw new DaoException("SQL exception occurred", ex);
             }
-
-            return createdImage;
+            return createdImages;
         }
 
         public Image GetImageById(int imageId)
