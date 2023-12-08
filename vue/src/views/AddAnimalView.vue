@@ -114,6 +114,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: var(--card-body-font);
+    font-weight: bold;
   }
 
   #aboutMeContainer {
@@ -132,5 +134,7 @@ export default {
     border: none;
     background-color: green;
     box-shadow: var(--general-shadow);
+    font-family: var(--card-body-font);
+    font-weight: bold;
   }
 </style>

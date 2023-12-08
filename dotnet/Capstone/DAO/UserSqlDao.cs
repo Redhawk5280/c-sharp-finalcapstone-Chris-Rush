@@ -24,7 +24,7 @@ namespace Capstone.DAO
             IList<UserInfo> users = new List<UserInfo>();
 
             string sql = "SELECT email, user_role, weekday_available, weekend_available  FROM users " +
-                "JOIN volunteer_apps ON applicant_email = email";
+                "RIGHT OUTER JOIN volunteer_apps ON applicant_email = email";
 
             try
             {
