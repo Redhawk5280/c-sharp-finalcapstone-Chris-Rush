@@ -45,7 +45,7 @@ CREATE TABLE images (
 
 	image_id INT IDENTITY(1,1) NOT NULL,
 	image_string VARCHAR(MAX) NOT NULL,
-	animal_id INT NOT NULL
+	animal_id INT 
 
 	CONSTRAINT PK_image PRIMARY KEY(image_id)
 	CONSTRAINT FK_image_animal FOREIGN KEY (animal_id) REFERENCES Animal(animal_id)
