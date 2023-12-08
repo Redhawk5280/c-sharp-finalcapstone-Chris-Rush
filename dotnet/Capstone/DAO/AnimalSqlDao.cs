@@ -4,6 +4,7 @@ using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Capstone.DAO
 {
@@ -16,9 +17,46 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public Animal CreateAnimals(Animal animal)
+        public Animal CreateAnimal(Animal animal)
         {
-            throw new System.NotImplementedException();
+            Animal newAnimal = null;
+
+            string sql = "INSERT INTO Animal (name, age, breed, species, medical_needs, color, sex, weight, is_adopted, owner_name, about_me, is_good) " +
+                         "OUTPUT INSERTED.animal_id " +
+                         "VALUES (@name, @age, @breed, @species, @medical_needs, @color, @sex, @weight, @is_adopted, @owner_name, @about_me, @is_good)";
+
+            int newAnimalId = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@name", animal.Name);
+                    cmd.Parameters.AddWithValue("@age", animal.Age);
+                    cmd.Parameters.AddWithValue("@breed", animal.Breed);
+                    cmd.Parameters.AddWithValue("@species", animal.Species);
+                    cmd.Parameters.AddWithValue("@medical_needs", animal.MedicalNeeds);
+                    cmd.Parameters.AddWithValue("@color", animal.Color);
+                    cmd.Parameters.AddWithValue("@sex", animal.Sex);
+                    cmd.Parameters.AddWithValue("@weight", animal.Weight);
+                    cmd.Parameters.AddWithValue("@is_adopted", animal.IsAdopted);
+                    cmd.Parameters.AddWithValue("@owner_name", animal.OwnerName);
+                    cmd.Parameters.AddWithValue("@about_me", animal.AboutMe);
+                    cmd.Parameters.AddWithValue("@is_good", animal.IsGood);
+
+                    newAnimalId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                }
+                newAnimal = GetAnimalById(newAnimalId);
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return newAnimal;
         }
 
         public List<Animal> GetAnimals()

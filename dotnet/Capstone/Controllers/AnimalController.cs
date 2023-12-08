@@ -28,7 +28,7 @@ namespace Capstone.Controllers
             try
             {
                 List<Animal> animalList = animalDao.GetAnimals();
-                result = Ok(imageDao.AddPicturesToListings(animalList));
+                result = Ok(imageDao.PopulatePicturesToListings(animalList));
             }
             catch (DaoException)
             {
@@ -47,13 +47,42 @@ namespace Capstone.Controllers
             try
             {
                 Animal animal = animalDao.GetAnimalById(id);
-                result = Ok(imageDao.AddPicturesToAnimal(animal));
+                result = Ok(imageDao.PopulatePicturesToListing(animal));
             }
             catch (DaoException)
             {
                 result = StatusCode(500, ErrorMessage);
             }
 
+            return result;
+        }
+        [HttpPost]
+        public ActionResult<Animal> AddAnimal(Animal animal)
+        {
+            const string ErrorMessage = "There was an error creating animal posting";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+
+            try
+            {
+                Animal newAnimal = animalDao.CreateAnimal(animal);
+                if (newAnimal != null)
+                {
+                    List<Image> images = animal.Photos;
+                    foreach (Image image in images)
+                    {
+                        image.AnimalId = newAnimal.Id;
+                        image.ImageString = image.ImageString;
+
+                    }
+                        imageDao.UploadImages(animal.Photos) ;
+                }
+                result = Created($"/animals/{newAnimal.Id}", newAnimal);
+
+            }
+            catch (DaoException)
+            {
+                result = StatusCode(500, ErrorMessage);
+            }
             return result;
         }
     }
