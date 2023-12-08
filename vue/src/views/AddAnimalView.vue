@@ -1,6 +1,12 @@
 <template>
   <section id="addAnimalContainer">
-    <image-upload-form/>
+    <form @submit.prevent="onSubmit">
+      <p>Select an image to upload. {{ this.x }}</p>
+      <img v-for="photo in animal.photos" v-bind:key="photo.imageString" class="image-preview" v-bind:src="photo.imageString"/>
+      <div>
+        <input v-on:change="loadImage" type="file" accept="image/*">
+      </div>
+    </form>
     <form v-on:submit.prevent="addAnimal(animal)">
       <div class="form-input-group">
         <label for="name">Name: </label>
@@ -25,7 +31,7 @@
       </div>
       <div class="form-input-group">
         <label for="medicalNeeds">Medical Needs? </label>
-        <input v-model="animal.medicalNeeds" type="checkbox" required/>
+        <input v-model="animal.medicalNeeds" type="checkbox" />
       </div>
       <div class="form-input-group">
         <label for="color">Color: </label>
@@ -33,11 +39,11 @@
       </div>
       <div class="form-input-group">
         <label for="isAdopted">Is Adopted? </label>
-        <input v-model="animal.isAdopted" type="checkbox" required/>
+        <input v-model="animal.isAdopted" type="checkbox" />
       </div>
       <div class="form-input-group">
         <label for="ownerName">Owner Name? </label>
-        <input type="text" id="ownerName" v-model="animal.ownerName" required />
+        <input type="text" id="ownerName" v-model="animal.ownerName"  />
       </div>
       <div class="form-input-group">
         <label for="sex">Sex </label>
@@ -70,33 +76,63 @@
 </template>
 
 <script>
-import ImageUploadForm from '../components/ImageUploadForm.vue';
+//import ImageUploadForm from '../components/ImageUploadForm.vue';
 import AnimalService from '../services/AnimalService';
+
+  import imageService from '@/services/ImageService.js'
+
 
 export default {
   components: {
-    ImageUploadForm,
   },
   data() { 
     return {
-      animal: {},
+      animal: {
+        photos: [],
+      },
+      image: null,
+      imageFile: null,
     }
   },
   methods: {
     addAnimal(animal) { 
       console.log("the animal?")
       console.log(animal)
-      AnimalService.addAnimal(this.animal).then(response=>
+      AnimalService.addAnimal(animal).then(response=>
       {
         this.$router.push({'name': 'animals'})
         alert("Thank you for adding an animal!")
-        this.$store.commit('ADD_APPLICATION', this.animal)
+        this.$store.commit('ADD_ANIMAL', animal)
       })
         .catch(error=>{
           alert("We're sorry, animal cannot be added")
-          this.animal={}
+          this.animal = {};
+          this.animal.photos = [];
         })
-    }
+    },
+    loadImage(e) {
+        this.imageFile = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          this.animal.photos.push(
+            {
+              "imageString": evt.target.result,
+              "animalId": -1,
+              "imageId": -1
+            });
+        };
+        reader.readAsDataURL(this.imageFile);
+      },
+  
+      onSubmit() {
+        imageService.uploadImage({ imageString: this.image }).then(res => {
+          console.log(this.image);
+          this.image = null;
+          this.imageFile = null;
+          this.$router.go();
+        });
+
+      }
   }
 }
 
@@ -136,5 +172,10 @@ export default {
     box-shadow: var(--general-shadow);
     font-family: var(--card-body-font);
     font-weight: bold;
+  }
+
+  img{
+    width: 250px;
+    height: 250px;
   }
 </style>
