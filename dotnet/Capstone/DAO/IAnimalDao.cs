@@ -7,6 +7,6 @@ namespace Capstone.DAO
     {
         List<Animal> GetAnimals();
         Animal GetAnimalById(int id);
-        Animal CreateAnimals(Animal animal);
+        Animal CreateAnimal(Animal animal);
     }
 }

@@ -6,8 +6,9 @@ namespace Capstone.DAO
     public interface IImageDao
     {
         Image UploadImage(Image image);
+        Image UploadImages(List<Image> images);
         List<Image> GetImagesByAnimalId(int id);
-        List<Animal> AddPicturesToListings(List<Animal> listings);
-        Animal AddPicturesToAnimal(Animal animal);
+        List<Animal> PopulatePicturesToListings(List<Animal> listings);
+        Animal PopulatePicturesToListing(Animal animal);
     }
 }
