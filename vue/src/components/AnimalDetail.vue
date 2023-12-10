@@ -2,8 +2,14 @@
   <button @click='this.editForm = !this.editForm'>Edit</button>
   <div class="detailForm" v-if="this.editForm">
     <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
+      <img 
+        v-for="photo in this.newAnimal.photos"
+        v-bind:key="photo"
+        v-bind:photo="photo" 
+        v-bind:src="photo.imageString"
+      />
       <div class="form-input-group">
-        <label for="name">Name:</label>
+        <label for="name">Name: </label>
         <input id="name" v-model="this.newAnimal.name" />
       </div>
       <div class="form-input-group">
@@ -130,7 +136,7 @@ export default {
     changeAnimal: function(animalToEdit) { 
       console.log("the animal to edit?")
       console.log(animalToEdit)
-        AnimalService.update(animalToEdit)
+        AnimalService.update(animalToEdit.id,animalToEdit)
           .then(response => {
             this.$router.push({'name': 'animals'})
             alert(`changed details of ${animalToEdit.name}!`)
@@ -150,6 +156,69 @@ export default {
 </script>
 
 <style scoped>
+
+/* */
+
+
+  h1 {
+  text-align:center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  font-family: var(--card-body-font);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  font-family: var(--card-body-font);
+}
+
+input {
+  width: 96%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--card-body-font);
+}
+textarea {
+  width: 96%;
+  height: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--card-body-font);
+}
+
+select, option {
+  font-family: var(--card-body-font);
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* */
+
+  .detailForm{
+    max-width: 400px;
+  margin: 1rem auto;
+  padding: 20px;
+  box-shadow: var(--generic-shadow);
+  border-radius: 1rem;
+  }
   .details{
     text-align: left;
     font-family: var(--card-body-font);
