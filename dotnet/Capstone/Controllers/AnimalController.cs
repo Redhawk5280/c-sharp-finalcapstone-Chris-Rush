@@ -95,6 +95,8 @@ namespace Capstone.Controllers
             try
             {
                 Animal updatedAnimal = animalDao.UpdateAnimal(animal);
+                imageDao.DeleteImages(updatedAnimal.Id);
+                updatedAnimal.Photos = imageDao.UploadImages(animal.Photos);
                 result = Ok(updatedAnimal);
             }
             catch (DaoException)
