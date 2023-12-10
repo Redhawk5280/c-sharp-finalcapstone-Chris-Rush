@@ -119,6 +119,13 @@ export function createStore(currentToken, currentUser) {
       ADD_ANIMAL(state, animal) { 
         state.animals.push(animal);
       },
+      EDIT_ANIMAL(state, animal) { 
+        state.animals.forEach((specificAnimal) => { 
+          if (specificAnimal.id === animal.id) { 
+            specificAnimal = animal;
+          }
+        })
+      },
       UPDATE_USER(state, email) { 
         state.users.forEach((user) => { 
           if (user.email === email) { 
