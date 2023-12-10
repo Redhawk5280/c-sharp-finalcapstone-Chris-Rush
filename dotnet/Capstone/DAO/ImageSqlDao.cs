@@ -80,6 +80,28 @@ namespace Capstone.DAO
             return createdImages;
         }
 
+        public int DeleteImages(int animalId)
+        {
+            string sql = "DELETE FROM images WHERE animal_id = @animal_id";
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@animal_id", animalId);
+                    rowsAffected = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+            return rowsAffected;
+        }
+
         public Image GetImageById(int imageId)
         {
             Image image = null;

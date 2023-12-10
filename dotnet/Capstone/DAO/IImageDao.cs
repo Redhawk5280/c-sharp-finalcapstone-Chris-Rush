@@ -7,6 +7,7 @@ namespace Capstone.DAO
     {
         Image UploadImage(Image image);
         List<Image> UploadImages(List<Image> images);
+        int DeleteImages(int id);
         List<Image> GetImagesByAnimalId(int id);
         List<Animal> PopulatePicturesToListings(List<Animal> listings);
         Animal PopulatePicturesToListing(Animal animal);
