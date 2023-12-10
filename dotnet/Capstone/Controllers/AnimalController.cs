@@ -56,6 +56,7 @@ namespace Capstone.Controllers
 
             return result;
         }
+
         [HttpPost]
         public ActionResult<Animal> AddAnimal(Animal animal)
         {
@@ -78,6 +79,23 @@ namespace Capstone.Controllers
                 }
                 result = Created($"/animals/{newAnimal.Id}", newAnimal);
 
+            }
+            catch (DaoException)
+            {
+                result = StatusCode(500, ErrorMessage);
+            }
+            return result;
+        }
+
+        public ActionResult<Animal> UpdateAnimal(Animal animal) 
+        {
+            const string ErrorMessage = "There was an error updating animal posting";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+
+            try
+            {
+                Animal updatedAnimal = animalDao.UpdateAnimal(animal);
+                result = Ok(updatedAnimal);
             }
             catch (DaoException)
             {
