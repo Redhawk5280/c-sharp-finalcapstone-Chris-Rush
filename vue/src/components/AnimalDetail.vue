@@ -2,12 +2,15 @@
   <button @click='this.editForm = !this.editForm'>Edit</button>
   <div class="detailForm" v-if="this.editForm">
     <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
-      <img 
-        v-for="photo in this.newAnimal.photos"
-        v-bind:key="photo"
-        v-bind:photo="photo" 
-        v-bind:src="photo.imageString"
-      />
+      <div id="imageContainer">
+        <img 
+          v-for="photo in this.newAnimal.photos"
+          v-bind:key="photo"
+          v-bind:photo="photo" 
+          v-bind:src="photo.imageString"
+        />
+        <button>Delete</button>
+      </div>
       <div class="form-input-group">
         <label for="name">Name: </label>
         <input id="name" v-model="this.newAnimal.name" />
@@ -74,8 +77,14 @@
   </div>
   <div class="details" v-else>
     <div id="imageContainer">
-    <img :src="animal.photos[0].imageString" alt="">
-  </div>
+      <img 
+          v-for="photo in this.newAnimal.photos"
+          v-bind:key="photo"
+          v-bind:photo="photo" 
+          v-bind:src="photo.imageString"
+        />
+    </div>
+
     <h1>A little about me...</h1>
     <p>Name: {{ this.animal.name }}</p>
     <p>Description: {{ this.animal.aboutMe }}</p>
@@ -158,6 +167,15 @@ export default {
 <style scoped>
 
 /* */
+
+#imageContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
   h1 {
