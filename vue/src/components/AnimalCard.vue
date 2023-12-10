@@ -6,7 +6,8 @@
   >
     <img :src="profilePhoto" id="animalPic"/>
     <div id="curve">
-      <h1 id="animalName">{{animal.name}}</h1>
+      <h1 id="animalName" v-if="this.animal.name.length<=8">{{this.animal.name}}</h1>
+      <h1 id="animalName" v-else>{{this.animal.name.substring(0,8)+" ..."}}</h1>
       <h2>
         {{ageText}}
       </h2>
@@ -39,7 +40,7 @@ export default {
       else{
         return "";
       }
-    }
+    },
   }
 }
 </script>
@@ -101,6 +102,7 @@ export default {
     font-family: var(--card-body-font);
     color: var(--company-color-2);
     max-width: 100%;
+    word-wrap: break-word;
   }
 
   .specialMedicalNeeds {

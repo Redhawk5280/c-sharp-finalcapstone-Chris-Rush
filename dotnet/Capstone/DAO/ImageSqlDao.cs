@@ -66,6 +66,7 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     foreach (Image image in images)
                     {
+                        cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@image_string", image.ImageString);
                         cmd.Parameters.AddWithValue("@animal_id", image.AnimalId);
                         imageId = Convert.ToInt32(cmd.ExecuteScalar());
