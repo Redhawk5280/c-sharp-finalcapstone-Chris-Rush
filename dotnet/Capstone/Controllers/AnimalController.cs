@@ -75,7 +75,7 @@ namespace Capstone.Controllers
                         image.ImageString = image.ImageString;
 
                     }
-                        newAnimal.Photos = imageDao.UploadImages(animal.Photos) ;
+                    newAnimal.Photos = imageDao.UploadImages(animal.Photos);
                 }
                 result = Created($"/animals/{newAnimal.Id}", newAnimal);
 
@@ -86,7 +86,7 @@ namespace Capstone.Controllers
             }
             return result;
         }
-
+        [HttpPut("{id}")]
         public ActionResult<Animal> UpdateAnimal(Animal animal) 
         {
             const string ErrorMessage = "There was an error updating animal posting";

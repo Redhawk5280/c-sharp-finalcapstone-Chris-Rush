@@ -2,6 +2,7 @@
   <section 
     class="animalCard" 
     v-bind:class="{specialMedicalNeeds: animal.specialNeeds}"
+    v-if="animal.isAdopted === false"
   >
     <img :src="profilePhoto" id="animalPic"/>
     <div id="curve">

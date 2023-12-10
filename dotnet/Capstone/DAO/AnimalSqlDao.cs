@@ -126,8 +126,8 @@ namespace Capstone.DAO
         public Animal UpdateAnimal(Animal animal)
         {
             string sql = 
-                "UPDATE volunteer_apps " +
-                "SET name = @name, age = @age, breed = @breed, species = @species, medical_needs = @medical_needs, color = @color, sex = @sex, weight = @weight, is_adopted = @is_adopted, owner_name = @owner_name, about_me = @about_me, is_good = @is_good" +
+                "UPDATE animal " +
+                "SET name = @name, age = @age, breed = @breed, species = @species, medical_needs = @medical_needs, color = @color, sex = @sex, weight = @weight, is_adopted = @is_adopted, owner_name = @owner_name, about_me = @about_me, is_good = @is_good " +
                 "WHERE animal_id = @animal_id ";
 
             try
@@ -141,13 +141,12 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@age", animal.Age);
                     cmd.Parameters.AddWithValue("@breed", animal.Breed);
                     cmd.Parameters.AddWithValue("@species", animal.Species);
-                    cmd.Parameters.AddWithValue("@medical_needs", animal.Species);
+                    cmd.Parameters.AddWithValue("@medical_needs", animal.MedicalNeeds);
                     cmd.Parameters.AddWithValue("@color", animal.Color);
                     cmd.Parameters.AddWithValue("@sex", animal.Sex);
                     cmd.Parameters.AddWithValue("@weight", animal.Weight);
                     cmd.Parameters.AddWithValue("@is_adopted", animal.IsAdopted);
                     cmd.Parameters.AddWithValue("@owner_name", animal.OwnerName);
-                    cmd.Parameters.AddWithValue("@medical_needs", animal.Species);
                     cmd.Parameters.AddWithValue("@about_me", animal.AboutMe);
                     cmd.Parameters.AddWithValue("@is_good", animal.IsGood);
                     cmd.Parameters.AddWithValue("@animal_id", animal.Id);
