@@ -1,5 +1,72 @@
 <template>
-  <div class="details">
+  <button @click='this.editForm = !this.editForm'>Edit</button>
+  <div class="detailForm" v-if="this.editForm">
+    <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
+      <div class="form-input-group">
+        <label for="name">Name:</label>
+        <input id="name" v-model="this.newAnimal.name" />
+      </div>
+      <div class="form-input-group">
+        <label for="age">Age: </label>
+        <input type="number" min="0" id="password" v-model="this.newAnimal.age" required />
+      </div>
+      <div class="form-input-group">
+        <label for="breed">Breed: </label>
+        <input type="text" id="breed" v-model="this.newAnimal.breed" required />
+      </div>
+      <div class="form-input-group">
+        <label for="species">Species: </label>
+        <select v-model="this.newAnimal.species" required>
+          <option disabled value="">Please Select One</option>
+          <option>Dog</option>
+          <option>Cat</option>
+          <option>Guinea Pig</option>
+        </select>
+      </div>
+      <div class="form-input-group">
+        <label for="medicalNeeds">Medical Needs? </label>
+        <input v-model="this.newAnimal.medicalNeeds" type="checkbox" />
+      </div>
+      <div class="form-input-group">
+        <label for="color">Color: </label>
+        <input type="text" id="color" v-model="this.newAnimal.color" required />
+      </div>
+      <div class="form-input-group">
+        <label for="isAdopted">Is Adopted? </label>
+        <input v-model="this.newAnimal.isAdopted" type="checkbox" />
+      </div>
+      <div class="form-input-group">
+        <label for="ownerName">Owner Name? </label>
+        <input type="text" id="ownerName" v-model="this.newAnimal.ownerName"  />
+      </div>
+      <div class="form-input-group">
+        <label for="sex">Sex </label>
+        <select v-model="this.newAnimal.sex" required>
+          <option disabled value="">Please Select One</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+      <div class="form-input-group">
+        <label for="weight">Weight </label>
+        <input type="number" min="0" id="weight" v-model="this.newAnimal.weight" required />
+      </div>
+      <div id="aboutMeContainer" class="form-input-group">
+        <label for="aboutMe">About Me: </label>
+        <textarea id="aboutMe" v-model="this.newAnimal.aboutMe" required />
+      </div>
+      
+
+      <div class="form-input-group">
+        <label for="isGood">Is Good Boy/Girl? </label>
+        <input type="checkbox" id="isGood" v-model="this.newAnimal.isGood" required />
+      </div>
+      <div id="buttonContainer">
+        <button type="submit">Edit Animal</button>
+      </div>
+    </form>
+  </div>
+  <div class="details" v-else>
     <div id="imageContainer">
     <img :src="animal.photos[0].imageString" alt="">
   </div>
@@ -19,10 +86,17 @@
 
 
 <script>
+import AnimalService from "../services/AnimalService";
 
 export default {
   props: ['animal'],
-  computed: { 
+  data() { 
+    return {
+      newAnimal: this.animal,
+      editForm: false,
+    }
+  },
+  computed: {  
     ageText: function() {
       if (this.animal.age === 1) {
         return `${this.animal.age} year old`;
@@ -41,7 +115,7 @@ export default {
       if(this.animal.isGood=== true){
         return "I sure am!"
       }else{
-        return "no :("
+        return "no"
       }
     },
     medicalNeeds: function(value){
@@ -50,7 +124,27 @@ export default {
       }else{
         return "Nope"
       }
-    }
+    },
+  },
+  methods: {
+    changeAnimal: function(animalToEdit) { 
+      console.log("the animal to edit?")
+      console.log(animalToEdit)
+        AnimalService.update(animalToEdit)
+          .then(response => {
+            this.$router.push({'name': 'animals'})
+            alert(`changed details of ${animalToEdit.name}!`)
+            this.$store.commit('EDIT_ANIMAL', animalToEdit)
+        })
+        .catch(error=>{
+          alert("We're sorry, animal cannot be changed")
+        })
+    },
+    edit() { 
+      console.log("clicked");
+      console.log(this.editForm);
+      this.editForm = !this.editForm
+    },
   }
 }
 </script>
