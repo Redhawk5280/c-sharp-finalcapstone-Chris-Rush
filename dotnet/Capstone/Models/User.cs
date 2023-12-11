@@ -7,7 +7,7 @@
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public string Role { get; set; }
-        public bool hasLoggedIn { get; set; } = false;
+        public bool HasLoggedIn { get; set; } = false;
     }
 
     /// <summary>
@@ -18,6 +18,7 @@
         public int UserId { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }
+        public bool HasLoggedIn { get; set; } = false;
     }
 
     /// <summary>
