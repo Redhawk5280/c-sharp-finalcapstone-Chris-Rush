@@ -76,5 +76,16 @@ namespace Capstone.Controllers
 
             return result;
         }
+        [HttpPut("{email}")]
+        public ActionResult<User> UpdateUser(string email, string password)
+        {
+            const string ErrorMessage = "You are unauthorized";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+            try
+            {
+                result = Ok(userDao)
+            }
+
+        }
     }
 }

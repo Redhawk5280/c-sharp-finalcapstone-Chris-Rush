@@ -176,6 +176,29 @@ namespace Capstone.DAO
 
             return user;
         }
+        public User UpdateUserPassword(string email, string password) 
+        {
+            IPasswordHasher passwordHasher = new PasswordHasher();
+            PasswordHash hash = passwordHasher.ComputeHash(password);
+            string sql =
+                    "UPDATE users " +
+                    "SET password_hash = @hash " +
+                    "WHERE email = @email";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    user = GetUserByEmail(email);
+                }
+            }
+        }
 
         private User MapRowToUser(SqlDataReader reader)
         {
