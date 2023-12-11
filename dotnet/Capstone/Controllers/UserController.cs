@@ -76,5 +76,20 @@ namespace Capstone.Controllers
 
             return result;
         }
+        [HttpPut("{email}")]
+        public ActionResult<User> UpdateUser(LoginUser user)
+        {
+            const string ErrorMessage = "I am a Teapot.";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+            try
+            {
+                result = Ok(userDao.UpdateUserPassword(user));
+            }
+            catch (DaoException)
+            {
+                result = StatusCode(418, ErrorMessage);
+            }
+            return result;
+        }
     }
 }
