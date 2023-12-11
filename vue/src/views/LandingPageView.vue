@@ -29,6 +29,9 @@
     display:flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
 }
 #paragraph{
     font-family: var(--card-body-font);
@@ -39,16 +42,24 @@
     height: auto;
     width: 70%;
     margin: auto;
+  
 }
 img{
     height: 100%;
     object-fit: fill;
     width:100%;
+    border-radius: 1rem;
+    box-shadow: var(--generic-shadow);
+
     
     
 }
 h1{
     text-align: center;
+    text-decoration: underline;
+    background-color: var(--company-color-2);
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 
