@@ -85,8 +85,9 @@
   margin: 0 10%;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.1);
+  background: rgba(235, 212, 158, 0.575);
   border-radius: 1rem;
+
 }
 #nav {
   width: 100%;
