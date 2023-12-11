@@ -76,6 +76,7 @@ namespace Capstone.Controllers
 
             return result;
         }
+
         [HttpPut("{email}")]
         public ActionResult<User> UpdateUser(LoginUser user)
         {
