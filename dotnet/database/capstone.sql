@@ -68,13 +68,13 @@ CREATE TABLE volunteer_apps (
 	)
 
 --populate default data
-INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('McFakename@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',0);
+
 INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('christopherrush5280@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',0);
 INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('ikirenohs@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',1);
 INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('macadamchris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',1);
-INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('LaBudacris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',0);
+
 INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('Terry@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',1);
-INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('admin@gmail.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin',0);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('admin@gmail.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin',1);
 
 
 -- Animal 1
@@ -230,10 +230,10 @@ INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo3
 
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
-VALUES ('Chris McFakename', 'McFakename@gmail.com', 0, 1, 'I am interested in everything!!!!!', 0)
+VALUES ('Chris McFakename', 'McFakename@gmail.com', 0, 1, 'I am interested in everything!!!!!', NULL)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
-VALUES ('Luke LaBudacris', 'LaBudacris@gmail.com', 1, 0, 'I love animals!', 0)
+VALUES ('Luke LaBudacris', 'LaBudacris@gmail.com', 1, 0, 'I love animals!', NULL)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
 VALUES ('Terry', 'Terry@gmail.com', 1, 0, 'Let me help!', 1)
@@ -246,6 +246,10 @@ VALUES ('Chris MacAdam', 'macadamchris@gmail.com', 1, 0, 'Let me help!', 1)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
 VALUES ('Chris Rush', 'christopherrush5280@gmail.com', 1, 0, 'Let me help!', 1)
+
+INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
+VALUES ('Admin', 'admin@gmail.com', 1, 1, 'Let me help!', 1)
+
 
 
 GO

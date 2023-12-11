@@ -5,8 +5,8 @@
       <div id="contactContainer">
         <h1>Email: {{user.email}}</h1>
         <h1>Role: {{user.role}}</h1>
-        <h1>Weekday Available: {{user.WeekdayAvailable ? "Yes": "No"}}</h1>
-        <h1>Weekend Available: {{user.WeekendAvailable ? "Yes": "No"}}</h1>
+        <h1>Weekday Available: {{user.weekdayAvailable ? "Yes" : "No" }}</h1>
+        <h1>Weekend Available: {{user.weekendAvailable ? "Yes" : "No" }}</h1>
         
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin' && user.role != 'deactivated'">
@@ -29,7 +29,6 @@ export default {
     DeactivateUser(email) {
       AuthService.deactivateUser(email).then(response => {
         this.$store.commit("UPDATE_USER", email)
-        console.log("uh ohhhhhhh")
 
       }
       )

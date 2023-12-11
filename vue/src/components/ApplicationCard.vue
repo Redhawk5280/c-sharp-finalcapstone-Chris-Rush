@@ -36,7 +36,7 @@ export default {
       application.isApproved = true;
       VolunteerService.updateApplication(application).then(response => {
         this.$store.commit("UPDATE_APPLICATION", application)
-
+        this.$router.go();
       }
       )
         .catch(response => {
@@ -47,7 +47,7 @@ export default {
       application.isApproved = false;
       VolunteerService.updateApplication(application).then(response => {
         this.$store.commit("UPDATE_APPLICATION", application)
-
+        this.$router.go();
       }
       )
         .catch(response => {

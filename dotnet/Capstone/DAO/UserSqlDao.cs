@@ -23,8 +23,9 @@ namespace Capstone.DAO
         {
             IList<UserInfo> users = new List<UserInfo>();
 
-            string sql = "SELECT email, user_role, weekday_available, weekend_available  FROM users " +
-                "RIGHT OUTER JOIN volunteer_apps ON applicant_email = email";
+            string sql = "SELECT email, user_role, weekday_available, weekend_available, has_logged_in  FROM users " +
+                "RIGHT OUTER JOIN volunteer_apps ON applicant_email = email " +
+                "WHERE volunteer_apps.isApproved = NULL OR volunteer_apps.isApproved = 1";
 
             try
             {
@@ -119,7 +120,7 @@ namespace Capstone.DAO
 
             string sql = "INSERT INTO users (email, password_hash, salt, user_role, has_logged_in) " +
                          "OUTPUT INSERTED.user_id " +
-                         "VALUES (@email, @password_hash, @salt, @user_role)";
+                         "VALUES (@email, @password_hash, @salt, @user_role, 0)";
 
             int newUserId = 0;
             try
@@ -184,7 +185,7 @@ namespace Capstone.DAO
             PasswordHash hash = passwordHasher.ComputeHash(updatedUser.Password);
             string sql =
                     "UPDATE users " +
-                    "SET password_hash = @hash, has_logged_id = true " +
+                    "SET password_hash = @hash, has_logged_in = 1, salt = @salt " +
                     "WHERE email = @email";
 
             try
@@ -195,7 +196,8 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@email", updatedUser.Email);
-                    cmd.Parameters.AddWithValue("@hash", hash);
+                    cmd.Parameters.AddWithValue("@hash", hash.Password);
+                    cmd.Parameters.AddWithValue("@salt", hash.Salt);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     user = GetUserByEmail(updatedUser.Email);

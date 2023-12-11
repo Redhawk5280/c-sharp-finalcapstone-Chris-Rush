@@ -12,7 +12,9 @@ import LandingPageView from '../views/LandingPageView.vue';
 
 import DirectoryView from '../views/DirectoryPageView.vue';
 
-import AddAnimalView from '../views/AddAnimalView.vue'
+import AddAnimalView from '../views/AddAnimalView.vue';
+
+import ChangePasswordView from '../views/ChangePasswordView.vue'
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -85,6 +87,11 @@ const routes = [
     path: "/addAnimal",
     name: "addAnimal",
     component: AddAnimalView,
+  },
+  {
+    path: "/changePassword",
+    name: "changePassword",
+    component: ChangePasswordView,
   },
 
 ];
