@@ -176,13 +176,15 @@ namespace Capstone.DAO
 
             return user;
         }
-        public User UpdateUserPassword(string email, string password) 
+        public User UpdateUserPassword(LoginUser updatedUser) 
         {
+            User user = null;
+
             IPasswordHasher passwordHasher = new PasswordHasher();
-            PasswordHash hash = passwordHasher.ComputeHash(password);
+            PasswordHash hash = passwordHasher.ComputeHash(updatedUser.Password);
             string sql =
                     "UPDATE users " +
-                    "SET password_hash = @hash " +
+                    "SET password_hash = @hash, has_logged_id = true " +
                     "WHERE email = @email";
 
             try
@@ -192,12 +194,19 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@email", updatedUser.Email);
+                    cmd.Parameters.AddWithValue("@hash", hash);
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    user = GetUserByEmail(email);
+                    user = GetUserByEmail(updatedUser.Email);
                 }
             }
+            catch (SqlException ex)
+            {
+                throw new DaoException("Teapot exception occurred", ex);
+            }
+
+            return user;
         }
 
         private User MapRowToUser(SqlDataReader reader)
