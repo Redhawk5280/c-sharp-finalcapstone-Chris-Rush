@@ -77,10 +77,11 @@ export default {
 
 #login {
   max-width: 400px;
-  margin: auto;
+  margin: 3rem auto;
   padding: 20px;
   box-shadow: var(--generic-shadow);
   border-radius: 1rem;
+  background-color: var(--card-background);
 }
 
 h1 {

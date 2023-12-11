@@ -4,15 +4,16 @@
   </div>
   <div class="detailForm" v-if="this.editForm && this.role">
     <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
-      <div id="imageContainer">
-        <img 
-          v-for="photo in this.newAnimal.photos"
-          v-bind:key="photo"
-          v-bind:photo="photo" 
-          v-bind:src="photo.imageString"
-        />
-        <button>Delete</button>
+      <form @submit.prevent="onSubmit">
+      <p>Select an image to upload. {{ this.x }}</p>
+      <div id="edit" v-for="photo in newAnimal.photos" v-bind:key="photo.imageString" >
+        <img class="image-preview" v-bind:src="photo.imageString"/>
+        <button v-on:click="deletePhoto(newAnimal.photos.indexOf(photo))">Delete</button>
+      
       </div>
+      
+      <input v-on:change="loadImage" type="file" accept="image/*">
+    </form>
       <div class="form-input-group">
         <label for="name">Name: </label>
         <input id="name" v-model="this.newAnimal.name" />
@@ -170,6 +171,22 @@ export default {
       console.log(this.editForm);
       this.editForm = !this.editForm
     },
+    loadImage(e) {
+        this.imageFile = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          this.newAnimal.photos.push(
+            {
+              "imageString": evt.target.result,
+              "animalId": -1,
+              "imageId": -1
+            });
+        };
+        reader.readAsDataURL(this.imageFile);
+      },
+      deletePhoto(id) {
+        this.newAnimal.photos.splice(id,1)
+      }
   }
 }
 </script>
@@ -236,8 +253,29 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #45a049;
+  cursor: pointer;
 }
 
+#edit{
+  display: flex;
+ flex-direction:column;
+ justify-content: center;
+
+
+}
+#edit button{
+  border-radius: 1rem;
+  background-color: red;
+  border: none;
+  margin: auto;
+  padding: 0.5rem 1rem ;
+  margin-bottom: 1rem;
+  font-family: var(--card-body-font);
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  
+}
 /* */
 
   .detailForm{
@@ -262,6 +300,8 @@ button[type="submit"]:hover {
     width: 300px;
     height:  300px;
     object-fit: cover; 
+    border-radius: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
 
 

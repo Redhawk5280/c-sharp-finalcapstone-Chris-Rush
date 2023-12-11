@@ -14,6 +14,8 @@
   --company-color-1: #395469;
   --company-color-2: #e79648;
 
+  --card-background:rgb(211, 202, 173);;
+
 
 
   /* typography */
@@ -37,6 +39,9 @@ body {
   padding: 0 0;
   cursor: url("https://clipart-library.com/images/gTe5G8KLc.png"), auto;
   color:var(--company-color-1)
+}
+button{
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 639px) {

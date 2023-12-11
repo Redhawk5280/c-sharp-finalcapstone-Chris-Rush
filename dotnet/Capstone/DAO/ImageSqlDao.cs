@@ -50,7 +50,7 @@ namespace Capstone.DAO
             return createdImage;
         }
 
-        public List<Image> UploadImages(List<Image> images)
+        public List<Image> UploadImages(List<Image> images, int animalId)
         {
             string sql = "INSERT INTO images (image_string, animal_id) " +
                          "OUTPUT INSERTED.image_id " +
@@ -68,7 +68,7 @@ namespace Capstone.DAO
                     {
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@image_string", image.ImageString);
-                        cmd.Parameters.AddWithValue("@animal_id", image.AnimalId);
+                        cmd.Parameters.AddWithValue("@animal_id", animalId);
                         imageId = Convert.ToInt32(cmd.ExecuteScalar());
                         createdImages.Add(GetImageById(imageId));
                     }

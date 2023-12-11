@@ -75,7 +75,7 @@ namespace Capstone.Controllers
                         image.ImageString = image.ImageString;
 
                     }
-                    newAnimal.Photos = imageDao.UploadImages(animal.Photos);
+                    newAnimal.Photos = imageDao.UploadImages(animal.Photos, newAnimal.Id);
                 }
                 result = Created($"/animals/{newAnimal.Id}", newAnimal);
 
@@ -96,7 +96,7 @@ namespace Capstone.Controllers
             {
                 Animal updatedAnimal = animalDao.UpdateAnimal(animal);
                 imageDao.DeleteImages(updatedAnimal.Id);
-                updatedAnimal.Photos = imageDao.UploadImages(animal.Photos);
+                updatedAnimal.Photos = imageDao.UploadImages(animal.Photos, animal.Id);
                 result = Ok(updatedAnimal);
             }
             catch (DaoException)

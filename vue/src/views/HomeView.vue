@@ -84,6 +84,10 @@ export default {
     align-items: center;
     text-align: center;
     margin: 0 10%;
+    background-color: var(--card-background);
+    padding:1rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
   }
 
   #homeH1 {
