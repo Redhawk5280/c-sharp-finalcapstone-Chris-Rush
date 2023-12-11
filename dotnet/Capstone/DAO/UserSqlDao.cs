@@ -54,7 +54,7 @@ namespace Capstone.DAO
         {
             User user = null;
 
-            string sql = "SELECT user_id, email, password_hash, salt, user_role FROM users WHERE user_id = @user_id";
+            string sql = "SELECT user_id, email, password_hash, salt, user_role, has_logged_in FROM users WHERE user_id = @user_id";
 
             try
             {
@@ -84,7 +84,7 @@ namespace Capstone.DAO
         {
             User user = null;
 
-            string sql = "SELECT user_id, email, password_hash, salt, user_role FROM users WHERE email = @email";
+            string sql = "SELECT user_id, email, password_hash, salt, user_role, has_logged_in FROM users WHERE email = @email";
 
             try
             {
@@ -117,7 +117,7 @@ namespace Capstone.DAO
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
 
-            string sql = "INSERT INTO users (email, password_hash, salt, user_role) " +
+            string sql = "INSERT INTO users (email, password_hash, salt, user_role, has_logged_in) " +
                          "OUTPUT INSERTED.user_id " +
                          "VALUES (@email, @password_hash, @salt, @user_role)";
 
@@ -208,6 +208,7 @@ namespace Capstone.DAO
             user.PasswordHash = Convert.ToString(reader["password_hash"]);
             user.Salt = Convert.ToString(reader["salt"]);
             user.Role = Convert.ToString(reader["user_role"]);
+            user.hasLoggedIn = Convert.ToBoolean(reader["has_logged_in"]);
             return user;
         }
         private UserInfo MapRowToUserInfo(SqlDataReader reader)
@@ -217,6 +218,7 @@ namespace Capstone.DAO
             user.Email = Convert.ToString(reader["email"]);
             user.WeekdayAvailable = Convert.ToBoolean(reader["weekday_available"]);
             user.WeekendAvailable = Convert.ToBoolean(reader["weekend_available"]);
+            
             return user;
         }
 

@@ -20,7 +20,8 @@ CREATE TABLE users (
 	email varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
-	user_role varchar(50) NOT NULL
+	user_role varchar(50) NOT NULL,
+	has_logged_in bit NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 )
 
@@ -67,13 +68,13 @@ CREATE TABLE volunteer_apps (
 	)
 
 --populate default data
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('McFakename@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('christopherrush5280@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('ikirenohs@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('macadamchris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('LaBudacris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('Terry@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (email, password_hash, salt, user_role) VALUES ('admin@gmail.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('McFakename@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',0);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('christopherrush5280@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',0);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('ikirenohs@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',1);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('macadamchris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',1);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('LaBudacris@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',0);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('Terry@gmail.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user',1);
+INSERT INTO users (email, password_hash, salt, user_role,has_logged_in) VALUES ('admin@gmail.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin',0);
 
 
 -- Animal 1
