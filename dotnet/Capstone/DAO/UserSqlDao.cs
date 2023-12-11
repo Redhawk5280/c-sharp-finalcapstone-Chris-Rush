@@ -217,7 +217,7 @@ namespace Capstone.DAO
             user.PasswordHash = Convert.ToString(reader["password_hash"]);
             user.Salt = Convert.ToString(reader["salt"]);
             user.Role = Convert.ToString(reader["user_role"]);
-            user.hasLoggedIn = Convert.ToBoolean(reader["has_logged_in"]);
+            user.HasLoggedIn = Convert.ToBoolean(reader["has_logged_in"]);
             return user;
         }
         private UserInfo MapRowToUserInfo(SqlDataReader reader)
