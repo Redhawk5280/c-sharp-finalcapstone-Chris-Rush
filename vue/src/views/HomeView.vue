@@ -32,7 +32,9 @@ export default {
     return {
       animals: [],
       isLoading: true,
-      photos: []
+      photos: [],
+
+      hasLoggedIn: false,
     };
   },
   computed: {

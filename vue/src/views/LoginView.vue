@@ -49,8 +49,16 @@ export default {
         .then(response => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+            console.log("response's user", response.data.user);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            if (response.data.user.hasLoggedIn == false) {
+              console.log("inside of the if");
+              this.$router.push("/changePassword");
+            }
+            else { 
+              this.$router.push("/");
+            }
+            
           }
         })
         .catch(error => {

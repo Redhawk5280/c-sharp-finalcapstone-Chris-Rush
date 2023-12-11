@@ -26,7 +26,8 @@ export default {
   computed:{
     filteredUsers(){
       
-        return this.users.filter(user=>{
+      return this.users.filter(user => {
+          console.log("user:",user)
           return user.role !=='deactivated';
         })
       }

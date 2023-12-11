@@ -11,24 +11,24 @@
   </div>
   <div id="navContainer">
     <div id="nav">
-      <div>
+      <div class="navDiv">
         <router-link class="nav-link" v-bind:to="{ name: 'home' }">Home</router-link>
       </div>
-      <div>
+      <div class="navDiv">
         <router-link class="nav-link" v-bind:to="{name:'animals' }">Adopt Me!</router-link>
       </div>
 
-      <div v-if="$store.state.token != ''">
+      <div v-if="$store.state.token != ''" class="navDiv">
         <router-link class="nav-link" v-bind:to="{ name: 'addAnimal' }"
           >Add Animal</router-link
         >
       </div>
-      <div v-else> 
+      <div v-else class="navDiv"> 
         <router-link class="nav-link" v-bind:to="{ name: 'volunteerForm' }"
           >Volunteer</router-link
         >
       </div>
-      <div v-if="$store.state.token != ''">
+      <div v-if="$store.state.token != ''" class="navDiv">
         <router-link 
           class="nav-link"
           v-bind:to="{name: 'directory'}"
@@ -36,7 +36,7 @@
           Directory
         </router-link>
       </div>
-      <div>
+      <div class="navDiv">
         <router-link
           class="nav-link"
           v-bind:to="{ name: 'login' }"
@@ -80,6 +80,17 @@
   --generic-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 }
+.navDiv {
+  padding: 0 1rem;
+}
+
+.navDiv:hover {
+  background: rgba(0,0,0,0.2);
+  border-radius: 1rem;
+  cursor: pointer;
+  color: inherit; 
+}
+
 #navContainer {
   display: flex;
   margin: 0 10%;
@@ -133,12 +144,8 @@
   color: inherit;
 }
 
-.nav-link:hover, .nav-link:visited,.nav-link:active  {
-  background: rgba(0,0,0,0.2);
-  border-radius: 1rem;
-  cursor: pointer;
-  color: inherit;
-}
+
+
 
 @media only screen and (max-width: 849px) {
     #nav {

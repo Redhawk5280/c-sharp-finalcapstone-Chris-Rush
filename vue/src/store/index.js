@@ -91,6 +91,9 @@ export function createStore(currentToken, currentUser) {
         state.user = user;
         localStorage.setItem('user', JSON.stringify(user));
       },
+      UPDATE_USER_PASSWORD(state, user) { 
+        state.user.password = user.password;
+      },
       LOGOUT(state) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');

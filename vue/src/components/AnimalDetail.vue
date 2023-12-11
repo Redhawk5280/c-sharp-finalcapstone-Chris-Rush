@@ -1,6 +1,8 @@
 <template>
-  <button @click='this.editForm = !this.editForm'>Edit</button>
-  <div class="detailForm" v-if="this.editForm">
+  <div v-if="this.role">
+    <button @click='this.editForm = !this.editForm'>Edit</button>
+  </div>
+  <div class="detailForm" v-if="this.editForm && this.role">
     <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
       <div id="imageContainer">
         <img 
@@ -140,6 +142,14 @@ export default {
         return "Nope"
       }
     },
+    role: function () { 
+      if (this.$store.state.user.role === "admin" || this.$store.state.user.role === "user") {
+        return true;
+      }
+      else { 
+        return false;
+      }
+    }
   },
   methods: {
     changeAnimal: function(animalToEdit) { 
