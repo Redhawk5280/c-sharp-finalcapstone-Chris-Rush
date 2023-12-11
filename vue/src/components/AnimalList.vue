@@ -57,6 +57,10 @@ export default {
     grid-gap: 3rem;
     place-items: center;
     margin: auto;
+    background-color: var(--card-background);
+    padding:1rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
   }
 
   #animalCardContainer{

@@ -137,4 +137,7 @@ button[type="submit"]:hover {
   color: red;
   margin-bottom: 1rem;
 }
+.generic-form{
+  margin: 2rem;
+}
 </style>

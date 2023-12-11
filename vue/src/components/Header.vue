@@ -96,7 +96,7 @@
   margin: 0 10%;
   align-items: center;
   justify-content: center;
-  background: rgba(235, 212, 158, 0.575);
+  background: var(--card-background);
   border-radius: 1rem;
 
 }

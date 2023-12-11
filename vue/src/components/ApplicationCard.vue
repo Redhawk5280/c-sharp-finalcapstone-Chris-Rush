@@ -10,6 +10,7 @@
         <p v-if="application.weekendAvailability">Weekend Availability: Yes</p>
         <p v-else>Weekend Availability: No</p>
         <p>Interest: {{application.interest}}</p>
+        <p>Is Approved to Volunteer? {{ application.isApproved?"Yes":"No" }}</p>
         
         
       </div>

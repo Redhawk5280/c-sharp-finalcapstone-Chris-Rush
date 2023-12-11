@@ -43,6 +43,8 @@ export default {
   padding: 20px;
   box-shadow: var(--generic-shadow);
   border-radius: 1rem;
+  
+  
 }
 
 /* Rest of your styles */

@@ -16,6 +16,14 @@
             </p>
         </div>
     </div>
+    <div id="donations">
+        <h1>Want to help us out?</h1>
+        
+            <p>Check out <span> <a target="_blank" href="https://www.amazon.com/hz/wishlist/ls/NUYRW25HE62W?ref_=wl_share">Our Wishlist</a></span></p>
+            <p id="amazon">
+                &nbsp;&nbsp;&nbsp;&nbsp;At Paw Prints Pet Rescue's Amazon Wishlist, your click transforms the lives of our rescues. Your support provides essential supplies, comfort, and love, ensuring our furry friends receive the care they need as they eagerly await their forever homes. Join us in creating happy tales of rescue and new beginnings!</p>
+
+    </div>
 </div>
 
 
@@ -47,13 +55,21 @@ export default {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    background-color: white;
+    background: var(--card-background);
     border-radius: 1rem;
     padding: 1rem;
 }
 #paragraph{
     font-family: var(--card-body-font);
     font-weight: bold;
+}
+#donations{
+    text-align: center;
+    font-weight: bold;
+    
+}
+#amazon{
+    text-align: left;
 }
 
 #homeImg{
@@ -75,7 +91,7 @@ img{
 h1{
     text-align: center;
     text-decoration: underline;
-    background-color: var(--company-color-2);
+    color: var(--company-color-1);
     object-fit: cover;
     border-radius: 1rem;
 }

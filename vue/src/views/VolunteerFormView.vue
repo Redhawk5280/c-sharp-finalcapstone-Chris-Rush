@@ -44,6 +44,7 @@ export default {
   padding: 20px;
   box-shadow: var(--generic-shadow);
   border-radius: 1rem;
+  background-color: var(--card-background);
 }
 
 /* Rest of your styles */
