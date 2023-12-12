@@ -1,7 +1,7 @@
 <template>
   <div id="filter">
     <div id="dropdown">
-      <div class="filter">
+      <div class="filter" >
         <label for="animalFilter">Filter by Animal Type:</label>
       <select id="animalFilter" v-model="species">
         <option value="">All Animals</option>
@@ -144,6 +144,7 @@ export default {
     border-radius: 1rem;
     box-sizing: border-box;
   }
+  
   #dropdown{
     display: flex;
     flex-direction: row;

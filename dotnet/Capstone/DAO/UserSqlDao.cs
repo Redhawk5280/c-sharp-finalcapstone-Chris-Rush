@@ -223,7 +223,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@user_role", userToPromote.Role);
+                    cmd.Parameters.AddWithValue("@user_role", "admin");
                     cmd.Parameters.AddWithValue("@user_id", userToPromote.UserId);
                     cmd.ExecuteNonQuery();
 

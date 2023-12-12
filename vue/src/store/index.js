@@ -136,10 +136,16 @@ export function createStore(currentToken, currentUser) {
         state.users.forEach((user) => { 
           if (user.email === email) { 
             user.role = 'deactivated';
-            
           }
         })
       },
+      PROMOTE_USER(state, email) { 
+        state.users.forEach((user) => { 
+          if (user.email === email) { 
+            user.role = 'admin';
+          }
+        })
+      }
     },
   });
   return store;

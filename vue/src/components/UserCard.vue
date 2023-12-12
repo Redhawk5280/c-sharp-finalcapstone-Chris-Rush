@@ -10,7 +10,9 @@
         
       </div>
       <div id="buttons" v-if="$store.state.user.role === 'admin' && user.role != 'deactivated'">
-        <button v-on:click="DeactivateUser(user.email)">Deactivate</button>
+        <button v-on:click="DeactivateUser(user.email)" v-if="user.email !== $store.state.user.email">Deactivate</button>
+        <button v-on:click="PromoteUser(user.email)" v-if="user.role !== 'admin' ">Promote</button>
+
       </div>
   </section>
 </template>
@@ -30,10 +32,18 @@ export default {
       AuthService.deactivateUser(email).then(response => {
         this.$store.commit("UPDATE_USER", email)
 
-      }
-      )
+      })
         .catch(response => {
           console.log("there's been an issue")
+        })
+    },
+    PromoteUser(email) { 
+      AuthService.promoteUser(email)
+        .then(response => { 
+        this.$store.commit("PROMOTE_USER", email)
+        })
+        .catch(response => { 
+          console.log("there has been an issue with promoting a user");
         })
     }
   }

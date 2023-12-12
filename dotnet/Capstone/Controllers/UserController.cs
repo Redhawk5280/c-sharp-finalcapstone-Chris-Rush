@@ -93,13 +93,14 @@ namespace Capstone.Controllers
             return result;
         }
         [HttpPut("{email}/promote")]
-        public ActionResult<User> PromoteUser(User user)
+        public ActionResult<User> PromoteUser(string email)
         {
             const string ErrorMessage = "I am a promoted Teapot.";
             ActionResult result = BadRequest(new { message = ErrorMessage });
             try
             {
-                result = Ok(userDao.PromoteUser(user));
+                User userToPromote = userDao.GetUserByEmail(email);
+                result = Ok(userDao.PromoteUser(userToPromote));
             }
             catch (DaoException)
             {
@@ -107,5 +108,7 @@ namespace Capstone.Controllers
             }
             return result;
         }
+
+
     }
 }

@@ -28,6 +28,10 @@ export default {
   },
   deactivateUser(email){
     return axios.put(`user/deactivate/${email}`)
+  },
+
+  promoteUser(email) { 
+    return axios.put(`user/${email}/promote`);
   }
 
 }
