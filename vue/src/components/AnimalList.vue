@@ -40,7 +40,6 @@
     <input type="text" v-model="color" placeholder="Search animal color..." />
     <input type="text" v-model="breed" placeholder="Search animal breed..." />
     <input type="number" v-model="age" placeholder="Search by animal age..." />
-    <input type="text" v-model="color" placeholder="Search animal color..." />
 
 
   </div>
