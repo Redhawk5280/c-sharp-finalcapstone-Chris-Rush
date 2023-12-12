@@ -31,7 +31,7 @@ namespace Capstone.Services
             string subject = "New Account Login";
             string body = "Hello! \n\n Congratulations on being accepted as a volunteer with the Paw Prints Pet Rescue! " +
                 "\nBelow is a link to our login page; please use the following login credentials to access your account and " +
-                $"update your password.\n\nUsername: {toAddress}\nPassword: {password}\n\n<a href=\"linkgoeshere\">Login Here</a>" +
+                $"update your password.\n\nUsername: {toAddress}\nPassword: {password}\n\n<a href=\"https://localhost:44315/volunteers/applications\">Login Here</a>" +
                 "\n\nWelcome aboard!\n\n-Paw Prints Pet Rescue Team";
             try
             {
