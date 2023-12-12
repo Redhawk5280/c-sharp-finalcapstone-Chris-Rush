@@ -61,6 +61,7 @@ export default {
     width: 100%;
     padding-bottom:1rem;
     border-radius: 1rem;
+    min-height: 350px;
   }
 
   .animalCard img{

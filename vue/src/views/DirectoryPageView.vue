@@ -19,12 +19,15 @@ export default {
   components: {
     ApplicationList,
     UserList,
+
   },
+  
   data() {
     return {
       applications: [],
       users: [],
       isLoading: true,
+      name:''
     };
   },
 
@@ -76,7 +79,12 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 10%;
+  margin: 1rem 10%;
+  background-color: var(--card-background);
+  border-radius: 1rem;
+  background-color: var(--card-background);
+  padding:1rem;
+  margin-top: 3rem;
 }
 
 #homeH1 {
@@ -96,5 +104,9 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+}
+input{
+  justify-content: center;
+  margin: 10px;
 }
 </style>

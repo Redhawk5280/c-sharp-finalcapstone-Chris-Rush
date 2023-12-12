@@ -2,6 +2,7 @@
   <div id="toggleApps">
     <label for="filter">Would you like to view all applications?</label>
     <input id="filter" type="checkbox" v-model="allApplications">
+    <input type="text" v-model="name" placeholder="Search applications by name..." />
 
   </div>
   <div class="applicationList" >
@@ -33,7 +34,7 @@ export default {
         return {
           isLoading: false,
           allApplications: true,
-          
+          name:''
         
         }
     },
@@ -41,17 +42,28 @@ export default {
     },
     computed:{
       filteredApplications(){
-        if(this.allApplications){
+        if(this.allApplications  && this.name==''){
         return this.applications
         }
       else{
-        return this.applications.filter(application=>{
-          return application.isApproved == null;
-        })
+        if(this.allApplications){
+          return this.applications.filter(application=>{
+            return application.appName.toLowerCase().includes(this.name.toLowerCase()) || this.name == '';
+          })
+        }else{
+          return this.applications.filter(application=>{
+            return application.isApproved == null;
+          }).filter(application=>{
+            return application.appName.toLowerCase().includes(this.name.toLowerCase()) || this.name == '';
+          })
+          }
+        }
       }
     }
-    }
   }
+
+
+
 </script>
 
 <style scoped>
