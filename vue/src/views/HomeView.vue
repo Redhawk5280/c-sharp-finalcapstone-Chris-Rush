@@ -5,7 +5,7 @@
   <div class="home" v-else>
     <h1 id="homeH1">Welcome to Paw Prints Pet Rescue</h1>
     <animal-list 
-    :animals="this.$store.state.animals" 
+      :animals="this.$store.state.animals" 
     />
   </div>
 </template>

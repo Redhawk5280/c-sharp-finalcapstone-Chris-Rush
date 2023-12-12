@@ -119,6 +119,9 @@ export function createStore(currentToken, currentUser) {
           }
         });
       },
+      SET_ANIMALS(state, animals) { 
+        state.animals = animals;
+      },
       ADD_ANIMAL(state, animal) { 
         state.animals.push(animal);
       },

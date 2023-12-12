@@ -24,6 +24,21 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;At Paw Prints Pet Rescue's Amazon Wishlist, your click transforms the lives of our rescues. Your support provides essential supplies, comfort, and love, ensuring our furry friends receive the care they need as they eagerly await their forever homes. Join us in creating happy tales of rescue and new beginnings!</p>
 
     </div>
+    <div id="adoptedPets">
+        <h1>Celebrate Our Adopted Friends!</h1>
+        <!-- <div class="animalList">
+            <animal-card 
+                v-for="animal in adoptedAnimals" 
+                v-bind:key="animal.id"
+                v-bind:animal="animal" 
+                class="animalCard"
+            />
+        </div> -->
+        <animal-list 
+            :animals="adoptedAnimals" 
+        />
+    </div>
+
 </div>
 
 
@@ -31,20 +46,37 @@
 
 <script>
 import AuthService from "../services/AuthService";
+import AnimalService from "../services/AnimalService";
+import AnimalCard from "../components/AnimalCard.vue";
+import AnimalList from "../components/AnimalList.vue"
+
 
 
 export default {
+    components: {
+        AnimalCard,
+        AnimalList,
+    },
 
     data() { 
         return {
-        newUser: this.$store.state.user,
-        editForm: false,
+            newUser: this.$store.state.user,
+            editForm: false,
+            animals: this.$store.state.animals,
         }
     }, 
     methods: {
 
     },
-}
+    computed: {
+        adoptedAnimals(){
+            return this.$store.state.animals.filter(animal=>{
+                return animal.isAdopted == true;
+            })
+      }
+    
+      },
+    }
 </script>
 
 
@@ -59,6 +91,45 @@ export default {
     border-radius: 1rem;
     padding: 1rem;
 }
+
+#filter {
+    display: none;
+}
+
+
+
+.animalCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow: var(--generic-shadow);
+    background-color: var(--company-color-1);
+    overflow: none;
+    position: relative;
+    height: 90%;
+    width: 100%;
+    padding-bottom:1rem;
+    border-radius: 1rem;
+    min-height: 350px;
+  }
+
+  #adoptedPets {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 10%;
+    background-color: var(--card-background);
+    padding:1rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+  }
+
 #paragraph{
     font-family: var(--card-body-font);
     font-weight: bold;
