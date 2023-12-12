@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Capstone.DAO;
 using Capstone.Security;
+using Capstone.Services;
 
 namespace Capstone
 {
@@ -66,6 +67,7 @@ namespace Capstone
             services.AddTransient<IAnimalDao>(m =>new AnimalSqlDao(connectionString));
             services.AddTransient<IImageDao>(m =>new ImageSqlDao(connectionString));
             services.AddTransient<IVolunteerDao>(m => new VolunteerSqlDao(connectionString));
+            services.AddTransient<IEmailService>(m => new EmailSmtpService("PawPrintsPetRescueCle@gmail.com", "PetRescue"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

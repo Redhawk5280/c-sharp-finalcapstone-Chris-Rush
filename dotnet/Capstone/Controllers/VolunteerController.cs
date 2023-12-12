@@ -1,6 +1,7 @@
 ﻿using Capstone.DAO;
 using Capstone.Exceptions;
 using Capstone.Models;
+using Capstone.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -12,11 +13,14 @@ namespace Capstone.Controllers
     {
         IVolunteerDao volunteerDao;
         IUserDao userDao;
+        IEmailService emailService;
 
-        public VolunteerController(IVolunteerDao volunteerDao, IUserDao iUserDao)
+        public VolunteerController(IVolunteerDao volunteerDao, IUserDao iUserDao, IEmailService iEmailService)
         {
             this.volunteerDao = volunteerDao;
             userDao = iUserDao;
+            emailService = iEmailService;
+
         }
 
         [HttpGet("applications")]
@@ -83,6 +87,8 @@ namespace Capstone.Controllers
                 if (updatedApp.IsApproved == true)
                 {
                     userDao.CreateUser(updatedApp.AppEmail, "password", "user");
+                    //email method
+                    emailService.SendFirstLoginEmail(updatedApp.AppEmail, "password");
                 }
                 result = Ok(volunteerDao.GetApplicationById(updatedApp.AppId));
             }
