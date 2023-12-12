@@ -47,14 +47,12 @@
 <script>
 import AuthService from "../services/AuthService";
 import AnimalService from "../services/AnimalService";
-import AnimalCard from "../components/AnimalCard.vue";
 import AnimalList from "../components/AnimalList.vue"
 
 
 
 export default {
     components: {
-        AnimalCard,
         AnimalList,
     },
 
