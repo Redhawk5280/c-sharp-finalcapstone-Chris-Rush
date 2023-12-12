@@ -31,7 +31,7 @@ namespace Capstone.Services
             string subject = "New Account Login";
             string body = "Hello! \n\n Congratulations on being accepted as a volunteer with the Paw Prints Pet Rescue! " +
                 "\nBelow is a link to our login page; please use the following login credentials to access your account and " +
-                $"update your password.\n\nUsername: {toAddress}\nPassword: {password}\n\n<a href=\"https://localhost:44315/volunteers/applications\">Login Here</a>" +
+                $"update your password.\n\nUsername: {toAddress}\nPassword: {password}\n\n http://127.0.0.1:5173/login " +
                 "\n\nWelcome aboard!\n\n-Paw Prints Pet Rescue Team";
             try
             {
@@ -39,6 +39,7 @@ namespace Capstone.Services
                 email.Send(fromEmail, toAddress, subject, body);
                 Console.WriteLine("After Email Sent");
             }
+            
             catch (SmtpException e)
             {
                 throw new Exception("An error has occured sending email", e);
