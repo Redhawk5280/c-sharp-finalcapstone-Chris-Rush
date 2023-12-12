@@ -210,6 +210,39 @@ namespace Capstone.DAO
 
             return user;
         }
+        public User PromoteUser(User userToPromote)
+        {
+            User promotedUser = null;
+            string sql = "UPDATE users SET user_role = @user_role " +
+                         "WHERE user_id = @user_id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@user_role", userToPromote.Role);
+                    cmd.Parameters.AddWithValue("@user_id", userToPromote.UserId);
+                    cmd.ExecuteNonQuery();
+
+                    promotedUser = GetUserByEmail(userToPromote.Email);
+                    if (promotedUser.Role == GetUserByEmail(userToPromote.Email).Role)
+                    {
+                        return promotedUser;
+                    }
+                    else
+                    {
+                        throw new DaoException("SQL exception occurred: did not update correct table item");
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+        }
 
         private User MapRowToUser(SqlDataReader reader)
         {

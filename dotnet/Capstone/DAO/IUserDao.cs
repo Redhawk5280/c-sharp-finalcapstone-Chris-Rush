@@ -11,5 +11,6 @@ namespace Capstone.DAO
         User CreateUser(string email, string password, string role);
         User DeactivateUser(string email);
         User UpdateUserPassword(LoginUser user);
+        User PromoteUser(User user);
     }
 }

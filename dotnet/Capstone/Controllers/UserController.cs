@@ -92,5 +92,20 @@ namespace Capstone.Controllers
             }
             return result;
         }
+        [HttpPut("{email}/promote")]
+        public ActionResult<User> PromoteUser(User user)
+        {
+            const string ErrorMessage = "I am a promoted Teapot.";
+            ActionResult result = BadRequest(new { message = ErrorMessage });
+            try
+            {
+                result = Ok(userDao.PromoteUser(user));
+            }
+            catch (DaoException)
+            {
+                result = StatusCode(418, ErrorMessage);
+            }
+            return result;
+        }
     }
 }
