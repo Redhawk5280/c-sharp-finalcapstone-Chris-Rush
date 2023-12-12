@@ -13,8 +13,7 @@ export default {
   mounted() {
     animalService.getAnimals().then(response => {
       this.animals = response.data;
-      this.$store.state.animals = response.data;
-      //this.animals = result.data;
+      this.$store.commit('SET_ANIMALS', response.data);
     }).catch(error => {
       console.log("There was an error");
     });
