@@ -16,7 +16,9 @@ export default {
   data() {
     return {
       isLoading: true,
-      animal: null,
+      animal: {
+        photos: [],
+      },
     };
   },
   created() {

@@ -21,7 +21,7 @@
       
 
 
-      <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
+      <form v-on:submit.prevent="this.changeAnimal(newAnimal)">
         <form @submit.prevent="onSubmit">
 
           <p>Select an image to upload. {{ this.x }}</p>
@@ -37,19 +37,19 @@
         </form>
         <div class="form-input-group">
           <label for="name">Name: </label>
-          <input id="name" v-model="this.newAnimal.name" />
+          <input id="name" v-model="newAnimal.name" />
         </div>
         <div class="form-input-group">
           <label for="age">Age: </label>
-          <input type="number" min="0" id="password" v-model="this.newAnimal.age" required />
+          <input type="number" min="0" id="password" v-model="newAnimal.age" required />
         </div>
         <div class="form-input-group">
           <label for="breed">Breed: </label>
-          <input type="text" id="breed" v-model="this.newAnimal.breed" required />
+          <input type="text" id="breed" v-model="newAnimal.breed" required />
         </div>
         <div class="form-input-group">
           <label for="species">Species: </label>
-          <select v-model="this.newAnimal.species" required>
+          <select v-model="newAnimal.species" required>
             <option disabled value="">Please Select One</option>
             <option>Dog</option>
             <option>Cat</option>
@@ -58,23 +58,23 @@
         </div>
         <div class="form-input-group">
           <label for="medicalNeeds">Medical Needs? </label>
-          <input v-model="this.newAnimal.medicalNeeds" type="checkbox" />
+          <input v-model="newAnimal.medicalNeeds" type="checkbox" />
         </div>
         <div class="form-input-group">
           <label for="color">Color: </label>
-          <input type="text" id="color" v-model="this.newAnimal.color" required />
+          <input type="text" id="color" v-model="newAnimal.color" required />
         </div>
         <div class="form-input-group">
           <label for="isAdopted">Is Adopted? </label>
-          <input v-model="this.newAnimal.isAdopted" type="checkbox" />
+          <input v-model="newAnimal.isAdopted" type="checkbox" />
         </div>
         <div class="form-input-group">
           <label for="ownerName">Owner Name? </label>
-          <input type="text" id="ownerName" v-model="this.newAnimal.ownerName" />
+          <input type="text" id="ownerName" v-model="newAnimal.ownerName" />
         </div>
         <div class="form-input-group">
           <label for="sex">Sex </label>
-          <select v-model="this.newAnimal.sex" required>
+          <select v-model="newAnimal.sex" required>
             <option disabled value="">Please Select One</option>
             <option>Male</option>
             <option>Female</option>
@@ -82,17 +82,17 @@
         </div>
         <div class="form-input-group">
           <label for="weight">Weight </label>
-          <input type="number" min="0" id="weight" v-model="this.newAnimal.weight" required />
+          <input type="number" min="0" id="weight" v-model="newAnimal.weight" required />
         </div>
         <div id="aboutMeContainer" class="form-input-group">
           <label for="aboutMe">About Me: </label>
-          <textarea id="aboutMe" v-model="this.newAnimal.aboutMe" required />
+          <textarea id="aboutMe" v-model="newAnimal.aboutMe" required />
         </div>
 
 
         <div class="form-input-group">
           <label for="isGood">Is Good Boy/Girl? </label>
-          <input type="checkbox" id="isGood" v-model="this.newAnimal.isGood" required />
+          <input type="checkbox" id="isGood" v-model="newAnimal.isGood" required />
         </div>
         <div class="buttonContainer">
           <button type="submit">Save Changes</button>
@@ -105,7 +105,7 @@
 
     <div class="details" v-else>
       <div id="imageContainer">
-        <img v-for="photo in this.newAnimal.photos" v-bind:key="photo" v-bind:photo="photo"
+        <img v-for="photo in this.animal.photos" v-bind:key="photo" v-bind:photo="photo"
           v-bind:src="photo.imageString" />
       </div>
 
@@ -139,8 +139,8 @@ export default {
   props: ['animal'],
   data() {
     return {
-      startingAnimal: Object,
-      newAnimal: Object,
+      //startingAnimal: Object,
+      newAnimal: this.animal,
       editForm: false,
       successMessage: false,
       errorMessage: false,
@@ -191,8 +191,7 @@ export default {
       this.editForm = false;
     },
     closeEditForm(){
-      this.newAnimal = this.animal;
-      this.closePopup();
+      this.$router.go();
     },
     changeAnimal: function (animalToEdit) {
       console.log("the animal to edit?")
