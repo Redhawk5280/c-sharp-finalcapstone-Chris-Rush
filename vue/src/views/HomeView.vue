@@ -5,7 +5,7 @@
   <div class="home" v-else>
     <h1 id="homeH1">Welcome to Paw Prints Pet Rescue</h1>
     <animal-list 
-      :animals="this.$store.state.animals" 
+      :animals="this.availableAnimals" 
     />
   </div>
 </template>
@@ -38,11 +38,13 @@ export default {
     };
   },
   computed: {
-    /*
-    animalPhotos() {
-      return this.$store.getters.animalPhotos;
+    
+    availableAnimals() {
+      return this.$store.state.animals.filter((animal) => { 
+        return animal.isAdopted == false
+      });
     }
-    */
+    
   },
   created() {
     animalService.getAnimals().then(response => {
