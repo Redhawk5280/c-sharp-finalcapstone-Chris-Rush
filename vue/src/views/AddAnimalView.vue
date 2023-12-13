@@ -2,13 +2,16 @@
   <section id="addAnimalContainer">
     <form @submit.prevent="onSubmit">
       <p>Select an image to upload. {{ this.x }}</p>
-      <img v-for="photo in animal.photos" v-bind:key="photo.imageString" class="image-preview" v-bind:src="photo.imageString"/>
       <div>
         <input v-on:change="loadImage" type="file" accept="image/*">
       </div>
+      <div class="image-container">
+        <img v-for="photo in animal.photos" v-bind:key="photo.imageString" class="image-preview" v-bind:src="photo.imageString"/>
+      </div>
+      
     </form>
     <form v-on:submit.prevent="addAnimal(animal)">
-      <div class="form-input-group">
+      <div>
         <label for="name">Name: </label>
         <input type="text" id="name" v-model="animal.name" required autofocus />
       </div>
@@ -100,8 +103,8 @@ export default {
       console.log(animal)
       AnimalService.addAnimal(animal).then(response=>
       {
-        this.$router.push({'name': 'animals'})
-        alert("Thank you for adding an animal!")
+        this.$router.push({'name': 'volunteer-success'})
+        //alert("Thank you for adding an animal!")
         this.$store.commit('ADD_ANIMAL', animal)
       })
         .catch(error=>{
@@ -145,17 +148,18 @@ export default {
     margin: 3rem auto;
     padding: 20px;
     box-shadow: var(--generic-shadow);
+    background-color: var(--card-background);
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: space-between;
     font-family: var(--card-body-font);
     font-weight: bold;
+    box-sizing: border-box;
   }
 
   #aboutMeContainer {
-    display: flex;
     align-items: center;
   }
 
@@ -164,6 +168,7 @@ export default {
     display: flex;
     justify-content: center;
   }
+  /*
   button[type="submit"] {
     border-radius: 1rem;
     padding: 8px 16px;
@@ -177,5 +182,145 @@ export default {
   img{
     width: 250px;
     height: 250px;
-  }
+  }*/
+
+
+.image-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  font-family: var(--card-body-font);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  font-family: var(--card-body-font);
+  box-sizing: border-box;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--card-body-font);
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 96%;
+  height: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--card-body-font);
+}
+
+select,
+option {
+  font-family: var(--card-body-font);
+}
+
+.buttonContainer {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+button {
+  color: var(--company-color-1);
+  border: none;
+  border-radius: 0.5rem;
+  width: 6rem;
+  height: 2rem;
+  margin: auto;
+}
+/*
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+  cursor: pointer;
+}*/
+
+#edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#edit button {
+  border-radius: 1rem;
+  background-color: red;
+  border: none;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--card-body-font);
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+
+}
+
+/* */
+
+.detailForm {
+  max-width: 400px;
+  margin: 1rem auto;
+  padding: 20px;
+  box-shadow: var(--generic-shadow);
+  border-radius: 1rem;
+  background-color: var(--card-background);
+}
+
+.details {
+  text-align: left;
+  font-family: var(--card-body-font);
+  font-weight: bold;
+  background-color: var(--card-background);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--generic-shadow)
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+#imageContainer {
+  justify-content: center;
+  display: flex;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
 </style>
