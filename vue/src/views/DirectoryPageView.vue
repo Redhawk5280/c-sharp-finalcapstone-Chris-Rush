@@ -1,6 +1,6 @@
 <template>
   <div id="loadingDiv" v-if="isLoading">
-    <img src="../assets/loading-gif/loading-dog.gif" />
+    <img src="../assets/loading-gif/loading-dog.gif"/>
   </div>
   <div class="home" v-else>
     <h1 id="homeH1">Volunteer Applications</h1>
@@ -93,18 +93,26 @@ export default {
   color: var(--company-color-1);
 }
 
-#loadingDiv img {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  position: fixed;
-  top: 0;
-  left: 0;
+#loadingDiv {
+    background-color: var(--company-color-2);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+
+  #loadingDiv img {
+    width: 25%;
+    height: 25%;
+    object-fit: contain;
+  }
+  
 input{
   justify-content: center;
   margin: 10px;

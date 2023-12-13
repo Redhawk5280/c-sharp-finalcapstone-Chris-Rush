@@ -96,7 +96,8 @@ export default {
     color: var(--company-color-1);
   }
 
-  #loadingDiv img {
+#loadingDiv {
+    background-color: var(--company-color-2);
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -107,6 +108,12 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+  #loadingDiv img {
+    width: 25%;
+    height: 25%;
+    object-fit: contain;
   }
 
 

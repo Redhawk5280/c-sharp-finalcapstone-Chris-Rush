@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>Thank you for your submission!</h1>
-        <p>Keep an eye on your email for your approval message containing your password.</p>
         <button :onclick="goHome">Home</button>
     </div>
 

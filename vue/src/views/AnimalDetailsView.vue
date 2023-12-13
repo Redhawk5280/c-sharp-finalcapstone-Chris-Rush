@@ -1,6 +1,8 @@
 <template>
+  <div id="loadingDiv" v-if="isLoading">
+    <img src="../assets/loading-gif/loading-dog.gif"/>
+  </div>
   <section id="detailsView">
-
     <animal-details v-bind:animal="animal" v-if="isLoading == false"/>
   </section>
 </template>
@@ -45,6 +47,26 @@ export default {
     align-items:center;
     justify-content: center;
     font-family: var(--card-body-font);
+  }
+
+  #loadingDiv {
+    background-color: var(--company-color-2);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+  #loadingDiv img {
+    width: 25%;
+    height: 25%;
+    object-fit: contain;
   }
   
 </style>
