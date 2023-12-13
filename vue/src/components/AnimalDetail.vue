@@ -90,14 +90,17 @@
 
     <h1>A little about me...</h1>
     <p>Name: {{ this.animal.name }}</p>
-    <p>Description: {{ this.animal.aboutMe }}</p>
     <p>Age: {{ this.ageText }}</p>
+    <p>Description: {{ this.animal.aboutMe }}</p>
+    <p>Sex: {{ this.animal.sex }}</p>
+    <p>Species: {{this.animal.species}}</p>
     <p>Breed: {{ this.animal.breed }}</p>
+    <p>Color: {{this.animal.color}}</p>
     <p>Do I have medical needs?
     <br> {{ this.medicalNeeds}}</p>
-    <p>Sex: {{ this.animal.sex }}</p>
     <p>Weight: {{ this.animal.weight }} lbs</p>
-    <p>iS gOoD bOy/GiRl: {{ this.isGood }}</p>
+
+    <p>Is a good {{this.animal.sex == "Male" ? "boy" : "girl"}}: {{ this.isGood }}</p>
 
   </div>
 </template>
@@ -158,12 +161,12 @@ export default {
       console.log(animalToEdit)
         AnimalService.update(animalToEdit.id,animalToEdit)
           .then(response => {
-            this.$router.push({'name': 'animals'})
-            alert(`changed details of ${animalToEdit.name}!`)
+            this.$router.push({ 'name': 'animals' })
+            this.$toast.open(`changed details of ${animalToEdit.name}!`)
             this.$store.commit('EDIT_ANIMAL', animalToEdit)
         })
-        .catch(error=>{
-          alert("We're sorry, animal cannot be changed")
+          .catch(error => {
+          this.$toast.open('unable to edit animal');
         })
     },
     edit() { 

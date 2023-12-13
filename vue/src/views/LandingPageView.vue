@@ -47,7 +47,7 @@
 <script>
 import AuthService from "../services/AuthService";
 import AnimalService from "../services/AnimalService";
-import AnimalList from "../components/AnimalList.vue"
+import AnimalList from "../components/AnimalList.vue";
 
 
 
