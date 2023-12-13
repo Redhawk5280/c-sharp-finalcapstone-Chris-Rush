@@ -73,14 +73,13 @@ export default {
       console.log('Form Submitted:', this.formFieldsData);
       VolunteerService.addApplication(this.formFieldsData).then(response=>
       {
-        this.$router.push({'name': 'home'})
-        alert("Thank you for applying!")
+        this.$router.push({'name': 'volunteer-success'})
         this.$store.commit('ADD_APPLICATION',this.formFieldsData)
       })
-        .catch(error=>{
-          alert("We're sorry, your form did not submit, please confirm you're using a unique email")
-          this.formFieldsData={}
-        })
+      .catch(error=>{
+        this.formFieldsData={}
+        this.$router.push({'name': 'volunteer-failure'})
+      })
 
       // Handle form submission, e.g., send data to an API
     },

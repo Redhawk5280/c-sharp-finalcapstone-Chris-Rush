@@ -1,107 +1,133 @@
 <template>
-  <div v-if="this.role">
-    <button @click='this.editForm = !this.editForm'>Edit</button>
+  <div v-bind:class="{ hidden: successMessage == false }">
+    <div class="success">
+      <h1>Profile Updated!</h1>
+      <p>Thank you!</p>
+      <button :onclick="closePopup">Back</button>
+    </div>
   </div>
-  <div class="detailForm" v-if="this.editForm && this.role">
-    <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
-      <form @submit.prevent="onSubmit">
-      <p>Select an image to upload. {{ this.x }}</p>
-      <div id="edit" v-for="photo in newAnimal.photos" v-bind:key="photo.imageString" >
-        <img class="image-preview" v-bind:src="photo.imageString"/>
-        <button v-on:click="deletePhoto(newAnimal.photos.indexOf(photo))">Delete</button>
-      
-      </div>
-      
-      <input v-on:change="loadImage" type="file" accept="image/*">
-    </form>
-      <div class="form-input-group">
-        <label for="name">Name: </label>
-        <input id="name" v-model="this.newAnimal.name" />
-      </div>
-      <div class="form-input-group">
-        <label for="age">Age: </label>
-        <input type="number" min="0" id="password" v-model="this.newAnimal.age" required />
-      </div>
-      <div class="form-input-group">
-        <label for="breed">Breed: </label>
-        <input type="text" id="breed" v-model="this.newAnimal.breed" required />
-      </div>
-      <div class="form-input-group">
-        <label for="species">Species: </label>
-        <select v-model="this.newAnimal.species" required>
-          <option disabled value="">Please Select One</option>
-          <option>Dog</option>
-          <option>Cat</option>
-          <option>Guinea Pig</option>
-        </select>
-      </div>
-      <div class="form-input-group">
-        <label for="medicalNeeds">Medical Needs? </label>
-        <input v-model="this.newAnimal.medicalNeeds" type="checkbox" />
-      </div>
-      <div class="form-input-group">
-        <label for="color">Color: </label>
-        <input type="text" id="color" v-model="this.newAnimal.color" required />
-      </div>
-      <div class="form-input-group">
-        <label for="isAdopted">Is Adopted? </label>
-        <input v-model="this.newAnimal.isAdopted" type="checkbox" />
-      </div>
-      <div class="form-input-group">
-        <label for="ownerName">Owner Name? </label>
-        <input type="text" id="ownerName" v-model="this.newAnimal.ownerName"  />
-      </div>
-      <div class="form-input-group">
-        <label for="sex">Sex </label>
-        <select v-model="this.newAnimal.sex" required>
-          <option disabled value="">Please Select One</option>
-          <option>Male</option>
-          <option>Female</option>
-        </select>
-      </div>
-      <div class="form-input-group">
-        <label for="weight">Weight </label>
-        <input type="number" min="0" id="weight" v-model="this.newAnimal.weight" required />
-      </div>
-      <div id="aboutMeContainer" class="form-input-group">
-        <label for="aboutMe">About Me: </label>
-        <textarea id="aboutMe" v-model="this.newAnimal.aboutMe" required />
-      </div>
+
+
+
+  <div v-bind:class="{ hidden: successMessage || errorMessage }">
+    
+    <div v-if="this.role" class="buttonContainer">
+      <button v-if="this.editForm == false" class="editButton" @click='this.editForm = true'>Edit</button>
+      <button v-else class="closeButton" @click='closeEditForm'>Cancel</button>
+    </div>
+    
+
+    <div class="detailForm" v-if="this.editForm && this.role">
       
 
-      <div class="form-input-group">
-        <label for="isGood">Is Good Boy/Girl? </label>
-        <input type="checkbox" id="isGood" v-model="this.newAnimal.isGood" required />
-      </div>
-      <div id="buttonContainer">
-        <button type="submit">Edit Animal</button>
-      </div>
-    </form>
-  </div>
-  <div class="details" v-else>
-    <div id="imageContainer">
-      <img 
-          v-for="photo in this.newAnimal.photos"
-          v-bind:key="photo"
-          v-bind:photo="photo" 
-          v-bind:src="photo.imageString"
-        />
+
+      <form v-on:submit.prevent="this.changeAnimal(this.newAnimal)">
+        <form @submit.prevent="onSubmit">
+
+          <p>Select an image to upload. {{ this.x }}</p>
+          <input v-on:change="loadImage" type="file" accept="image/*">
+
+          <div id="edit" v-for="photo in newAnimal.photos" v-bind:key="photo.imageString">
+            <img class="image-preview" v-bind:src="photo.imageString" />
+            <button v-on:click="deletePhoto(newAnimal.photos.indexOf(photo))">Delete</button>
+            
+          </div>
+          
+          
+        </form>
+        <div class="form-input-group">
+          <label for="name">Name: </label>
+          <input id="name" v-model="this.newAnimal.name" />
+        </div>
+        <div class="form-input-group">
+          <label for="age">Age: </label>
+          <input type="number" min="0" id="password" v-model="this.newAnimal.age" required />
+        </div>
+        <div class="form-input-group">
+          <label for="breed">Breed: </label>
+          <input type="text" id="breed" v-model="this.newAnimal.breed" required />
+        </div>
+        <div class="form-input-group">
+          <label for="species">Species: </label>
+          <select v-model="this.newAnimal.species" required>
+            <option disabled value="">Please Select One</option>
+            <option>Dog</option>
+            <option>Cat</option>
+            <option>Guinea Pig</option>
+          </select>
+        </div>
+        <div class="form-input-group">
+          <label for="medicalNeeds">Medical Needs? </label>
+          <input v-model="this.newAnimal.medicalNeeds" type="checkbox" />
+        </div>
+        <div class="form-input-group">
+          <label for="color">Color: </label>
+          <input type="text" id="color" v-model="this.newAnimal.color" required />
+        </div>
+        <div class="form-input-group">
+          <label for="isAdopted">Is Adopted? </label>
+          <input v-model="this.newAnimal.isAdopted" type="checkbox" />
+        </div>
+        <div class="form-input-group">
+          <label for="ownerName">Owner Name? </label>
+          <input type="text" id="ownerName" v-model="this.newAnimal.ownerName" />
+        </div>
+        <div class="form-input-group">
+          <label for="sex">Sex </label>
+          <select v-model="this.newAnimal.sex" required>
+            <option disabled value="">Please Select One</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div class="form-input-group">
+          <label for="weight">Weight </label>
+          <input type="number" min="0" id="weight" v-model="this.newAnimal.weight" required />
+        </div>
+        <div id="aboutMeContainer" class="form-input-group">
+          <label for="aboutMe">About Me: </label>
+          <textarea id="aboutMe" v-model="this.newAnimal.aboutMe" required />
+        </div>
+
+
+        <div class="form-input-group">
+          <label for="isGood">Is Good Boy/Girl? </label>
+          <input type="checkbox" id="isGood" v-model="this.newAnimal.isGood" required />
+        </div>
+        <div class="buttonContainer">
+          <button type="submit">Save Changes</button>
+        </div>
+      </form>
     </div>
 
-    <h1>A little about me...</h1>
-    <p>Name: {{ this.animal.name }}</p>
-    <p>Age: {{ this.ageText }}</p>
-    <p>Description: {{ this.animal.aboutMe }}</p>
-    <p>Sex: {{ this.animal.sex }}</p>
-    <p>Species: {{this.animal.species}}</p>
-    <p>Breed: {{ this.animal.breed }}</p>
-    <p>Color: {{this.animal.color}}</p>
-    <p>Do I have medical needs?
-    <br> {{ this.medicalNeeds}}</p>
-    <p>Weight: {{ this.animal.weight }} lbs</p>
+    
 
-    <p>Is a good {{this.animal.sex == "Male" ? "boy" : "girl"}}: {{ this.isGood }}</p>
 
+    <div class="details" v-else>
+      <div id="imageContainer">
+        <img v-for="photo in this.newAnimal.photos" v-bind:key="photo" v-bind:photo="photo"
+          v-bind:src="photo.imageString" />
+      </div>
+
+      <h1 v-if="animal.isAdopted">I Have Found My Furever Home!</h1>
+      <h1 v-else>Hello New Friend!</h1>
+
+      <h1>A little about me...</h1>
+      <p>Name: {{ this.animal.name }}</p>
+      <p>Age: {{ this.ageText }}</p>
+      <p>Description: {{ this.animal.aboutMe }}</p>
+      <p>Sex: {{ this.animal.sex }}</p>
+      <p>Species: {{ this.animal.species }}</p>
+      <p>Breed: {{ this.animal.breed }}</p>
+      <p>Color: {{ this.animal.color }}</p>
+      <p>Do I have medical needs?
+        <br> {{ this.medicalNeeds }}
+      </p>
+      <p>Weight: {{ this.animal.weight }} lbs</p>
+
+      <p>Is a good {{ this.animal.sex == "Male" ? "boy" : "girl" }}: {{ this.isGood }}</p>
+
+    </div>
   </div>
 </template>
 
@@ -111,14 +137,17 @@ import AnimalService from "../services/AnimalService";
 
 export default {
   props: ['animal'],
-  data() { 
+  data() {
     return {
-      newAnimal: this.animal,
+      startingAnimal: Object,
+      newAnimal: Object,
       editForm: false,
+      successMessage: false,
+      errorMessage: false,
     }
   },
-  computed: {  
-    ageText: function() {
+  computed: {
+    ageText: function () {
       if (this.animal.age === 1) {
         return `${this.animal.age} year old`;
       } else {
@@ -126,76 +155,89 @@ export default {
       }
     },
     photoPath() {
-      if(this.animal && this.animal.photos){
+      if (this.animal && this.animal.photos) {
         return this.animal.photos[0].imageString;
-      } else{
+      } else {
         return "";
       }
     },
-    isGood: function(value){
-      if(this.animal.isGood=== true){
+    isGood: function (value) {
+      if (this.animal.isGood === true) {
         return "I sure am!"
-      }else{
+      } else {
         return "no"
       }
     },
-    medicalNeeds: function(value){
-      if(this.animal.medicalNeeds=== true){
+    medicalNeeds: function (value) {
+      if (this.animal.medicalNeeds === true) {
         return "I have some additional medical baggage"
-      }else{
+      } else {
         return "Nope"
       }
     },
-    role: function () { 
+    role: function () {
       if (this.$store.state.user.role === "admin" || this.$store.state.user.role === "user") {
         return true;
       }
-      else { 
+      else {
         return false;
       }
     }
   },
   methods: {
-    changeAnimal: function(animalToEdit) { 
+    closePopup() {
+      this.successMessage = false;
+      this.errorMessage = false;
+      this.editForm = false;
+    },
+    closeEditForm(){
+      this.newAnimal = this.animal;
+      this.closePopup();
+    },
+    changeAnimal: function (animalToEdit) {
       console.log("the animal to edit?")
       console.log(animalToEdit)
-        AnimalService.update(animalToEdit.id,animalToEdit)
-          .then(response => {
-            this.$router.push({ 'name': 'animals' })
-            this.$toast.open(`changed details of ${animalToEdit.name}!`)
-            this.$store.commit('EDIT_ANIMAL', animalToEdit)
+      AnimalService.update(animalToEdit.id, animalToEdit)
+        .then(response => {
+          //this.$toast.open(`changed details of ${animalToEdit.name}!`)
+          this.$store.commit('EDIT_ANIMAL', animalToEdit)
+          //this.$router.go();
+          //this.$router.push({"name": "volunteer-success"});
+          this.successMessage = true;
         })
-          .catch(error => {
-          this.$toast.open('unable to edit animal');
+        .catch(error => {
+          alert("an error occurred");
         })
     },
-    edit() { 
+    edit() {
       console.log("clicked");
       console.log(this.editForm);
       this.editForm = !this.editForm
     },
     loadImage(e) {
-        this.imageFile = e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          this.newAnimal.photos.push(
-            {
-              "imageString": evt.target.result,
-              "animalId": -1,
-              "imageId": -1
-            });
-        };
-        reader.readAsDataURL(this.imageFile);
-      },
-      deletePhoto(id) {
-        this.newAnimal.photos.splice(id,1)
-      }
+      this.imageFile = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        this.newAnimal.photos.push(
+          {
+            "imageString": evt.target.result,
+            "animalId": -1,
+            "imageId": -1
+          });
+      };
+      reader.readAsDataURL(this.imageFile);
+    },
+    deletePhoto(id) {
+      this.newAnimal.photos.splice(id, 1)
+    }
+  },
+  created() {
+    this.newAnimal = this.animal;
   }
 }
 </script>
 
 <style scoped>
-
 /* */
 
 #imageContainer {
@@ -206,10 +248,27 @@ export default {
   justify-content: center;
 }
 
+.hidden {
+  display: none;
+}
 
+.success {
+  background-color: var(--card-background);
+  width: 50%;
+  min-width: 250px;
+  min-height: 100px;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  h1 {
-  text-align:center;
+}
+
+h1 {
+  text-align: center;
 }
 
 .form-group {
@@ -231,6 +290,7 @@ input {
   border-radius: 4px;
   font-family: var(--card-body-font);
 }
+
 textarea {
   width: 96%;
   height: 50px;
@@ -240,10 +300,27 @@ textarea {
   font-family: var(--card-body-font);
 }
 
-select, option {
+select,
+option {
   font-family: var(--card-body-font);
 }
 
+.buttonContainer {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+button {
+  color: var(--company-color-1);
+  border: none;
+  border-radius: 0.5rem;
+  width: 6rem;
+  height: 2rem;
+  margin: auto;
+}
+/*
 button[type="submit"] {
   background-color: #4CAF50;
   color: white;
@@ -257,65 +334,69 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #45a049;
   cursor: pointer;
-}
+}*/
 
-#edit{
+#edit {
   display: flex;
- flex-direction:column;
- justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 
 
 }
-#edit button{
+
+#edit button {
   border-radius: 1rem;
   background-color: red;
   border: none;
   margin: auto;
-  padding: 0.5rem 1rem ;
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   font-family: var(--card-body-font);
   font-weight: bold;
   color: white;
   cursor: pointer;
-  
+
 }
+
 /* */
 
-  .detailForm{
-    max-width: 400px;
+.detailForm {
+  max-width: 400px;
   margin: 1rem auto;
   padding: 20px;
   box-shadow: var(--generic-shadow);
   border-radius: 1rem;
-  }
-  .details{
-    text-align: left;
-    font-family: var(--card-body-font);
-    font-weight: bold;
-    background-color: rgb(211, 195, 144);
-    padding:1rem;
-    border-radius: 1rem;
-    box-shadow:var(--generic-shadow)
-    
-  }
+  background-color: var(--card-background);
+}
 
-  img {
-    width: 300px;
-    height:  300px;
-    object-fit: cover; 
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 1rem;
+.details {
+  text-align: left;
+  font-family: var(--card-body-font);
+  font-weight: bold;
+  background-color: var(--card-background);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--generic-shadow)
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
 
 
-  }
-  #imageContainer{
-    justify-content: center;
-    display:flex;
-  }
-  h1{
-    display:flex;
-    justify-content: center;
-  }
+}
 
+#imageContainer {
+  justify-content: center;
+  display: flex;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
 </style>

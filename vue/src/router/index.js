@@ -8,6 +8,8 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import AnimalDetailsView from '../views/AnimalDetailsView.vue';
 import VolunteerFormView from '../views/VolunteerFormView.vue';
+import VolunteerSuccessView from '../views/VolunteerSuccessView.vue'
+import VolunteerFailureView from '../views/VolunteerFailureView.vue';
 import LandingPageView from '../views/LandingPageView.vue';
 
 import DirectoryView from '../views/DirectoryPageView.vue';
@@ -77,6 +79,16 @@ const routes = [
     path: "/volunteer",
     name: "volunteerForm",
     component: VolunteerFormView,
+  },
+  {
+    path: "/volunteer/success",
+    name: "volunteer-success",
+    component: VolunteerSuccessView,
+  },
+  {
+    path: "/volunteer/failure",
+    name: "volunteer-failure",
+    component: VolunteerFailureView,
   },
   {
     path: "/directory",
