@@ -5,10 +5,8 @@
     <div id="contactContainer">
         <h1>Name: {{application.appName}}</h1>
         <p>Email: {{application.appEmail}}</p>
-        <p v-if="application.weekdayAvailability">Weekday Availability: Yes</p>
-        <p v-else>Weekday Availability: No</p>
-        <p v-if="application.weekendAvailability">Weekend Availability: Yes</p>
-        <p v-else>Weekend Availability: No</p>
+        <p>Weekday Availability: {{application.weekdayAvailable ? "Yes" : "No" }}</p>
+        <p>Weekend Availability: {{application.weekendAvailable ? "Yes" : "No"}}</p>
         <p>Interest: {{application.interest}}</p>
         <p>Is Approved to Volunteer? {{ application.isApproved?"Yes":"No" }}</p>
         
