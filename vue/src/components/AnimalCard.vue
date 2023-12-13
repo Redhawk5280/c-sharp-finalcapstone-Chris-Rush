@@ -6,8 +6,9 @@
   >
     <img :src="profilePhoto" id="animalPic"/>
     <div id="curve">
-      <h1 id="animalName" v-if="this.animal.name.length<=8">{{this.animal.name}}</h1>
-      <h1 id="animalName" v-else>{{this.animal.name.substring(0,8)+" ..."}}</h1>
+      <!-- <h1 id="animalName" v-if="this.animal.name.length<=8">{{this.animal.name}}</h1>
+      <h1 id="animalName" v-else>{{this.animal.name.substring(0,8)+" ..."}}</h1> -->
+      <h1>{{this.animal.name}}</h1>
       <h2>
         {{ageText}}
       </h2>
@@ -101,6 +102,7 @@ export default {
     margin: 0;
     padding: 0;
     font-family: var(--card-body-font);
+    font-size: clamp(.5rem, 2.5vw, 1rem);
     color: var(--company-color-2);
     max-width: 100%;
     word-wrap: break-word;
