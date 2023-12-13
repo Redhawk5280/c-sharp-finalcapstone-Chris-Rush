@@ -1,6 +1,6 @@
 <template>
   <section id="detailsView">
-    <h1 v-if="animal.isAdopted">I Have Found My Furever Home!</h1>
+    <h1 v-if="this.isLoading === false && animal.isAdopted">I Have Found My Furever Home!</h1>
     <h1 v-else>Hello New Friend!</h1>
     <animal-details v-bind:animal="animal" v-if="isLoading == false"/>
   </section>
