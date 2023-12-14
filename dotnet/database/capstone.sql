@@ -111,7 +111,7 @@ VALUES ('Charlie', 4, 'Medium Hair', 'Cat', 0, 'Gray/White', 'Male', 32, 0, NULL
 
 -- Animal 9
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Misty', 2, 'Medium Hair', 'Cat', 0, 'Gray/White', 'Female', 8, 1, 'Sophie', 'Misty has a playful personality and loves chasing toys.', 1);
+VALUES ('Misty', 2, 'Medium Hair', 'Cat', 0, 'Gray/White', 'Female', 8, 0, 'Sophie', 'Misty has a playful personality and loves chasing toys.', 1);
 
 -- Animal 10
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
@@ -159,7 +159,7 @@ VALUES ('Daisy', 3, 'Medium Hair', 'Cat', 0, 'White/Gray', 'Female', 18, 0, NULL
 
 -- Animal 21
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Shadow', 2, 'N/A', 'Guinea Pig', 0, 'Brown/White', 'Male', 11, 1, 'Eva', 'Shadow is a calm and gentle guinea pig who enjoys quiet moments.', 1);
+VALUES ('Shadow', 2, 'N/A', 'Guinea Pig', 0, 'Brown/White', 'Male', 11, 0, 'Eva', 'Shadow is a calm and gentle guinea pig who enjoys quiet moments.', 1);
 
 -- Animal 22
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
@@ -171,11 +171,11 @@ VALUES ('Mocha', 1, 'Medium Hair', 'Cat', 0, 'White/Black', 'Female', 7, 0, NULL
 
 -- Animal 24
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Teddy', 4, 'Terrier', 'Dog', 0, 'Black', 'Male', 14, 1, 'Linda', 'Teddy is a sweet and gentle dog who loves to be pampered.', 1);
+VALUES ('Teddy', 4, 'Terrier', 'Dog', 0, 'Black', 'Male', 14, 0, 'Linda', 'Teddy is a sweet and gentle dog who loves to be pampered.', 1);
 
 -- Animal 25
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Cupcake', 2, 'Beagle', 'Dog', 1, 'Brown/Black', 'Female', 10, 1, 'Mark', 'Cupcake is a beautiful dog with a calm and serene personality.', 1);
+VALUES ('Cupcake', 2, 'Beagle', 'Dog', 1, 'Brown/Black', 'Female', 10, 0, 'Mark', 'Cupcake is a beautiful dog with a calm and serene personality.', 1);
 
 -- Animal 26
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
@@ -183,7 +183,7 @@ VALUES ('Harley', 3, 'Shepherd/Collie', 'Dog', 0, 'Black/Brown', 'Male', 28, 0, 
 
 -- Animal 27
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
-VALUES ('Lulu', 1, 'Shepherd Mix', 'Dog', 1, 'Brown/White', 'Female', 9, 1, 'Michael', 'Lulu is a playful and curious dog with a cute round face.', 1);
+VALUES ('Lulu', 1, 'Shepherd Mix', 'Dog', 1, 'Brown/White', 'Female', 9, 0, 'Michael', 'Lulu is a playful and curious dog with a cute round face.', 1);
 
 -- Animal 28
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
@@ -196,6 +196,18 @@ VALUES ('Mimi', 4, 'Long Hair', 'Cat', 1, 'White/Black', 'Female', 11, 1, 'Jessi
 -- Animal 30
 INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
 VALUES ('Rusty', 3, 'Medium Hair', 'Cat', 0, 'Black/White', 'Male', 32, 0, NULL, 'Rusty is a smart and energetic cat who loves outdoor adventures.', 1);
+
+INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
+VALUES ('Wilco', 7, 'Jack Russell', 'Dog', 0, 'Brown/White', 'Male', 20, 0, NULL, 'Wilco is an energetic dog who loves to hunt and torment his little brother', 1);
+
+INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
+VALUES ('Greg', 1, 'Mini Dachshund', 'Dog', 0, 'Black/Brown', 'Male', 8, 0, NULL, 'Greg is a very loving demon', 1);
+
+INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
+VALUES ('Missy', 3, 'Pomski', 'Dog', 0, 'White', 'Female', 10, 0, NULL, 'Missy is a people person and loves to be around her owner', 1);
+
+INSERT INTO Animal ([name], age, breed, species, medical_needs, color,sex, weight, is_adopted, owner_name, about_me, is_good)
+VALUES ('Chunk', 3, 'Medium Hair', 'Cat', 0, 'Black/White', 'Male', 15, 0, NULL, 'Chunk is a chonk that loves to chomp on snacks', 1);
 
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo1.jpg', 1)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo2.jpg', 2)
@@ -227,6 +239,10 @@ INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo2
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo28.jpg', 28)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo29.webp', 29)
 INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo30.jpg', 30)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo31.jpg', 31)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo32.jpg', 32)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo33.jpg', 33)
+INSERT INTO images (image_string, animal_id) VALUES ('\src\PetPics - Copy\photo34.jpg', 34)
 
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
@@ -239,10 +255,10 @@ INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, 
 VALUES ('Terry', 'Terry@gmail.com', 1, 0, 'Let me help!', 1)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
-VALUES ('Sho Neriki', 'ikirenohs@gmail.com', 1, 0, 'Let me help!', 1)
+VALUES ('Sho Neriki', 'ikirenohs@gmail.com', 1, 0, 'Let me help!', NULL)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
-VALUES ('Chris MacAdam', 'macadamchris@gmail.com', 1, 0, 'Let me help!', 1)
+VALUES ('Chris MacAdam', 'macadamchris@gmail.com', 1, 0, 'Let me help!', NULL)
 
 INSERT INTO volunteer_apps (applicant_name, applicant_email, weekday_available, weekend_available, interest, isApproved)
 VALUES ('Chris Rush', 'christopherrush5280@gmail.com', 1, 0, 'Let me help!', 1)
