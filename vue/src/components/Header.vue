@@ -1,4 +1,9 @@
 <template>
+  <div id="contact">
+    <p>8562 Riverbank Ave</p>
+    <p>Cleveland, OH 44113</p>
+    <p>(216) 666 6666</p>
+  </div>
   <div id="imgContainer">
     <img
       src="/paw-prints-pet-rescue-logo-zip-file\png\logo-color.png"
@@ -82,6 +87,19 @@
 }
 .navDiv {
   padding: 0 1rem;
+}
+#contact{
+  position: absolute;
+  top: 0;
+  margin-top: 1rem;
+  font-family: var(--card-body-font);
+  font-weight: bold;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+
 }
 
 .navDiv:hover {
